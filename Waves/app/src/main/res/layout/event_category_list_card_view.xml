@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+    <android.support.v7.widget.CardView
+
+        android:layout_width="140sp"
+        android:layout_height="140sp"
+        card_view:cardCornerRadius="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
+        card_view:cardElevation="2dp">
+        <RelativeLayout
+            android:id="@+id/top_layout"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            >
+
+            <ImageView
+                android:id="@+id/imgThumbnail_cardView"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:layout_above="@+id/eventNameCardView"
+               />
+            <TextView
+                android:id="@+id/eventNameCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="2dp"
+                android:background="#1e1e1e"
+                android:textColor="#e9e4ea"
+                android:textSize="14sp"
+                android:text="Test"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

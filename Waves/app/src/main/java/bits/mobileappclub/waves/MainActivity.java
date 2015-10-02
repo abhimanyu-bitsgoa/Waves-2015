@@ -1,26 +1,43 @@
 package bits.mobileappclub.waves;
 
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Display;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.AdapterViewFlipper;
+import android.widget.ImageView;
+import android.widget.ScrollView;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private ImageView eventImageOVerlay;
+    private static String LOG_TAG = "CardViewActivity";
+    float mStartDragY;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String[] eventTime={"8:00 pm","6:45 pm","7:10 pm","6:00 pm","8:00 pm","6:30 pm"};
-        String[] eventName={"Dhinchak","Searock","TimeLapse","Rangmanch","Waves Open Quiz","Indian Rock"};
-        String[] eventStage={"Final","Prelims","Semi-Final","Semi-final","Final","Prelims"};
-        int[] imageResourceId={R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4,R.drawable.img5,R.drawable.img6};
+        String[] eventTime = {"8:00 pm", "6:45 pm", "7:10 pm", "6:00 pm", "8:00 pm", "6:30 pm"};
+        String[] eventName = {"Dhinchak", "Searock", "TimeLapse", "Rangmanch", "Waves Open Quiz", "Indian Rock"};
+        String[] eventStage = {"Final", "Prelims", "Semi-Final", "Semi-final", "Final", "Prelims"};
+        int[] imageResourceId = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4, R.drawable.img5, R.drawable.img6};
 
-        AdapterViewFlipper liveEventsViewFlipper=(AdapterViewFlipper)(findViewById(R.id.liveEventsViewFlipper));
+        AdapterViewFlipper liveEventsViewFlipper = (AdapterViewFlipper) (findViewById(R.id.liveEventsViewFlipper));
         liveEventsViewFlipper.setAutoStart(true);
         liveEventsViewFlipper.setFlipInterval(5000);
         Display display = getWindowManager().getDefaultDisplay();
@@ -31,8 +48,34 @@ public class MainActivity extends ActionBarActivity {
         liveEventsViewFlipper.setInAnimation(getApplicationContext(), R.anim.slide_in_right);
         liveEventsViewFlipper.setOutAnimation(getApplicationContext(), R.anim.slide_out_left);
 
-        liveEventsViewFlipper.setAdapter(new LiveEventViewAdapter(this,eventName,eventTime,eventStage,imageResourceId));
+        liveEventsViewFlipper.setAdapter(new LiveEventViewAdapter(this, eventName, eventTime, eventStage, imageResourceId));
+        mAdapter = new MyRecyclerViewAdapter(getDataSet());
+        mRecyclerView = (RecyclerView) findViewById(R.id.music_scroll);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
 
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mRecyclerView.setAdapter(mAdapter);
+        ScrollView mainScrollView = (ScrollView) findViewById(R.id.mainScrollView);
+
+
+    }
+
+
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter
+                .MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                Log.i(LOG_TAG, " Clicked on Item " + position);
+            }
+        });
     }
 
     @Override
@@ -56,4 +99,13 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    private ArrayList<DataObject> getDataSet() {
+        ArrayList results = new ArrayList<DataObject>();
+        for (int index = 0; index < 10; index++) {
+            DataObject obj = new DataObject("Some Primary Text " + index, R.drawable.img2);
+            results.add(index, obj);
+        }
+        return results;
+    }
+
 }
