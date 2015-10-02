@@ -1,9 +1,12 @@
 package bits.mobileappclub.waves;
 
+import android.graphics.Point;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterViewFlipper;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +15,24 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String[] eventTime={"8:00 pm","6:45 pm","7:10 pm","6:00 pm","8:00 pm","6:30 pm"};
+        String[] eventName={"Dhinchak","Searock","TimeLapse","Rangmanch","Waves Open Quiz","Indian Rock"};
+        String[] eventStage={"Final","Prelims","Semi-Final","Semi-final","Final","Prelims"};
+        int[] imageResourceId={R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4,R.drawable.img5,R.drawable.img6};
+
+        AdapterViewFlipper liveEventsViewFlipper=(AdapterViewFlipper)(findViewById(R.id.liveEventsViewFlipper));
+        liveEventsViewFlipper.setAutoStart(true);
+        liveEventsViewFlipper.setFlipInterval(5000);
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+        liveEventsViewFlipper.setInAnimation(getApplicationContext(), R.anim.slide_in_right);
+        liveEventsViewFlipper.setOutAnimation(getApplicationContext(), R.anim.slide_out_left);
+
+        liveEventsViewFlipper.setAdapter(new LiveEventViewAdapter(this,eventName,eventTime,eventStage,imageResourceId));
+
     }
 
     @Override
