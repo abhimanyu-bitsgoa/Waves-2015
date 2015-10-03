@@ -15,21 +15,22 @@
         android:layout_height="match_parent"
         android:id="@+id/eventImageOverlay"
         android:scaleType="centerCrop"
-        android:background="#7a000000"
+        android:background="#76000000"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="bottom"
-        android:layout_margin="3sp">
+        android:gravity="top"
+        android:layout_margin="5sp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eventName"
-            android:text="Dinchak"
-            android:textSize="30sp"
+            android:text="test"
+            android:textSize="23sp"
             android:textColor="@color/TextWhiteColor"
+
             />
         <TextView
             android:layout_width="wrap_content"
@@ -37,21 +38,22 @@
             android:id="@+id/eventStage"
             android:text="Final"
             android:textColor="@color/TextWhiteColor"
-            android:textSize="18sp"
-            />
-    </LinearLayout>
+            android:textSize="16sp"
 
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/eventTime"
-            android:text="3:00 pm"
-            android:textSize="18sp"
+            android:text="7:00 pm"
+            android:textSize="14sp"
             android:textColor="@color/TextWhiteColor"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="3sp"
+
             />
+
+
+    </LinearLayout>
+
 
 
 </RelativeLayout>
