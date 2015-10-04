@@ -3,6 +3,9 @@ package bits.mobileappclub.waves;
 /**
  * Created by Aronzxxx on 03-10-2015.
  */
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,43 +22,39 @@ import java.util.List;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
     List<NatureItem> mItems;
+    static String eventName;
 
     public CardAdapter() {
         super();
         mItems = new ArrayList<NatureItem>();
         NatureItem nature = new NatureItem();
-        nature.setName("The Great Barrier Reef");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                "ut labore et dolore magna aliqua. Ut enim ad minim veniam.");
+        nature.setName("Dhinchak");
+        nature.setDes("Dance");
         nature.setThumbnail(R.drawable.img1);
         mItems.add(nature);
 
         nature = new NatureItem();
-        nature.setName("Grand Canyon");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                "ut labore et dolore magna aliqua.");
+        nature.setName("Indian Rock");
+        nature.setDes("Music");
         nature.setThumbnail(R.drawable.img2);
         mItems.add(nature);
 
         nature = new NatureItem();
-        nature.setName("Baltoro Glacier");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.");
+        nature.setName("Shutter Island");
+        nature.setDes("Litrature");
         nature.setThumbnail(R.drawable.img3);
         mItems.add(nature);
 
         nature = new NatureItem();
-        nature.setName("Iguazu Falls");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                "ut labore et dolore magna aliqua. Ut enim ad minim veniam.");
+        nature.setName("Rangmanch");
+        nature.setDes("Drama");
         nature.setThumbnail(R.drawable.img4);
         mItems.add(nature);
 
 
         nature = new NatureItem();
-        nature.setName("Aurora Borealis");
-        nature.setDes("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
-                "ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.");
+        nature.setName("Open Quiz");
+        nature.setDes("Quiz");
         nature.setThumbnail(R.drawable.img5);
         mItems.add(nature);
     }
@@ -69,12 +68,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                System.out.println(((TextView)v.findViewById(R.id.tv_nature)).getText().toString());
 
-                //Code for passing the intent.
+                System.out.println(((TextView) v.findViewById(R.id.tv_nature)).getText().toString());
+                eventName=((TextView) v.findViewById(R.id.tv_nature)).getText().toString();
+
+                Intent intent=new Intent(v.getContext(),EventDescription.class);
+                intent.putExtra("eventName",eventName);
+                v.getContext().startActivity(intent);
             }
         });
+
 
         return viewHolder;
     }
@@ -94,6 +97,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         return mItems.size();
     }
 
+
+
     class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView imgThumbnail;
@@ -108,9 +113,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         }
     }
 
-    public void clickSensor(){
 
 
-    }
+
 
 }

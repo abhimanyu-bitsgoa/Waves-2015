@@ -11,9 +11,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by Edwin on 15/02/2015.
@@ -73,6 +75,8 @@ public class Timeline extends ActionBarActivity {
     }
 
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -94,8 +98,8 @@ public class Timeline extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void fabClickedTimeline(View v){
-        Intent intent=new Intent(Timeline.this,MainActivity.class);
-        this.startActivity(intent);
-    }
+
+
+
+
 }
