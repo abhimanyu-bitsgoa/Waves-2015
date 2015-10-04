@@ -26,8 +26,8 @@ public class Timeline extends ActionBarActivity {
     ViewPager pager;
     ViewPagerAdapter_Tabs adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Home","Events"};
-    int Numboftabs =2;
+    CharSequence Titles[]={"Day0","Day1","Day2","Day3"};
+    int Numboftabs =4;
 
 
 
