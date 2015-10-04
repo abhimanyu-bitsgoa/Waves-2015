@@ -9,6 +9,8 @@ package bits.mobileappclub.waves;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,10 +29,14 @@ public class Timeline extends ActionBarActivity {
     CharSequence Titles[]={"Home","Events"};
     int Numboftabs =2;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timeline);
+
+
 
 
         // Creating The Toolbar and setting it as the Toolbar for the activity
@@ -60,6 +66,7 @@ public class Timeline extends ActionBarActivity {
 
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
+
 
 
 
