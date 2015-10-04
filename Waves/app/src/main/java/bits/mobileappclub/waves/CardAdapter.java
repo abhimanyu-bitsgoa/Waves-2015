@@ -30,32 +30,32 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         NatureItem nature = new NatureItem();
         nature.setName("Dhinchak");
         nature.setDes("Dance");
-        nature.setThumbnail(R.drawable.img1);
+        nature.setThumbnail(R.drawable.dance1);
         mItems.add(nature);
 
         nature = new NatureItem();
         nature.setName("Indian Rock");
         nature.setDes("Music");
-        nature.setThumbnail(R.drawable.img2);
+        nature.setThumbnail(R.drawable.music1);
         mItems.add(nature);
 
         nature = new NatureItem();
         nature.setName("Shutter Island");
         nature.setDes("Litrature");
-        nature.setThumbnail(R.drawable.img3);
+        nature.setThumbnail(R.drawable.literary1);
         mItems.add(nature);
 
         nature = new NatureItem();
         nature.setName("Rangmanch");
         nature.setDes("Drama");
-        nature.setThumbnail(R.drawable.img4);
+        nature.setThumbnail(R.drawable.specials1);
         mItems.add(nature);
 
 
         nature = new NatureItem();
         nature.setName("Open Quiz");
         nature.setDes("Quiz");
-        nature.setThumbnail(R.drawable.img5);
+        nature.setThumbnail(R.drawable.quiz1);
         mItems.add(nature);
     }
 
