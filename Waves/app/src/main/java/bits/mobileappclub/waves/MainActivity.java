@@ -237,7 +237,10 @@ public class MainActivity extends ActionBarActivity {
 
         return results;
     }
-
+   public void fabClicked(View v){
+       Intent intent=new Intent(MainActivity.this,Timeline.class);
+        this.startActivity(intent);
+    }
 
 
 }

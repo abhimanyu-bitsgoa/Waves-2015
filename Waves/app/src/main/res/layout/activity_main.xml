@@ -271,6 +271,6 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:clickable="true"
-
+        android:onClick="fabClicked"
         android:src="@drawable/fullicon" />
 </android.support.design.widget.CoordinatorLayout>
