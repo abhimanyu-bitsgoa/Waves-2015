@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,12 +61,25 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, final int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.recycler_view_card_item, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(v);
+
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                System.out.println(((TextView)v.findViewById(R.id.tv_nature)).getText().toString());
+
+                //Code for passing the intent.
+            }
+        });
+
         return viewHolder;
     }
+
+
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
@@ -93,4 +107,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             tvDesNature = (TextView)itemView.findViewById(R.id.tv_des_nature);
         }
     }
+
+    public void clickSensor(){
+
+
+    }
+
 }

@@ -9,8 +9,6 @@ package bits.mobileappclub.waves;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +22,7 @@ public class Timeline extends ActionBarActivity {
 
     Toolbar toolbar;
     ViewPager pager;
-    ViewPagerAdapter adapter;
+    ViewPagerAdapter_Tabs adapter;
     SlidingTabLayout tabs;
     CharSequence Titles[]={"Home","Events"};
     int Numboftabs =2;
@@ -45,8 +43,8 @@ public class Timeline extends ActionBarActivity {
         setSupportActionBar(toolbar);
 
 
-        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
-        adapter =  new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
+        // Creating The ViewPagerAdapter_Tabs and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
+        adapter =  new ViewPagerAdapter_Tabs(getSupportFragmentManager(),Titles,Numboftabs);
 
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);

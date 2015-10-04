@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 /**
  * Created by Edwin on 15/02/2015.
@@ -38,8 +39,9 @@ public class Tab1 extends Fragment {
         mAdapter = new CardAdapter();
         mRecyclerView.setAdapter(mAdapter);
 
-         return v;
+        return v;
     }
+
 
 
 }
