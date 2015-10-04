@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/PrimaryDark"
+    android:background="#00e4e4e4"
     android:paddingRight="10sp"
 
 
@@ -12,10 +12,10 @@
 
     <android.support.v7.widget.CardView
 
-        android:layout_width="120sp"
+        android:layout_width="110sp"
         android:layout_height="120sp"
         card_view:cardCornerRadius="0.3dp"
-        android:layout_margin="1dp"
+        android:layout_margin="5dp"
 
         card_view:cardElevation="2dp">
         <RelativeLayout
@@ -34,12 +34,12 @@
             <TextView
                 android:id="@+id/eventNameCardView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25sp"
                 android:paddingLeft="5dp"
                 android:paddingRight="2dp"
-                android:background="#eeeeee"
-                android:textColor="#3f3f3f"
-                android:textSize="14sp"
+                android:background="#ffffff"
+                android:textColor="@color/PrimaryHighlight"
+                android:textSize="12sp"
                 android:text="Test"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="center_horizontal"

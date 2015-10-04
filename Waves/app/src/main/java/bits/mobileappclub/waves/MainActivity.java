@@ -1,9 +1,7 @@
 package bits.mobileappclub.waves;
 
-import android.content.res.Resources;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.ViewPager;
@@ -13,20 +11,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.Display;
-import android.view.DragEvent;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterViewFlipper;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -56,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
         String[] eventStage = {"Final", "Prelims", "Semi-Final", "Semi-final", "Final", "Prelims"};
         int[] imageResourceId = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4, R.drawable.img5, R.drawable.img6};
         liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
-        liveViewPager.setAdapter(new ViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
+        liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
 
 
         //Music Horizontal Scroll
@@ -64,8 +53,8 @@ public class MainActivity extends ActionBarActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Waves");
       //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-        collapsingToolbarLayout.setContentScrimColor(Color.parseColor("#000000"));
-        mAdapter = new MyRecyclerViewAdapter(getDataSet(0));
+        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.colorAccent));
+        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(0));
         mRecyclerView = (RecyclerView) findViewById(R.id.music_scroll);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(true);
@@ -73,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         //Dance Horizontal Scroll
-        mAdapter = new MyRecyclerViewAdapter(getDataSet(1));
+        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(1));
         mRecyclerView = (RecyclerView) findViewById(R.id.dance_scroll);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(true);
@@ -81,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         //Drama Horizontal Scroll
-        mAdapter = new MyRecyclerViewAdapter(getDataSet(2));
+        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(2));
         mRecyclerView = (RecyclerView) findViewById(R.id.drama_scroll);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(true);
@@ -89,41 +78,41 @@ public class MainActivity extends ActionBarActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         //Literary Horizontal Scroll
-        mAdapter =  new MyRecyclerViewAdapter(getDataSet(2));
+        mAdapter =  new EventCategoryRecyclerViewAdapter(getDataSet(3));
         mRecyclerView = (RecyclerView) findViewById(R.id.literary_scroll);
-        mRecyclerView.setNestedScrollingEnabled(false);
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         //Quiz Horizontal Scroll
-        mAdapter = new MyRecyclerViewAdapter(getDataSet(2));
+        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(4));
         mRecyclerView = (RecyclerView) findViewById(R.id.quiz_scroll);
-        mRecyclerView.setNestedScrollingEnabled(false);
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         //Fine Arts Horizontal Scroll
-        mAdapter = new MyRecyclerViewAdapter(getDataSet(2));
+        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(5));
         mRecyclerView = (RecyclerView) findViewById(R.id.finearts_scroll);
-        mRecyclerView.setNestedScrollingEnabled(false);
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         //Film Horizontal Scroll
-        mAdapter = new MyRecyclerViewAdapter(getDataSet(2));
+        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(6));
         mRecyclerView = (RecyclerView) findViewById(R.id.film_scroll);
-        mRecyclerView.setNestedScrollingEnabled(false);
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         //Specials Horizontal Scroll
-        mAdapter = new MyRecyclerViewAdapter(getDataSet(2));
+        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(7));
         mRecyclerView = (RecyclerView) findViewById(R.id.specials_scroll);
-        mRecyclerView.setNestedScrollingEnabled(false);
+
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -163,11 +152,16 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter
+        ((EventCategoryRecyclerViewAdapter) mAdapter).setOnItemClickListener(new EventCategoryRecyclerViewAdapter
                 .MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Log.i(LOG_TAG, " Clicked on Item " + position);
+                Intent intent=new Intent(MainActivity.this,EventDescription.class);
+
+                intent.putExtra("eventName",((TextView)v.findViewById(R.id.eventNameCardView)).getText().toString());
+
+                MainActivity.this.startActivity(intent);
+                Log.i(LOG_TAG, " Clicked on Item " + ((TextView)v.findViewById(R.id.eventNameCardView)).getText().toString());
             }
         });
     }
@@ -193,12 +187,54 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    private ArrayList<DataObject> getDataSet(int id) {
-        ArrayList results = new ArrayList<DataObject>();
-        for (int index = 0; index < 5; index++) {
-            DataObject obj = new DataObject("Some Primary Text " + index, R.drawable.dance1);
-            results.add(index, obj);
+    private ArrayList<EventDataObjectCardMainActivity> getDataSet(int id) {
+        ArrayList results = new ArrayList<EventDataObjectCardMainActivity>();
+        switch (id)
+        {
+            case 0: for (int index = 0; index < 5; index++) {
+                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Music" + index,R.drawable.music1);
+                results.add(index, obj);
+            }
+                break;
+            case 1: for (int index = 0; index < 5; index++) {
+                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Dance" + index,R.drawable.dance1);
+                results.add(index, obj);
+            }
+                break;
+            case 2: for (int index = 0; index < 5; index++) {
+                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Drama" + index,R.drawable.drama1);
+                results.add(index, obj);
+            }
+                break;
+            case 3: for (int index = 0; index < 5; index++) {
+                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Literary" + index,R.drawable.literary1);
+                results.add(index, obj);
+            }
+                break;
+            case 4: for (int index = 0; index < 5; index++) {
+                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Quiz" + index,R.drawable.quiz1);
+                results.add(index, obj);
+            }
+                break;
+            case 5: for (int index = 0; index < 5; index++) {
+                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Fine Arts" + index,R.drawable.finarts1);
+                results.add(index, obj);
+            }
+                break;
+            case 6: for (int index = 0; index < 5; index++) {
+                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Film" + index,R.drawable.film1);
+                results.add(index, obj);
+            }
+                break;
+            case 7: for (int index = 0; index < 5; index++) {
+                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Specials" + index,R.drawable.specials1);
+                results.add(index, obj);
+            }
+                break;
+
+
         }
+
         return results;
     }
 

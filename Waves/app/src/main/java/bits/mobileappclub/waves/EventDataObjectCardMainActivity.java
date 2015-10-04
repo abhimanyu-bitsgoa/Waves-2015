@@ -4,11 +4,11 @@ package bits.mobileappclub.waves;
  * Created by HP1 on 03-Oct-15.
  */
 
-public class DataObject {
+public class EventDataObjectCardMainActivity {
     private String eventName;
     private int imageId;
 
-    DataObject (String text1, int text2){
+    EventDataObjectCardMainActivity(String text1, int text2){
         eventName = text1;
         imageId= text2;
     }
