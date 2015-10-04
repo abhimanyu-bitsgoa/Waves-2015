@@ -64,7 +64,7 @@ public class EventDescription extends AppCompatActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_desc);
         collapsingToolbarLayout.setTitle(event.getEventName());
         //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.colorAccent));
+        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
         headerEventImageView.setImageResource(R.drawable.img1);
         elimVenue=(TextView)findViewById(R.id.elimVenue);
         elimDay=(TextView)findViewById(R.id.elimDay);

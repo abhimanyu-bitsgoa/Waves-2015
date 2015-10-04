@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Waves");
       //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.colorAccent));
+        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
         mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(0));
         mRecyclerView = (RecyclerView) findViewById(R.id.music_scroll);
         mRecyclerView.setNestedScrollingEnabled(false);
