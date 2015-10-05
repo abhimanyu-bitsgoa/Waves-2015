@@ -69,11 +69,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
 
-                System.out.println(((TextView) v.findViewById(R.id.tv_nature)).getText().toString());
-                eventName=((TextView) v.findViewById(R.id.tv_nature)).getText().toString();
+                eventName = ((TextView) v.findViewById(R.id.eventNameTimeline)).getText().toString();
 
-                Intent intent=new Intent(v.getContext(),EventDescription.class);
-                intent.putExtra("eventName",eventName);
+                Intent intent = new Intent(v.getContext(), EventDescription.class);
+                intent.putExtra("eventName", eventName);
                 v.getContext().startActivity(intent);
             }
         });
@@ -108,8 +107,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             imgThumbnail = (ImageView)itemView.findViewById(R.id.img_thumbnail);
-            tvNature = (TextView)itemView.findViewById(R.id.tv_nature);
-            tvDesNature = (TextView)itemView.findViewById(R.id.tv_des_nature);
+            tvNature = (TextView)itemView.findViewById(R.id.eventNameTimeline);
+            tvDesNature = (TextView)itemView.findViewById(R.id.categoryTimeline);
         }
     }
 

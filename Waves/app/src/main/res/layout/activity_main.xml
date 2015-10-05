@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="#ffffff">
+    android:background="@color/colorBackground">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginStart="20dp"
+            app:expandedTitleMarginStart="15dp"
             app:expandedTitleMarginEnd="64dp"
             android:fitsSystemWindows="true">
             <android.support.v4.view.ViewPager
@@ -43,7 +43,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <bits.mobileappclub.waves.CustomNestedScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -65,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:textSize="22sp"
                     android:text="Music"
-                    android:layout_marginLeft="5sp"
+                    android:layout_marginLeft="15sp"
 
                     android:textColor="@color/PrimaryHighlight"/>
             </LinearLayout>
@@ -73,7 +73,7 @@
                 android:id="@+id/music_scroll"
 
                 android:layout_width="match_parent"
-                android:layout_height="130sp"/>
+                android:layout_height="150sp"/>
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="2sp"
@@ -91,7 +91,7 @@
                 android:layout_height="match_parent"
                 android:textSize="22sp"
                 android:text="Dance"
-                android:layout_marginLeft="5sp"
+                android:layout_marginLeft="15sp"
 
                 android:textColor="@color/PrimaryHighlight"/>
         </LinearLayout>
@@ -99,7 +99,7 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/dance_scroll"
                     android:layout_width="wrap_content"
-                    android:layout_height="130sp"
+                    android:layout_height="150sp"
                   />
                     <ImageView
                         android:layout_width="match_parent"
@@ -119,14 +119,14 @@
                     android:layout_height="match_parent"
                     android:textSize="22sp"
                     android:text="Drama"
-                    android:layout_marginLeft="5sp"
+                    android:layout_marginLeft="15sp"
                     android:textColor="@color/PrimaryHighlight"/>
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/drama_scroll"
                 android:layout_width="wrap_content"
-                android:layout_height="130sp"
+                android:layout_height="150sp"
                />
                     <ImageView
                         android:layout_marginTop="5sp"
@@ -144,7 +144,7 @@
                     android:layout_height="match_parent"
                     android:textSize="22sp"
                     android:text="Literary"
-                    android:layout_marginLeft="5sp"
+                    android:layout_marginLeft="15sp"
                     android:textColor="@color/PrimaryHighlight"/>
             </LinearLayout>
 
@@ -152,7 +152,7 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/literary_scroll"
                     android:layout_width="match_parent"
-                    android:layout_height="130sp"
+                    android:layout_height="150sp"
                     />
                     <ImageView
                         android:layout_width="match_parent"
@@ -169,7 +169,7 @@
                     android:layout_height="match_parent"
                     android:textSize="22sp"
                     android:text="Quiz"
-                    android:layout_marginLeft="5sp"
+                    android:layout_marginLeft="15sp"
                     android:textColor="@color/PrimaryHighlight"/>
             </LinearLayout>
 
@@ -177,7 +177,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/quiz_scroll"
                 android:layout_width="match_parent"
-                android:layout_height="130sp"
+                android:layout_height="150sp"
                />
                     <ImageView
                         android:layout_width="match_parent"
@@ -194,7 +194,7 @@
                     android:layout_height="match_parent"
                     android:textSize="22sp"
                     android:text="Fine Arts"
-                    android:layout_marginLeft="5sp"
+                    android:layout_marginLeft="15sp"
                     android:textColor="@color/PrimaryHighlight"/>
             </LinearLayout>
 
@@ -202,7 +202,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/finearts_scroll"
                 android:layout_width="match_parent"
-                android:layout_height="130sp"
+                android:layout_height="150sp"
                />
                     <ImageView
                         android:layout_width="match_parent"
@@ -219,7 +219,7 @@
                     android:layout_height="match_parent"
                     android:textSize="22sp"
                     android:text="Film"
-                    android:layout_marginLeft="5sp"
+                    android:layout_marginLeft="15sp"
                     android:textColor="@color/PrimaryHighlight"/>
             </LinearLayout>
 
@@ -227,7 +227,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/film_scroll"
                 android:layout_width="match_parent"
-                android:layout_height="130sp"
+                android:layout_height="150sp"
 
                 />
                     <ImageView
@@ -245,7 +245,7 @@
                     android:layout_height="match_parent"
                     android:textSize="22sp"
                     android:text="Specials"
-                    android:layout_marginLeft="5sp"
+                    android:layout_marginLeft="15sp"
                     android:textColor="@color/PrimaryHighlight"/>
             </LinearLayout>
 
@@ -253,7 +253,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/specials_scroll"
                 android:layout_width="match_parent"
-                android:layout_height="130sp"
+                android:layout_height="150sp"
                 />
 
 
@@ -264,7 +264,7 @@
 
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </bits.mobileappclub.waves.CustomNestedScrollView>
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

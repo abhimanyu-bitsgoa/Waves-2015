@@ -99,7 +99,10 @@ public class Timeline extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    public void fabClickedTimeline(View v){
+        Intent intent=new Intent(Timeline.this,MainActivity.class);
+        this.startActivity(intent);
+    }
 
 
 }

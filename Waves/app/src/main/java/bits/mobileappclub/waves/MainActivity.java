@@ -149,22 +149,6 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        ((EventCategoryRecyclerViewAdapter) mAdapter).setOnItemClickListener(new EventCategoryRecyclerViewAdapter
-                .MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                Intent intent=new Intent(MainActivity.this,EventDescription.class);
-
-                intent.putExtra("eventName",((TextView)v.findViewById(R.id.eventNameCardView)).getText().toString());
-
-                MainActivity.this.startActivity(intent);
-                Log.i(LOG_TAG, " Clicked on Item " + ((TextView)v.findViewById(R.id.eventNameCardView)).getText().toString());
-            }
-        });
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -7,7 +7,7 @@
         <item
             android:title="Map"
             android:id="@+id/action_map"
-            android:icon="@drawable/mapicon"
+            android:icon="@drawable/locationiconwhite"
             android:orderInCategory="99"
             app:showAsAction="ifRoom"/>
 
