@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#00e4e4e4"
+    android:background="#fafafa"
+    android:paddingLeft="10sp"
     android:paddingRight="10sp"
-
 
     >
     <android.support.v7.widget.CardView
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="0.3dp"
         android:layout_margin="5dp"
-        card_view:cardElevation="2dp"
+        card_view:cardElevation="3dp"
         >
         <RelativeLayout
             android:id="@+id/cardViewLayout"
@@ -28,16 +28,16 @@
                 android:id="@+id/descriptionHeader"
                 android:layout_width="match_parent"
                 android:layout_height="40sp"
-                android:paddingTop="5sp"
-                android:paddingLeft="5sp"
+                android:paddingTop="6sp"
+                android:paddingLeft="10sp"
                 android:paddingRight="2sp"
                 android:background="@color/colorAccent"
                 android:textColor="@color/TextWhiteColor"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:text="About"
-
                 android:layout_alignParentTop="true"
                 android:layout_gravity="bottom"
+
 
                 />
             <TextView
@@ -48,13 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/PrimaryDark"
-                android:text="
-            Indian Rock is one of its finest.
-            It has been the most participated
-            event of all the music events.
-            Its speciality is the classical mix
-            of indian music with the western rock music.
-            "/>
+                />
 
         </RelativeLayout>
 

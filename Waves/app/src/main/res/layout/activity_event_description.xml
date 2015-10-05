@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginStart="20dp"
+            app:expandedTitleMarginStart="15dp"
             app:expandedTitleMarginEnd="64dp"
             android:fitsSystemWindows="true">
             <ImageView
@@ -30,7 +30,13 @@
                 android:scaleType="centerCrop"/>
 
 
-
+            <ImageView
+                android:id="@+id/eventDescImageViewOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="250sp"
+                app:layout_collapseMode="parallax"
+                android:scaleType="centerCrop"
+                android:background="#64000000"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -52,7 +58,7 @@
         >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="105sp"
+            android:layout_height="120sp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:orientation="horizontal"
             >
@@ -60,12 +66,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14sp"
-                android:layout_marginLeft="14sp"
-                android:orientation="vertical">
+                android:layout_marginLeft="20sp"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/stageElim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Elimination"
+                    android:layout_gravity="center"
+                    android:textSize="13sp"
+                    android:textColor="@color/PrimaryDark"/>
                 <ImageView
                     android:id="@+id/elimIcon"
-                    android:layout_width="40sp"
-                    android:layout_height="40sp"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
                     android:src="@drawable/elimicon"
                     android:layout_gravity="center"
                     />
@@ -75,21 +90,24 @@
                     android:layout_height="wrap_content"
                     android:text="Library Lawns"
                     android:layout_gravity="center"
-                    android:textSize="12sp"/>
+                    android:textSize="11sp"
+                    android:textColor="@color/LightGreyText"/>
                 <TextView
                     android:id="@+id/elimDay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
                     android:text="Day 0"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:textColor="@color/LightGreyText"/>
                 <TextView
                     android:id="@+id/elimTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="6pm"
                     android:layout_gravity="center"
-                    android:textSize="10sp"/>
+                    android:textSize="10sp"
+                    android:textColor="@color/LightGreyText"/>
 
             </LinearLayout>
             <LinearLayout
@@ -97,12 +115,72 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14sp"
                 android:layout_marginLeft="14sp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/stageSemiText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Semi Final"
+                    android:layout_gravity="center"
+                    android:textSize="13sp"
+                    android:textColor="@color/PrimaryDark"/>
+                <ImageView
+                    android:id="@+id/semiIcon"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/semiicon"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/semiVenue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Library Lawns"
+                    android:layout_gravity="center"
+                    android:textSize="11sp"
+                    android:textColor="@color/LightGreyText"/>
+                <TextView
+                    android:id="@+id/semiDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:text="Day 0"
+                    android:layout_gravity="center"
+                    android:textColor="@color/LightGreyText"/>
+                <TextView
+                    android:id="@+id/semiTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6pm"
+                    android:layout_gravity="center"
+                    android:textSize="10sp"
+                    android:textColor="@color/LightGreyText"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14sp"
+                android:layout_marginLeft="14sp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                >
+                <TextView
+                    android:id="@+id/stageSemi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Final"
+                    android:textColor="@color/PrimaryDark"
+                    android:textSize="13sp"
+                    android:layout_gravity="center"
+                    />
                 <ImageView
                     android:id="@+id/finalcon"
-                    android:layout_width="40sp"
-                    android:layout_height="40sp"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
                     android:src="@drawable/finalicon"
+                    android:scaleType="centerCrop"
                     android:layout_gravity="center"
                     />
                 <TextView
@@ -110,22 +188,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CC"
-                    android:textSize="12sp"
-                    android:layout_gravity="center"/>
+                    android:textSize="11sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/LightGreyText"/>
                 <TextView
                     android:id="@+id/finalDay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Day 0"
                     android:layout_gravity="center"
-                    android:textSize="10sp"/>
+                    android:textSize="10sp"
+                    android:textColor="@color/LightGreyText"/>
                 <TextView
                     android:id="@+id/finalTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="6pm"
                     android:layout_gravity="center"
-                    android:textSize="10sp"/>
+                    android:textSize="10sp"
+                    android:textColor="@color/LightGreyText"/>
 
             </LinearLayout>
 
