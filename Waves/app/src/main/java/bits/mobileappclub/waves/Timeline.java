@@ -17,6 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 /**
  * Created by Edwin on 15/02/2015.
  */
@@ -39,8 +44,6 @@ public class Timeline extends ActionBarActivity {
         setContentView(R.layout.timeline);
 
 
-
-
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
@@ -48,7 +51,7 @@ public class Timeline extends ActionBarActivity {
 
 
         // Creating The ViewPagerAdapter_Tabs and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
-        adapter =  new ViewPagerAdapter_Tabs(getSupportFragmentManager(),Titles,Numboftabs);
+        adapter = new ViewPagerAdapter_Tabs(getSupportFragmentManager(), Titles, Numboftabs);
 
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);
@@ -70,9 +73,8 @@ public class Timeline extends ActionBarActivity {
         tabs.setViewPager(pager);
 
 
-
-
     }
+
 
 
 

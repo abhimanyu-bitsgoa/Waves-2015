@@ -3,10 +3,11 @@ package bits.mobileappclub.waves;
 /**
  * Created by Aronzxxx on 03-10-2015.
  */
-public class NatureItem {
-    private String mName;
+public class CardInfo {
+    private  String mName;
     private String mDes;
     private int mThumbnail;
+
 
     public String getName() {
         return mName;

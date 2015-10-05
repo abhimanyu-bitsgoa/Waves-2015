@@ -33,7 +33,7 @@ public class Tab3 extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new CardAdapter();
+        mAdapter = new CardAdapter(3);
         mRecyclerView.setAdapter(mAdapter);
 
         return v;

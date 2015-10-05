@@ -31,7 +31,7 @@ public class Tab2 extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new CardAdapter();
+        mAdapter = new CardAdapter(2);
         mRecyclerView.setAdapter(mAdapter);
 
         return v;
