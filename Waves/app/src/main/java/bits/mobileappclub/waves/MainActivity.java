@@ -168,6 +168,12 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_map) {
+            Intent intent=new Intent(this,MapActivity.class);
+            this.startActivity(intent);
+
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
