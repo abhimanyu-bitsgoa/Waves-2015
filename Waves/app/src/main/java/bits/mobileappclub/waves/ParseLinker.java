@@ -55,15 +55,11 @@ public class ParseLinker extends Application {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "GdQa47PfR8nI3QjzjGoUOMm275Nhjt8gnJld1ovQ", "LmmZv4nwqFK6vhf5hx7OKkBw8yMofOdFNs3KM39I");
 
-        // Code to store all objects from query in database
-        ParseQuery<ParseObject> parseQuery0 = ParseQuery.getQuery("Events").whereMatches("testCol","1");
-        List<ParseObject> objects = null; // Online ParseQuery results
-        try {
-            objects = parseQuery0.find();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        ParseObject.pinAllInBackground(objects);
+        new Thread(new ParseThread()).start();
+
+
+
+
 
        /* ParseObject  p0;
 
@@ -86,6 +82,26 @@ public class ParseLinker extends Application {
         }*/
     }
 
+    public class ParseThread implements Runnable{
+
+
+        @Override
+        public void run() {
+
+            for (int i=10;i<46;i++) {
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Events").whereMatches("iterator",i+"");
+                try {
+                    ParseObject p0=query.getFirst();
+                    p0.pinInBackground();
+                    System.out.println(p0.getString("title").toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+    }
 
 
     }
