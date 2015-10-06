@@ -168,6 +168,12 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_map) {
+            Intent intent=new Intent(this,MapActivity.class);
+            this.startActivity(intent);
+
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -223,8 +229,10 @@ public class MainActivity extends ActionBarActivity {
     }
    public void fabClicked(View v){
        Intent intent=new Intent(MainActivity.this,Timeline.class);
+       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         this.startActivity(intent);
     }
+
 
 
 }
