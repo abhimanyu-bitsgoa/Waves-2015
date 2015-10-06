@@ -272,5 +272,5 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:onClick="fabClicked"
-        android:src="@drawable/fullicon" />
+        android:src="@drawable/timelineicon" />
 </android.support.design.widget.CoordinatorLayout>
