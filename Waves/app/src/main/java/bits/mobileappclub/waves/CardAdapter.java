@@ -43,24 +43,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             query.fromLocalDatastore();
 
             if (num == 1) {
-                ArrayList<ParseObject> p1=null;
-
-                p1.add(query.get("CRzAO5anix"));
-                p1.add(query.get("jVZgssmdIC"));
-                p1.add(query.get("JCioxw0ky1"));
-                
-
-                for(int i=0;i<3;i++){
-                    card = new CardInfo();
-                    card.setName(p1.get(i).getString("title").toString());
-                    card.setDes(p1.get(i).getString("category").toString());
-                    card.setThumbnail(R.drawable.literary1);
-                    mItems.add(card);
-
-                }
 
 
-                /*
+
+
+
                 // Single block of parse card starts
                 card = new CardInfo();
                 try {
@@ -102,7 +89,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
                 card.setThumbnail(R.drawable.dance1);
                 mItems.add(card);
                 //Single block of parse card ends
-*/
+
 
             }
             if (num == 2) {
