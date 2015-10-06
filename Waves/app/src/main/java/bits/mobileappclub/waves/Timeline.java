@@ -101,6 +101,7 @@ public class Timeline extends ActionBarActivity {
 
     public void fabClickedTimeline(View v){
         Intent intent=new Intent(Timeline.this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         this.startActivity(intent);
     }
 
