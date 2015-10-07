@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -25,8 +26,10 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class EventDescription extends AppCompatActivity {
     ImageView headerEventImageView;
@@ -47,6 +50,7 @@ public class EventDescription extends AppCompatActivity {
     private TextView semiVenue;
     private TextView semiDay;
     private TextView semiTime;
+    String[] eventTimeArray={"1930","2030","2130"},eventDayArray={"6","7","8"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +64,13 @@ public class EventDescription extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         LinearLayoutManager llmDescView = new LinearLayoutManager(getApplicationContext());
         eventDescRecyclerView.setLayoutManager(llmDescView);
-        String[] eventTimeArray={"9:30 am","10:15 pm","5:30 pm"};
-        String[] eventDayArray={"Day 0","Day 1","Day 2"};
+
+        for(int i=0;i<3;i++)
+        {
+            eventTimeArray[i]="1930";
+            eventDayArray[i]="Day 0";
+        }
+
         String[] eventVenueArray={"CC","Library Lawns","Auditorium"};
         Event event=new Event("Dhinchak",eventTimeArray,eventDayArray,eventVenueArray,"soighosidhgoiahdfoaihsfiahsgadf","adgadfhSOFAS AFADFAEGGAFDADSS","","");
         EventDetails eventDetails=new EventDetails(event);
@@ -140,6 +149,25 @@ public class EventDescription extends AppCompatActivity {
     }
     public  void fabClickedDescription(View v)
     {
+        long startTime=Integer.parseInt(eventTimeArray[0]);
+
+        String startDate = "2015-10-06";
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+            startTime=date.getTime();
+        }
+        catch(Exception e){ }
+
+        Calendar cal = Calendar.getInstance();
+        Intent intent = new Intent(Intent.ACTION_EDIT);
+        intent.setType("vnd.android.cursor.item/event");
+        intent.putExtra("beginTime", startTime);
+        intent.putExtra("allDay", true);
+
+
+        intent.putExtra("title", eventName);
+        startActivity(intent);
+
 
 
     }

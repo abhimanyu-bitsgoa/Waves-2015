@@ -5,6 +5,7 @@
     <color name="PrimaryHighlight">#484848</color>
     <color name="colorAccent">#0076c5</color>
     <color name="colorBackground">#FFFFFF</color>
+    <color name="fabColor">#e50034</color>
 
 
 </resources>
