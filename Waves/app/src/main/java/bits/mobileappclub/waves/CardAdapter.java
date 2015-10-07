@@ -16,8 +16,9 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.TreeMap;
 
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
@@ -43,17 +44,27 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             query.fromLocalDatastore();
 
             if (num == 1) {
-                ArrayList<ParseObject> p1=null;
+                ArrayList<ParseObject> pA1= new ArrayList<>();
+                pA1.add(query.get("CRzAO5anix"));
+                pA1.add(query.get("jVZgssmdIC"));
+                pA1.add(query.get("JCioxw0ky1"));
 
-                p1.add(query.get("CRzAO5anix"));
-                p1.add(query.get("jVZgssmdIC"));
-                p1.add(query.get("JCioxw0ky1"));
-                
+                TreeMap<String,ParseObject> pT1=new TreeMap<String,ParseObject>();
+
+                pT1.put(pA1.get(0).get("timings").toString(), pA1.get(0));
+                pT1.put(pA1.get(1).get("timings").toString(), pA1.get(1));
+                pT1.put(pA1.get(2).get("timings").toString(),pA1.get(2));
+
+
+                System.out.println(pT1.firstKey());
+                System.out.println(pT1.values().toArray()[1]);
+                System.out.println(pT1.values().toArray()[2]);
+
 
                 for(int i=0;i<3;i++){
                     card = new CardInfo();
-                    card.setName(p1.get(i).getString("title").toString());
-                    card.setDes(p1.get(i).getString("category").toString());
+                    card.setName(pT1.get(i).getString("title").toString());
+                    card.setDes(pT1.get(i).getString("category").toString());
                     card.setThumbnail(R.drawable.literary1);
                     mItems.add(card);
 
