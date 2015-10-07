@@ -2,6 +2,7 @@ package bits.mobileappclub.waves;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.IntentService;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
@@ -185,8 +186,9 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         if (id == R.id.action_map) {
+            Intent intent=new Intent(MainActivity.this,MapActivity.class);
 
-
+            startActivity(intent);
             return true;
         }
 
