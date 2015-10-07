@@ -1,5 +1,7 @@
 package bits.mobileappclub.waves;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
@@ -14,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
     private float initialX;
     private int currentPage;
     private Handler handler;
+    private  Toolbar toolbar;
     Runnable Update;
     CollapsingToolbarLayout collapsingToolbarLayout;
     @Override
@@ -54,8 +58,9 @@ public class MainActivity extends ActionBarActivity {
         collapsingToolbarLayout.setTitle("Waves");
       //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
-        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(0));
-        mRecyclerView = (RecyclerView) findViewById(R.id.music_scroll);
+        //Big 3 scroll horizontal
+        mAdapter = new EventCategoryBigRecyclerViewAdapter(getDataSet(0));
+        mRecyclerView = (RecyclerView) findViewById(R.id.big3_scroll);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
@@ -69,25 +74,26 @@ public class MainActivity extends ActionBarActivity {
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
-        //Drama Horizontal Scroll
+        //Music horizontal scroll
         mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(2));
+        mRecyclerView = (RecyclerView) findViewById(R.id.music_scroll);
+        mRecyclerView.setNestedScrollingEnabled(false);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
+        //Drama Horizontal Scroll
+        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(3));
         mRecyclerView = (RecyclerView) findViewById(R.id.drama_scroll);
         mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
-        //Literary Horizontal Scroll
-        mAdapter =  new EventCategoryRecyclerViewAdapter(getDataSet(3));
-        mRecyclerView = (RecyclerView) findViewById(R.id.literary_scroll);
-
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-        //Quiz Horizontal Scroll
+        //Film Horizontal Scroll
         mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(4));
-        mRecyclerView = (RecyclerView) findViewById(R.id.quiz_scroll);
+        mRecyclerView = (RecyclerView) findViewById(R.id.film_scroll);
 
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
@@ -101,16 +107,26 @@ public class MainActivity extends ActionBarActivity {
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
-        //Film Horizontal Scroll
-        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(6));
-        mRecyclerView = (RecyclerView) findViewById(R.id.film_scroll);
+        //Literary Horizontal Scroll
+        mAdapter =  new EventCategoryRecyclerViewAdapter(getDataSet(6));
+        mRecyclerView = (RecyclerView) findViewById(R.id.literary_scroll);
 
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
-        //Specials Horizontal Scroll
+        //Quiz Horizontal Scroll
         mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(7));
+        mRecyclerView = (RecyclerView) findViewById(R.id.quiz_scroll);
+
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
+
+        //Specials Horizontal Scroll
+        mAdapter = new EventCategoryRecyclerViewAdapter(getDataSet(8));
         mRecyclerView = (RecyclerView) findViewById(R.id.specials_scroll);
 
         mRecyclerView.setHasFixedSize(true);
@@ -169,8 +185,7 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         if (id == R.id.action_map) {
-            Intent intent=new Intent(this,MapActivity.class);
-            this.startActivity(intent);
+
 
             return true;
         }
@@ -181,48 +196,65 @@ public class MainActivity extends ActionBarActivity {
         ArrayList results = new ArrayList<EventDataObjectCardMainActivity>();
         switch (id)
         {
-            case 0: for (int index = 0; index < 5; index++) {
-                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Music" + index,R.drawable.music1);
-                results.add(index, obj);
-            }
+            case 0:
+                results.add(0, new EventDataObjectCardMainActivity("Fash P",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Natyanjali",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Mr and Ms Waves",R.drawable.dance1));
                 break;
-            case 1: for (int index = 0; index < 5; index++) {
-                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Dance" + index,R.drawable.dance1);
-                results.add(index, obj);
-            }
+            case 1:
+                results.add(0, new EventDataObjectCardMainActivity("Sizzle",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Dhinchak",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Jumele",R.drawable.dance1));
                 break;
-            case 2: for (int index = 0; index < 5; index++) {
-                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Drama" + index,R.drawable.drama1);
-                results.add(index, obj);
-            }
+            case 2:
+                results.add(0, new EventDataObjectCardMainActivity("Indian Rock",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Silence of the Amps",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("The Jukebox",R.drawable.dance1));
+                results.add(3, new EventDataObjectCardMainActivity("Solonote",R.drawable.dance1));
+                results.add(4, new EventDataObjectCardMainActivity("Alaap",R.drawable.dance1));
                 break;
-            case 3: for (int index = 0; index < 5; index++) {
-                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Literary" + index,R.drawable.literary1);
-                results.add(index, obj);
-            }
+            case 3:
+                results.add(0, new EventDataObjectCardMainActivity("Rangmanch",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Nukkad Natak",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Skime",R.drawable.dance1));
                 break;
-            case 4: for (int index = 0; index < 5; index++) {
-                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Quiz" + index,R.drawable.quiz1);
-                results.add(index, obj);
-            }
+            case 4:
+                results.add(0, new EventDataObjectCardMainActivity("Montage",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Mezzotint",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Reverse Flash",R.drawable.dance1));
+                results.add(3, new EventDataObjectCardMainActivity("Time Lapse",R.drawable.dance1));
                 break;
-            case 5: for (int index = 0; index < 5; index++) {
-                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Fine Arts" + index,R.drawable.finarts1);
-                results.add(index, obj);
-            }
-                break;
-            case 6: for (int index = 0; index < 5; index++) {
-                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Film" + index,R.drawable.film1);
-                results.add(index, obj);
-            }
-                break;
-            case 7: for (int index = 0; index < 5; index++) {
-                EventDataObjectCardMainActivity obj = new EventDataObjectCardMainActivity("Specials" + index,R.drawable.specials1);
-                results.add(index, obj);
-            }
-                break;
+            case 5:
+                results.add(0, new EventDataObjectCardMainActivity("Portraiture",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Panaroma",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Artathon",R.drawable.dance1));
+                results.add(3, new EventDataObjectCardMainActivity("Shutter Island",R.drawable.dance1));
 
 
+                break;
+            case 6:
+                results.add(0, new EventDataObjectCardMainActivity("Just a Minute",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Waves Poetry Slam",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Word Games",R.drawable.dance1));
+
+                break;
+            case 7:
+                results.add(0, new EventDataObjectCardMainActivity("Waves Open Quiz",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Entertainment Quiz",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("The Vices Quiz",R.drawable.dance1));
+                results.add(3, new EventDataObjectCardMainActivity("The Lonewolf",R.drawable.dance1));
+                break;
+
+            case 8:
+                results.add(0, new EventDataObjectCardMainActivity("Searock",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Lex Omnia",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Contention",R.drawable.dance1));
+                results.add(3, new EventDataObjectCardMainActivity("Wallstreet Fete",R.drawable.dance1));
+                results.add(4, new EventDataObjectCardMainActivity("Show me the Funny",R.drawable.dance1));
+                results.add(5, new EventDataObjectCardMainActivity("Ratatouille",R.drawable.dance1));
+                results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.dance1));
+
+                break;
         }
 
         return results;
@@ -232,6 +264,7 @@ public class MainActivity extends ActionBarActivity {
        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         this.startActivity(intent);
     }
+
 
 
 
