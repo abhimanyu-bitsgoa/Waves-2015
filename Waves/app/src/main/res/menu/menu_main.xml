@@ -9,6 +9,7 @@
             android:id="@+id/action_map"
             android:icon="@drawable/locationiconwhite"
             android:orderInCategory="99"
+
             app:showAsAction="ifRoom"/>
 
 </menu>

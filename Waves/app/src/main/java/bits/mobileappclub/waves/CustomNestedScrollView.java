@@ -26,8 +26,8 @@ public class CustomNestedScrollView extends NestedScrollView {
     // Return false if we're scrolling in the x direction
     class YScrollDetector extends GestureDetector.SimpleOnGestureListener {
         @Override
-        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            return Math.abs(distanceY)*2 > Math.abs(distanceX);
-        }
+       public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            return Math.abs(distanceY) >  (1.5)*Math.abs(distanceX);
+       }
     }
 }

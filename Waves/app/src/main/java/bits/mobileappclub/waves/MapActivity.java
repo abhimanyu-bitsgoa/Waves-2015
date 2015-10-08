@@ -17,20 +17,19 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private static final LatLng CentralLawn = new LatLng(15.39163,73.879207);
-    private static final LatLng Auditorium  = new LatLng(15.392983,73.880476);
+    private static final LatLng CENTRALLAWN = new LatLng(15.39163,73.879207);
+    private static final LatLng AUDITORIUM  = new LatLng(15.392983,73.880476);
     private static final LatLng LT1  = new LatLng(15.392406,73.88109);
     private static final LatLng LT2 = new LatLng(15.392711,73.881055);
     private static final LatLng LT3  = new LatLng(15.393529,73.880208);
     private static final LatLng LT4  = new LatLng(15.393611,73.879862);
     private static final LatLng CC  = new LatLng(15.39163,73.880994);
-    private static final LatLng AWing  = new LatLng(15.393066,73.879765);
-    private static final LatLng CWing  = new LatLng(15.392303,73.88057);
+    private static final LatLng AWIng  = new LatLng(15.393066,73.879765);
+    private static final LatLng CWIng  = new LatLng(15.392303,73.88057);
     private static final LatLng Library  = new LatLng(15.391457,73.880436);
     private static final LatLng LibraryLawn  = new LatLng(15.391749,73.880146);
 
-    private static final LatLng SAC = new LatLng(15.392073,73.875466);
-    private static final LatLng VGH = new LatLng(15.387928,73.8765756);
+    private static final LatLng Sac = new LatLng(15.392073,73.875466);
     private MapFragment map;
 
     @Override
@@ -74,7 +73,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LT1,15));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LT1,20));
 
     }
 }
