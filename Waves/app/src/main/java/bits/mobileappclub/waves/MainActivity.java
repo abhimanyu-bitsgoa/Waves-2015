@@ -197,19 +197,19 @@ public class MainActivity extends ActionBarActivity {
         switch (id)
         {
             case 0:
-                results.add(0, new EventDataObjectCardMainActivity("Fash P",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("Fash-P",R.drawable.dance1));
                 results.add(1, new EventDataObjectCardMainActivity("Natyanjali",R.drawable.dance1));
                 results.add(2, new EventDataObjectCardMainActivity("Mr and Ms Waves",R.drawable.dance1));
                 break;
             case 1:
                 results.add(0, new EventDataObjectCardMainActivity("Sizzle",R.drawable.dance1));
                 results.add(1, new EventDataObjectCardMainActivity("Dhinchak",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("Jumele",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Jumelè",R.drawable.dance1));
                 break;
             case 2:
                 results.add(0, new EventDataObjectCardMainActivity("Indian Rock",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Silence of the Amps",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("The Jukebox",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Silence Of The Amps",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Juke Box",R.drawable.dance1));
                 results.add(3, new EventDataObjectCardMainActivity("Solonote",R.drawable.dance1));
                 results.add(4, new EventDataObjectCardMainActivity("Alaap",R.drawable.dance1));
                 break;
@@ -226,7 +226,7 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case 5:
                 results.add(0, new EventDataObjectCardMainActivity("Portraiture",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Panaroma",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Panorama",R.drawable.dance1));
                 results.add(2, new EventDataObjectCardMainActivity("Artathon",R.drawable.dance1));
                 results.add(3, new EventDataObjectCardMainActivity("Shutter Island",R.drawable.dance1));
 
@@ -249,8 +249,8 @@ public class MainActivity extends ActionBarActivity {
                 results.add(0, new EventDataObjectCardMainActivity("Searock",R.drawable.dance1));
                 results.add(1, new EventDataObjectCardMainActivity("Lex Omnia",R.drawable.dance1));
                 results.add(2, new EventDataObjectCardMainActivity("Contention",R.drawable.dance1));
-                results.add(3, new EventDataObjectCardMainActivity("Wallstreet Fete",R.drawable.dance1));
-                results.add(4, new EventDataObjectCardMainActivity("Show me the Funny",R.drawable.dance1));
+                results.add(3, new EventDataObjectCardMainActivity("Wallstreet Fête",R.drawable.dance1));
+                results.add(4, new EventDataObjectCardMainActivity("Show Me The Funny",R.drawable.dance1));
                 results.add(5, new EventDataObjectCardMainActivity("Ratatouille",R.drawable.dance1));
                 results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.dance1));
 

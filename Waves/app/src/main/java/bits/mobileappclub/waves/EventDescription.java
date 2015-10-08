@@ -25,6 +25,10 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -60,10 +64,33 @@ public class EventDescription extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         LinearLayoutManager llmDescView = new LinearLayoutManager(getApplicationContext());
         eventDescRecyclerView.setLayoutManager(llmDescView);
-        String[] eventTimeArray={"9:30 am","10:15 pm","5:30 pm"};
-        String[] eventDayArray={"Day 0","Day 1","Day 2"};
-        String[] eventVenueArray={"CC","Library Lawns","Auditorium"};
-        Event event=new Event("Dhinchak",eventTimeArray,eventDayArray,eventVenueArray,"soighosidhgoiahdfoaihsfiahsgadf","adgadfhSOFAS AFADFAEGGAFDADSS","","");
+
+
+
+        //Fetching data from Parse database.
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Events").whereMatches("title",eventName);
+        query.fromLocalDatastore();
+        ParseObject pObj=null;
+        try {
+             pObj=query.getFirst();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String timeElim,timeSemi,timeFinal,venueElim,venueSemi,venueFinal,dateElim,dateSemi,dateFinal;
+        timeElim= pObj.get("timings").toString();
+        timeSemi= pObj.get("timeSemi").toString();
+        timeFinal= pObj.get("timeFinals").toString();
+        venueElim= pObj.get("venue").toString();
+        venueSemi= pObj.get("venueSemi").toString();
+        venueFinal= pObj.get("venueFinals").toString();
+        dateElim= pObj.get("date").toString();
+        dateSemi= pObj.get("dateSemi").toString();
+        dateFinal= pObj.get("dateFinals").toString();
+
+        String[] eventTimeArray={timeElim,timeSemi,timeFinal};
+        String[] eventDayArray={dateElim,dateSemi,dateFinal};
+        String[] eventVenueArray={venueElim,venueSemi,venueFinal};
+        Event event=new Event(eventName,eventTimeArray,eventDayArray,eventVenueArray,"You live only once!","You die only once.","You live life only once.","Therefore we are ONE! :P");
         EventDetails eventDetails=new EventDetails(event);
         descriptionRecyclerViewAdapter=new EventDescriptionRecyclerViewAdapter(eventDetails);
         eventDescRecyclerView.setAdapter(descriptionRecyclerViewAdapter);
@@ -94,6 +121,8 @@ public class EventDescription extends AppCompatActivity {
         finalVenue.setText(event.getEventVenueArray()[2]);
         finalDay.setText(event.getEventDayArray()[2]);
         finalTime.setText(event.getEventTimeArray()[2]);
+
+
 
     }
     @Override

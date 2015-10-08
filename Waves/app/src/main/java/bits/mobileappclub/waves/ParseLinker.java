@@ -11,7 +11,9 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,17 +90,34 @@ public class ParseLinker extends Application {
         @Override
         public void run() {
 
-            for (int i=10;i<46;i++) {
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("Events").whereMatches("iterator",i+"");
+
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
                 try {
+                    List<ParseObject> parObjList=query.find();
+                    ParseObject.pinAllInBackground(parObjList);
+
+
+                    for(int i=0;i<36;i++) {
+
+
+
+                        System.out.println(parObjList.get(i).get("title"));
+
+                    }
+
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+               /* try {
                     ParseObject p0=query.getFirst();
                     p0.pinInBackground();
                     System.out.println(p0.getString("title").toString());
                 } catch (ParseException e) {
                     e.printStackTrace();
-                }
+                }*/
 
-            }
+
 
         }
     }
