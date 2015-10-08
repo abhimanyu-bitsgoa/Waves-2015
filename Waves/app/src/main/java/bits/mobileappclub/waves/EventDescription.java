@@ -92,7 +92,7 @@ public class EventDescription extends AppCompatActivity {
         String[] eventTimeArray={timeElim,timeSemi,timeFinal};
         String[] eventDayArray={dateElim,dateSemi,dateFinal};
         String[] eventVenueArray={venueElim,venueSemi,venueFinal};
-        Event event=new Event(eventName,eventTimeArray,eventDayArray,eventVenueArray,about,"You die only once.","You live life only once.","Therefore we are ONE! :P");
+        Event event=new Event(eventName,eventTimeArray,eventDayArray,eventVenueArray,about);
         EventDetails eventDetails=new EventDetails(event);
         descriptionRecyclerViewAdapter=new EventDescriptionRecyclerViewAdapter(eventDetails);
         eventDescRecyclerView.setAdapter(descriptionRecyclerViewAdapter);
