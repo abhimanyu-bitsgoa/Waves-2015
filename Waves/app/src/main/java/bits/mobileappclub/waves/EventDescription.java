@@ -87,6 +87,7 @@ public class EventDescription extends AppCompatActivity {
         dateSemi= pObj.get("dateSemi").toString();
         dateFinal= pObj.get("dateFinals").toString();
 
+
         String[] eventTimeArray={timeElim,timeSemi,timeFinal};
         String[] eventDayArray={dateElim,dateSemi,dateFinal};
         String[] eventVenueArray={venueElim,venueSemi,venueFinal};
