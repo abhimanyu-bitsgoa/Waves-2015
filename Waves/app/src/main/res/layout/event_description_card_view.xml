@@ -39,6 +39,7 @@
                 android:layout_gravity="bottom"
 
 
+
                 />
             <TextView
                 android:id="@+id/descriptionContent"
@@ -48,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/PrimaryDark"
+                android:padding="5dp"
                 />
 
         </RelativeLayout>

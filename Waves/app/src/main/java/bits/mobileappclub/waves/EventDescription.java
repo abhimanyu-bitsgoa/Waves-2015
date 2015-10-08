@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.provider.CalendarContract;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -51,6 +52,7 @@ public class EventDescription extends AppCompatActivity {
     private TextView semiVenue;
     private TextView semiDay;
     private TextView semiTime;
+    String timeElim,timeSemi,timeFinal,venueElim,venueSemi,venueFinal,dateElim,dateSemi,dateFinal,about;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +78,7 @@ public class EventDescription extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String timeElim,timeSemi,timeFinal,venueElim,venueSemi,venueFinal,dateElim,dateSemi,dateFinal,about;
+
         timeElim= pObj.get("timings").toString();
         timeSemi= pObj.get("timeSemi").toString();
         timeFinal= pObj.get("timeFinals").toString();
@@ -98,13 +100,14 @@ public class EventDescription extends AppCompatActivity {
         eventDescRecyclerView.setAdapter(descriptionRecyclerViewAdapter);
 
         headerEventImageView=(ImageView)findViewById(R.id.eventDescImageView);
-        headerEventImageView.setImageResource(R.drawable.searock);
+        //headerEventImageView.setImageResource(R.drawable.searock);
+        setHeaderImage(eventName);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_desc);
         collapsingToolbarLayout.setTitle(event.getEventName());
         //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
-        headerEventImageView.setImageResource(R.drawable.searock);
+
         elimVenue=(TextView)findViewById(R.id.elimVenue);
         elimDay=(TextView)findViewById(R.id.elimDay);
         elimTime=(TextView)findViewById(R.id.elimTime);
@@ -162,6 +165,9 @@ public class EventDescription extends AppCompatActivity {
             onBackPressed();
         }
         if (id== R.id.action_map) {
+            Intent intent = new Intent(EventDescription.this,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            this.startActivity(intent);
 
         }
 
@@ -170,11 +176,171 @@ public class EventDescription extends AppCompatActivity {
     }
     public  void fabClickedDescription(View v)
     {
-    
+
+
+       Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2015, 0, 19, 7, 30);
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2012, 0, 19, 8, 30);
+        Intent intent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                .putExtra(CalendarContract.Events.TITLE, eventName+"(Elims)")
+                //.putExtra(CalendarContract.Events.DESCRIPTION, "Group class")
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, venueElim)
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+
+        startActivity(intent);
 
 
     }
 
+    public void setHeaderImage(String eventName){
+        switch (eventName){
+            case "Alaap" : headerEventImageView.setImageResource(R.drawable.alaap);
+               break;
+
+            case "Artathon" : headerEventImageView.setImageResource(R.drawable.artathon);
+                break;
+
+            case "Contention" : headerEventImageView.setImageResource(R.drawable.contention);
+                break;
+
+            case "Dhinchak" : headerEventImageView.setImageResource(R.drawable.dhinchak);
+                break;
+
+
+            case "Fash-P" : headerEventImageView.setImageResource(R.drawable.fashp);
+                break;
+
+
+
+            case "Indian Rock" : headerEventImageView.setImageResource(R.drawable.indinarock);
+                break;
+
+
+            case "JAM" : headerEventImageView.setImageResource(R.drawable.justaminute);
+                break;
+
+
+            case "Juke Box" : headerEventImageView.setImageResource(R.drawable.jukebox);
+                break;
+
+
+            case "Jumelè" : headerEventImageView.setImageResource(R.drawable.jumele);
+                break;
+
+
+            case "Lex Omnia" : headerEventImageView.setImageResource(R.drawable.lexomnia);
+                break;
+
+
+            case "Mezzotint" : headerEventImageView.setImageResource(R.drawable.mezzotint);
+                break;
+
+
+            case "Montage" : headerEventImageView.setImageResource(R.drawable.montagett);
+                break;
+
+
+            case "Mr and Ms Waves" : headerEventImageView.setImageResource(R.drawable.mrmswaves);
+                break;
+
+
+            case "Natyanjali" : headerEventImageView.setImageResource(R.drawable.natyanjali);
+                break;
+
+
+            case "Nukkad Natak" : headerEventImageView.setImageResource(R.drawable.nukkadnatak);
+                break;
+
+
+            case "Panaroma" : headerEventImageView.setImageResource(R.drawable.panaroma);
+                break;
+
+
+            case "Portraiture" : headerEventImageView.setImageResource(R.drawable.portraiture);
+                break;
+
+
+            case "Rangmanch" : headerEventImageView.setImageResource(R.drawable.rangmanch);
+                break;
+
+
+            case "Ratatouille" : headerEventImageView.setImageResource(R.drawable.ratattouille);
+                break;
+
+
+            case "Reverse Flash" : headerEventImageView.setImageResource(R.drawable.reverseflash);
+                break;
+
+
+            case "Searock" : headerEventImageView.setImageResource(R.drawable.searock);
+                break;
+
+
+            case "Show Me The Funny" : headerEventImageView.setImageResource(R.drawable.showmethefunny);
+                break;
+
+
+            case "Shutter Island" : headerEventImageView.setImageResource(R.drawable.shutter);
+                break;
+
+
+            case "Silence Of The Amps" : headerEventImageView.setImageResource(R.drawable.silenceoftheamps);
+                break;
+
+
+            case "Sizzle" : headerEventImageView.setImageResource(R.drawable.sizzle);
+                break;
+
+
+            case "Skime" : headerEventImageView.setImageResource(R.drawable.skime);
+                break;
+
+
+            case "Solonote" : headerEventImageView.setImageResource(R.drawable.solonote);
+                break;
+
+
+            case "The Entertainment Quiz" : headerEventImageView.setImageResource(R.drawable.entertainment);
+                break;
+
+
+            case "The Lonewolf Quiz" : headerEventImageView.setImageResource(R.drawable.lonewolf);
+                break;
+
+
+            case "The Vices Quiz" : headerEventImageView.setImageResource(R.drawable.vicequiz);
+                break;
+
+
+            case "The Waves Rubik's Challenge" : headerEventImageView.setImageResource(R.drawable.rubiks);
+                break;
+
+
+            case "Time Lapse" : headerEventImageView.setImageResource(R.drawable.timelapse);
+                break;
+
+
+            case "Wallstreet Fête" : headerEventImageView.setImageResource(R.drawable.wallstreetfete);
+                break;
+
+
+            case "Waves Open Quiz" : headerEventImageView.setImageResource(R.drawable.wavesopen);
+                break;
+
+
+            case "Waves Poetry Slam" : headerEventImageView.setImageResource(R.drawable.poetryslam);
+                break;
+
+
+            case "Word Games" : headerEventImageView.setImageResource(R.drawable.wordgames);
+                break;
+            default: headerEventImageView.setImageResource(R.drawable.waveslogo );
+
+        }}
 
 
 }

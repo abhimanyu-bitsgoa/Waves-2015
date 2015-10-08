@@ -13,7 +13,11 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,26 +33,6 @@ public class ParseLinker extends Application {
         //Check Internet Connection
 
 
-        ConnectivityManager conMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        if ( conMgr.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED
-                || conMgr.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTING ) {
-
-            // notify user you are online
-
-
-
-
-            System.out.println("You are connected");
-
-        }
-        else if ( conMgr.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED
-                || conMgr.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED) {
-
-            // notify user you are not online
-
-            System.out.println("You are  NOT connected");
-        }
 
 
         // Enable Local Datastore.
@@ -63,25 +47,6 @@ public class ParseLinker extends Application {
 
 
 
-       /* ParseObject  p0;
-
-        try {
-
-            p0 =parseQuery0.getFirst();
-            p0.pinInBackground();
-
-           tit= p0.getString("date").toString();
-            System.out.println(tit);
-            System.out.println(tit);System.out.println(tit);
-            System.out.println(tit);System.out.println(tit);
-            System.out.println(tit);System.out.println(tit);
-
-
-
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
     }
 
     public class ParseThread implements Runnable{
@@ -90,6 +55,10 @@ public class ParseLinker extends Application {
         @Override
         public void run() {
 
+            if(isOnline()==true)
+                System.out.println("!!!!!!!!!!!!!!!!!!!CONNECTED!!!!!!!!!!!!!!");
+            else
+                System.out.println("!!!!!!!!!!!!!!!!!!!NOT--CONNECTED!!!!!!!!!!!!!!");
 
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
                 ParseQuery<ParseObject> query0 = ParseQuery.getQuery("Day0");
@@ -115,7 +84,7 @@ public class ParseLinker extends Application {
 
                     }
 
-
+                    System.out.println("All loading done");
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -131,9 +100,31 @@ public class ParseLinker extends Application {
 
         }
     }
-
-
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isConnected()) {
+            try {
+                URL url = new URL("http://www.google.com");
+                HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
+                urlc.setConnectTimeout(3000);
+                urlc.connect();
+                if (urlc.getResponseCode() == 200) {
+                    return new Boolean(true);
+                }
+            } catch (MalformedURLException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
+
+
+}
 
 
 
