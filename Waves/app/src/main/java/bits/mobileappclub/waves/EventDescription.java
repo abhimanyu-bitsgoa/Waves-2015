@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -26,10 +25,12 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class EventDescription extends AppCompatActivity {
     ImageView headerEventImageView;
@@ -50,7 +51,6 @@ public class EventDescription extends AppCompatActivity {
     private TextView semiVenue;
     private TextView semiDay;
     private TextView semiTime;
-    String[] eventTimeArray={"1930","2030","2130"},eventDayArray={"6","7","8"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,14 +65,34 @@ public class EventDescription extends AppCompatActivity {
         LinearLayoutManager llmDescView = new LinearLayoutManager(getApplicationContext());
         eventDescRecyclerView.setLayoutManager(llmDescView);
 
-        for(int i=0;i<3;i++)
-        {
-            eventTimeArray[i]="1930";
-            eventDayArray[i]="Day 0";
-        }
 
-        String[] eventVenueArray={"CC","Library Lawns","Auditorium"};
-        Event event=new Event("Dhinchak",eventTimeArray,eventDayArray,eventVenueArray,"soighosidhgoiahdfoaihsfiahsgadf","adgadfhSOFAS AFADFAEGGAFDADSS","","");
+
+        //Fetching data from Parse database.
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Events").whereMatches("title",eventName);
+        query.fromLocalDatastore();
+        ParseObject pObj=null;
+        try {
+             pObj=query.getFirst();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String timeElim,timeSemi,timeFinal,venueElim,venueSemi,venueFinal,dateElim,dateSemi,dateFinal,about;
+        timeElim= pObj.get("timings").toString();
+        timeSemi= pObj.get("timeSemi").toString();
+        timeFinal= pObj.get("timeFinals").toString();
+        venueElim= pObj.get("venue").toString();
+        venueSemi= pObj.get("venueSemi").toString();
+        venueFinal= pObj.get("venueFinals").toString();
+        dateElim= pObj.get("date").toString();
+        dateSemi= pObj.get("dateSemi").toString();
+        dateFinal= pObj.get("dateFinals").toString();
+        about=pObj.get("about").toString();
+
+
+        String[] eventTimeArray={timeElim,timeSemi,timeFinal};
+        String[] eventDayArray={dateElim,dateSemi,dateFinal};
+        String[] eventVenueArray={venueElim,venueSemi,venueFinal};
+        Event event=new Event(eventName,eventTimeArray,eventDayArray,eventVenueArray,about);
         EventDetails eventDetails=new EventDetails(event);
         descriptionRecyclerViewAdapter=new EventDescriptionRecyclerViewAdapter(eventDetails);
         eventDescRecyclerView.setAdapter(descriptionRecyclerViewAdapter);
@@ -83,7 +103,7 @@ public class EventDescription extends AppCompatActivity {
         collapsingToolbarLayout.setTitle(event.getEventName());
         //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
-        headerEventImageView.setImageResource(R.drawable.rangmanchtt);
+        headerEventImageView.setImageResource(R.drawable.searock);
         elimVenue=(TextView)findViewById(R.id.elimVenue);
         elimDay=(TextView)findViewById(R.id.elimDay);
         elimTime=(TextView)findViewById(R.id.elimTime);
@@ -103,6 +123,8 @@ public class EventDescription extends AppCompatActivity {
         finalVenue.setText(event.getEventVenueArray()[2]);
         finalDay.setText(event.getEventDayArray()[2]);
         finalTime.setText(event.getEventTimeArray()[2]);
+
+
 
     }
     @Override
@@ -149,25 +171,6 @@ public class EventDescription extends AppCompatActivity {
     }
     public  void fabClickedDescription(View v)
     {
-        long startTime=Integer.parseInt(eventTimeArray[0]);
-
-        String startDate = "2015-10-06";
-        try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
-            startTime=date.getTime();
-        }
-        catch(Exception e){ }
-
-        Calendar cal = Calendar.getInstance();
-        Intent intent = new Intent(Intent.ACTION_EDIT);
-        intent.setType("vnd.android.cursor.item/event");
-        intent.putExtra("beginTime", startTime);
-        intent.putExtra("allDay", true);
-
-
-        intent.putExtra("title", eventName);
-        startActivity(intent);
-
 
 
     }

@@ -14,17 +14,19 @@ public class Event {
     String eventEliminationRoundDetails;
     String eventFinalRoundDetails;
 
-    public Event(String name,String[] time,String[] day,String[] venue,String description,String elimdDetails,String finalDetails,String rules)
+
+    public Event(String name,String[] time,String[] day,String[] venue,String description)
 
     {
         eventName=name;
         eventTime=time;
         eventDay=day;
         eventVenue=venue;
-        eventRules=rules;
         eventDescription=description;
+        /*eventRules=rules;
         eventEliminationRoundDetails=elimdDetails;
-        eventFinalRoundDetails=finalDetails;
+        eventFinalRoundDetails=finalDetails;*/
+
     }
     public String getEventName()
     {
@@ -75,4 +77,5 @@ public class Event {
     {
         return eventDay;
     }
+
 }

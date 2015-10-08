@@ -3,25 +3,31 @@ package bits.mobileappclub.waves;
 /**
  * Created by Aronzxxx on 03-10-2015.
  */
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.TreeMap;
 
 
-public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
+public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
 
 
@@ -41,302 +47,84 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             mItems = new ArrayList<CardInfo>();
             CardInfo card = new CardInfo();
             //Getting Parse from Local Database;
-            query.fromLocalDatastore();
+
+
+
+
+
+
 
             if (num == 1) {
-                ArrayList<ParseObject> pA1= new ArrayList<>();
-                pA1.add(query.get("CRzAO5anix"));
-                pA1.add(query.get("jVZgssmdIC"));
-                pA1.add(query.get("JCioxw0ky1"));
-
-                TreeMap<String,ParseObject> pT1=new TreeMap<String,ParseObject>();
-
-                pT1.put(pA1.get(0).get("timings").toString(), pA1.get(0));
-                pT1.put(pA1.get(1).get("timings").toString(), pA1.get(1));
-                pT1.put(pA1.get(2).get("timings").toString(),pA1.get(2));
+                ParseQuery<ParseObject> query0 = ParseQuery.getQuery("Day0");
+                query0.fromLocalDatastore();
+                query0.orderByAscending("time");
+                List <ParseObject> pObj0= query0.find();
 
 
-                System.out.println(pT1.firstKey());
-                System.out.println(pT1.values().toArray()[1]);
-                System.out.println(pT1.values().toArray()[2]);
+                for(int i=0;i<pObj0.size();i++) {
 
-
-                for(int i=0;i<3;i++){
-                    card = new CardInfo();
-                    card.setName(pT1.get(i).getString("title").toString());
-                    card.setDes(pT1.get(i).getString("category").toString());
-                    card.setThumbnail(R.drawable.literary1);
-                    mItems.add(card);
+                    System.out.println(pObj0.get(i).get("title")+"is at "+pObj0.get(i).get("time"));
 
                 }
 
 
-                /*
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("CRzAO5anix");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
 
 
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("jVZgssmdIC");
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.dance1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("JCioxw0ky1");
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.dance1);
-                mItems.add(card);
-                //Single block of parse card ends
-*/
 
             }
             if (num == 2) {
 
+                ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Day1");
+                query1.fromLocalDatastore();
+                query1.orderByAscending("time");
+                List <ParseObject> pObj0= query1.find();
 
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("f9YsW0pHLY");
-                } catch (ParseException e) {
-                    e.printStackTrace();
+
+                for(int i=0;i<pObj0.size();i++) {
+
+                    System.out.println(pObj0.get(i).get("title")+"is at "+pObj0.get(i).get("time"));
+
                 }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
 
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("clc3dZtIlf");
-                } catch (ParseException e) {
-                    e.printStackTrace();
+
+
+            }
+            if (num == 3) {
+
+                ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Day2");
+                query2.fromLocalDatastore();
+                query2.orderByAscending("time");
+                List <ParseObject> pObj0= query2.find();
+
+
+                for(int i=0;i<pObj0.size();i++) {
+
+                    System.out.println(pObj0.get(i).get("title")+"is at "+pObj0.get(i).get("time"));
+
                 }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
 
 
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("YXXhs5wi7W");
-                } catch (ParseException e) {
-                    e.printStackTrace();
+
+            }
+
+
+
+
+            else {
+
+                ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Day3");
+                query3.fromLocalDatastore();
+                query3.orderByAscending("time");
+                List <ParseObject> pObj0= query3.find();
+
+
+                for(int i=0;i<pObj0.size();i++) {
+
+                    System.out.println(pObj0.get(i).get("title")+"is at "+pObj0.get(i).get("time"));
+
                 }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-                // Single block of parse card starts
-                card = new CardInfo();
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("M32VpiErz8");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("l03K5Ji0al");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
 
 
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("Zxmaxm92Hz");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("xYUsPO9qCY");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("BIksvXkmCz");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("IlMeKRNgrn");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("bDopmhS1c1");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("D9ko0Yy8je");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("h08tYWjIwm");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("m17N1Sgdds");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("inHUhSmJFM");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-                // Single block of parse card starts
-                card = new CardInfo();
-                try {
-                    p0 = query.get("KcGLLKnPAi");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.literary1);
-                mItems.add(card);
-                //Single block of parse card ends
-
-
-            } else {
-
-                card = new CardInfo();
-                try {
-                    p0 = query.get("KcGLLKnPAi");
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                card.setName(p0.getString("title").toString());
-                card.setDes(p0.getString("category").toString());
-                card.setThumbnail(R.drawable.specials1);
-                mItems.add(card);
-                //Single block of parse card ends
             }
     } catch (Exception e) {
         e.printStackTrace();
@@ -384,6 +172,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
 
 
+
     class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView imgThumbnail;
@@ -399,7 +188,25 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     }
 
 
+    public void buildParObj(String objId,int imgId){
+
+        CardInfo card = new CardInfo();
+        try {
+            p0 = query.get(objId);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        card.setName(p0.getString("title").toString());
+        card.setDes(p0.getString("category").toString());
+        card.setThumbnail(imgId);
+        mItems.add(card);
+    }
+
+
+
 
 
 
 }
+
