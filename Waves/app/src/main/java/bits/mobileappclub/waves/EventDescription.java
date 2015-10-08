@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.provider.CalendarContract;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -69,64 +70,64 @@ public class EventDescription extends AppCompatActivity {
 
 
 
-        //Fetching data from Parse database.
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Events").whereMatches("title",eventName);
-        query.fromLocalDatastore();
-        ParseObject pObj=null;
-        try {
-             pObj=query.getFirst();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    //Fetching data from Parse database.
+    ParseQuery<ParseObject> query = ParseQuery.getQuery("Events").whereMatches("title", eventName);
+    query.fromLocalDatastore();
+    ParseObject pObj = null;
+    try {
+        pObj = query.getFirst();
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
 
-        timeElim= pObj.get("timings").toString();
-        timeSemi= pObj.get("timeSemi").toString();
-        timeFinal= pObj.get("timeFinals").toString();
-        venueElim= pObj.get("venue").toString();
-        venueSemi= pObj.get("venueSemi").toString();
-        venueFinal= pObj.get("venueFinals").toString();
-        dateElim= pObj.get("date").toString();
-        dateSemi= pObj.get("dateSemi").toString();
-        dateFinal= pObj.get("dateFinals").toString();
-        about=pObj.get("about").toString();
+    timeElim = pObj.get("timings").toString();
+    timeSemi = pObj.get("timeSemi").toString();
+    timeFinal = pObj.get("timeFinals").toString();
+    venueElim = pObj.get("venue").toString();
+    venueSemi = pObj.get("venueSemi").toString();
+    venueFinal = pObj.get("venueFinals").toString();
+    dateElim = pObj.get("date").toString();
+    dateSemi = pObj.get("dateSemi").toString();
+    dateFinal = pObj.get("dateFinals").toString();
+    about = pObj.get("about").toString();
 
 
-        String[] eventTimeArray={timeElim,timeSemi,timeFinal};
-        String[] eventDayArray={dateElim,dateSemi,dateFinal};
-        String[] eventVenueArray={venueElim,venueSemi,venueFinal};
-        Event event=new Event(eventName,eventTimeArray,eventDayArray,eventVenueArray,about);
-        EventDetails eventDetails=new EventDetails(event);
-        descriptionRecyclerViewAdapter=new EventDescriptionRecyclerViewAdapter(eventDetails);
-        eventDescRecyclerView.setAdapter(descriptionRecyclerViewAdapter);
+    String[] eventTimeArray = {timeElim, timeSemi, timeFinal};
+    String[] eventDayArray = {dateElim, dateSemi, dateFinal};
+    String[] eventVenueArray = {venueElim, venueSemi, venueFinal};
+    Event event = new Event(eventName, eventTimeArray, eventDayArray, eventVenueArray, about);
+    EventDetails eventDetails = new EventDetails(event);
+    descriptionRecyclerViewAdapter = new EventDescriptionRecyclerViewAdapter(eventDetails);
+    eventDescRecyclerView.setAdapter(descriptionRecyclerViewAdapter);
 
-        headerEventImageView=(ImageView)findViewById(R.id.eventDescImageView);
-        //headerEventImageView.setImageResource(R.drawable.searock);
-        setHeaderImage(eventName);
+    headerEventImageView = (ImageView) findViewById(R.id.eventDescImageView);
+    //headerEventImageView.setImageResource(R.drawable.searock);
+    setHeaderImage(eventName);
 
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_desc);
-        collapsingToolbarLayout.setTitle(event.getEventName());
-        //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
+    collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_desc);
+    collapsingToolbarLayout.setTitle(event.getEventName());
+    //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
+    collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
 
-        elimVenue=(TextView)findViewById(R.id.elimVenue);
-        elimDay=(TextView)findViewById(R.id.elimDay);
-        elimTime=(TextView)findViewById(R.id.elimTime);
-        semiVenue=(TextView)findViewById(R.id.semiVenue);
-        semiDay=(TextView)findViewById(R.id.semiDay);
-        semiTime=(TextView)findViewById(R.id.semiTime);
-        finalVenue=(TextView)findViewById(R.id.finalVenue);
-        finalDay=(TextView)findViewById(R.id.finalDay);
-        finalTime=(TextView)findViewById(R.id.finalTime);
+    elimVenue = (TextView) findViewById(R.id.elimVenue);
+    elimDay = (TextView) findViewById(R.id.elimDay);
+    elimTime = (TextView) findViewById(R.id.elimTime);
+    semiVenue = (TextView) findViewById(R.id.semiVenue);
+    semiDay = (TextView) findViewById(R.id.semiDay);
+    semiTime = (TextView) findViewById(R.id.semiTime);
+    finalVenue = (TextView) findViewById(R.id.finalVenue);
+    finalDay = (TextView) findViewById(R.id.finalDay);
+    finalTime = (TextView) findViewById(R.id.finalTime);
 
-     elimVenue.setText(event.getEventVenueArray()[0]);
-        elimDay.setText(event.getEventDayArray()[0]);
-        elimTime.setText(event.getEventTimeArray()[0]);
-        semiVenue.setText(event.getEventVenueArray()[1]);
-        semiDay.setText(event.getEventDayArray()[1]);
-        semiTime.setText(event.getEventTimeArray()[1]);
-        finalVenue.setText(event.getEventVenueArray()[2]);
-        finalDay.setText(event.getEventDayArray()[2]);
-        finalTime.setText(event.getEventTimeArray()[2]);
+    elimVenue.setText(event.getEventVenueArray()[0]);
+    elimDay.setText(event.getEventDayArray()[0]);
+    elimTime.setText(event.getEventTimeArray()[0]);
+    semiVenue.setText(event.getEventVenueArray()[1]);
+    semiDay.setText(event.getEventDayArray()[1]);
+    semiTime.setText(event.getEventTimeArray()[1]);
+    finalVenue.setText(event.getEventVenueArray()[2]);
+    finalDay.setText(event.getEventDayArray()[2]);
+    finalTime.setText(event.getEventTimeArray()[2]);
 
 
 
@@ -165,7 +166,7 @@ public class EventDescription extends AppCompatActivity {
             onBackPressed();
         }
         if (id== R.id.action_map) {
-            Intent intent = new Intent(EventDescription.this,MainActivity.class);
+            Intent intent = new Intent(EventDescription.this,MapActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             this.startActivity(intent);
 
@@ -338,7 +339,7 @@ public class EventDescription extends AppCompatActivity {
 
             case "Word Games" : headerEventImageView.setImageResource(R.drawable.wordgames);
                 break;
-            default: headerEventImageView.setImageResource(R.drawable.waveslogo );
+            default: headerEventImageView.setImageResource(R.drawable.waves );
 
         }}
 
