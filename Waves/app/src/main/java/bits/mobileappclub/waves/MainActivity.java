@@ -2,6 +2,7 @@ package bits.mobileappclub.waves;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.IntentService;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
@@ -185,8 +186,9 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         if (id == R.id.action_map) {
+            Intent intent=new Intent(MainActivity.this,MapActivity.class);
 
-
+            startActivity(intent);
             return true;
         }
 
@@ -197,26 +199,26 @@ public class MainActivity extends ActionBarActivity {
         switch (id)
         {
             case 0:
-                results.add(0, new EventDataObjectCardMainActivity("Fash-P",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Natyanjali",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("Mr and Ms Waves",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("Fash-P",R.drawable.fashptt));
+                results.add(1, new EventDataObjectCardMainActivity("Natyanjali",R.drawable.natyanjalitt));
+                results.add(2, new EventDataObjectCardMainActivity("Mr and Ms Waves",R.drawable.mrmswavestt));
                 break;
             case 1:
-                results.add(0, new EventDataObjectCardMainActivity("Sizzle",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Dhinchak",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("Jumelè",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("Sizzle",R.drawable.sizzlett));
+                results.add(1, new EventDataObjectCardMainActivity("Dhinchak",R.drawable.dhinchaktt));
+                results.add(2, new EventDataObjectCardMainActivity("Jumelè",R.drawable.jumelett));
                 break;
             case 2:
-                results.add(0, new EventDataObjectCardMainActivity("Indian Rock",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Silence Of The Amps",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("Juke Box",R.drawable.dance1));
-                results.add(3, new EventDataObjectCardMainActivity("Solonote",R.drawable.dance1));
-                results.add(4, new EventDataObjectCardMainActivity("Alaap",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("Indian Rock",R.drawable.indinarocktt));
+                results.add(1, new EventDataObjectCardMainActivity("Silence Of The Amps",R.drawable.silenceoftheampstt));
+                results.add(2, new EventDataObjectCardMainActivity("Juke Box",R.drawable.jukeboxtt));
+                results.add(3, new EventDataObjectCardMainActivity("Solonote",R.drawable.solonotett));
+                results.add(4, new EventDataObjectCardMainActivity("Alaap",R.drawable.alaaptt));
                 break;
             case 3:
-                results.add(0, new EventDataObjectCardMainActivity("Rangmanch",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Nukkad Natak",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("Skime",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("Rangmanch",R.drawable.rangmanchtt));
+                results.add(1, new EventDataObjectCardMainActivity("Nukkad Natak",R.drawable.nukkadnataktt));
+                results.add(2, new EventDataObjectCardMainActivity("Skime",R.drawable.skimett));
                 break;
             case 4:
                 results.add(0, new EventDataObjectCardMainActivity("Montage",R.drawable.dance1));
@@ -226,14 +228,14 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case 5:
                 results.add(0, new EventDataObjectCardMainActivity("Portraiture",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Panorama",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Panaroma",R.drawable.dance1));
                 results.add(2, new EventDataObjectCardMainActivity("Artathon",R.drawable.dance1));
                 results.add(3, new EventDataObjectCardMainActivity("Shutter Island",R.drawable.dance1));
 
 
                 break;
             case 6:
-                results.add(0, new EventDataObjectCardMainActivity("Just a Minute",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("JAM",R.drawable.dance1));
                 results.add(1, new EventDataObjectCardMainActivity("Waves Poetry Slam",R.drawable.dance1));
                 results.add(2, new EventDataObjectCardMainActivity("Word Games",R.drawable.dance1));
 
@@ -246,10 +248,10 @@ public class MainActivity extends ActionBarActivity {
                 break;
 
             case 8:
-                results.add(0, new EventDataObjectCardMainActivity("Searock",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Lex Omnia",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("Contention",R.drawable.dance1));
-                results.add(3, new EventDataObjectCardMainActivity("Wallstreet Fête",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("Searock",R.drawable.searocktt));
+                results.add(1, new EventDataObjectCardMainActivity("Lex Omnia",R.drawable.lexomniatt));
+                results.add(2, new EventDataObjectCardMainActivity("Contention",R.drawable.contentiontt));
+                results.add(3, new EventDataObjectCardMainActivity("Wallstreet Fête",R.drawable.wallstreetfetett));
                 results.add(4, new EventDataObjectCardMainActivity("Show Me The Funny",R.drawable.dance1));
                 results.add(5, new EventDataObjectCardMainActivity("Ratatouille",R.drawable.dance1));
                 results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.dance1));
