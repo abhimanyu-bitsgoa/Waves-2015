@@ -92,14 +92,24 @@ public class ParseLinker extends Application {
 
 
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
+                ParseQuery<ParseObject> query0 = ParseQuery.getQuery("Day0");
+                ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Day1");
+                ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Day2");
+                ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Day3");
+
                 try {
                     List<ParseObject> parObjList=query.find();
+                    List<ParseObject> parObjList0=query0.find();
+                    List<ParseObject> parObjList1=query1.find();
+                    List<ParseObject> parObjList2=query2.find();
+                    List<ParseObject> parObjList3=query3.find();
                     ParseObject.pinAllInBackground(parObjList);
-
+                    ParseObject.pinAllInBackground(parObjList0);
+                    ParseObject.pinAllInBackground(parObjList1);
+                    ParseObject.pinAllInBackground(parObjList2);
+                    ParseObject.pinAllInBackground(parObjList3);
 
                     for(int i=0;i<36;i++) {
-
-
 
                         System.out.println(parObjList.get(i).get("title"));
 

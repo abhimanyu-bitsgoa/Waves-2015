@@ -14,6 +14,7 @@ public class Event {
     String eventEliminationRoundDetails;
     String eventFinalRoundDetails;
 
+
     public Event(String name,String[] time,String[] day,String[] venue,String description,String elimdDetails,String finalDetails,String rules)
 
     {
@@ -25,6 +26,7 @@ public class Event {
         eventDescription=description;
         eventEliminationRoundDetails=elimdDetails;
         eventFinalRoundDetails=finalDetails;
+
     }
     public String getEventName()
     {
@@ -75,4 +77,5 @@ public class Event {
     {
         return eventDay;
     }
+
 }

@@ -76,7 +76,7 @@ public class EventDescription extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String timeElim,timeSemi,timeFinal,venueElim,venueSemi,venueFinal,dateElim,dateSemi,dateFinal;
+        String timeElim,timeSemi,timeFinal,venueElim,venueSemi,venueFinal,dateElim,dateSemi,dateFinal,about;
         timeElim= pObj.get("timings").toString();
         timeSemi= pObj.get("timeSemi").toString();
         timeFinal= pObj.get("timeFinals").toString();
@@ -86,12 +86,13 @@ public class EventDescription extends AppCompatActivity {
         dateElim= pObj.get("date").toString();
         dateSemi= pObj.get("dateSemi").toString();
         dateFinal= pObj.get("dateFinals").toString();
+        about=pObj.get("about").toString();
 
 
         String[] eventTimeArray={timeElim,timeSemi,timeFinal};
         String[] eventDayArray={dateElim,dateSemi,dateFinal};
         String[] eventVenueArray={venueElim,venueSemi,venueFinal};
-        Event event=new Event(eventName,eventTimeArray,eventDayArray,eventVenueArray,"You live only once!","You die only once.","You live life only once.","Therefore we are ONE! :P");
+        Event event=new Event(eventName,eventTimeArray,eventDayArray,eventVenueArray,about,"You die only once.","You live life only once.","Therefore we are ONE! :P");
         EventDetails eventDetails=new EventDetails(event);
         descriptionRecyclerViewAdapter=new EventDescriptionRecyclerViewAdapter(eventDetails);
         eventDescRecyclerView.setAdapter(descriptionRecyclerViewAdapter);
