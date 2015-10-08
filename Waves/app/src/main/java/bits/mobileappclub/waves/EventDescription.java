@@ -170,7 +170,7 @@ public class EventDescription extends AppCompatActivity {
     }
     public  void fabClickedDescription(View v)
     {
-
+    
 
     }
 
