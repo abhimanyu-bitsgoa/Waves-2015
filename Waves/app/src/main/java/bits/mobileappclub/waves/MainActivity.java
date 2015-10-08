@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarActivity;
@@ -52,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         String[] eventTime = {"", "", "", ""};
         String[] eventName = {"", "", "", ""};
         String[] eventStage = {"", "", "", ""};
-        int[] imageResourceId = { R.drawable.waveslogo,R.drawable.salim, R.drawable.tvf, R.drawable.aking};
+        int[] imageResourceId = { R.drawable.waves,R.drawable.salim, R.drawable.tvf, R.drawable.aking};
         liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
         liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
 
@@ -145,7 +146,7 @@ public class MainActivity extends ActionBarActivity {
         Timer swipeTimer;
         Update = new Runnable() {
             public void run() {
-                if (currentPage == 4- 1) {
+                if (currentPage == 5- 1) {
                     currentPage = 0;
                 }
                 if(collapsingToolbarLayout.getHeight()!=toolbar.getHeight())
@@ -163,18 +164,6 @@ public class MainActivity extends ActionBarActivity {
         }, 700, 5000);
 
 
-
-        NestedScrollView nestedScrollView= (NestedScrollView) findViewById(R.id.scroll);
-
-       nestedScrollView.setOnTouchListener(new View.OnTouchListener() {
-
-           public boolean onTouch(View v, MotionEvent event) {
-               // TODO Auto-generated method stub
-               //Log.v(TAG,"PARENT TOUCH");
-               findViewById(R.id.scroll).getParent().requestDisallowInterceptTouchEvent(false);
-               return false;
-           }
-       });
 
     }
 
@@ -279,9 +268,18 @@ public class MainActivity extends ActionBarActivity {
         return results;
     }
    public void fabClicked(View v){
-       Intent intent=new Intent(MainActivity.this,Timeline.class);
-       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        this.startActivity(intent);
+       final View.OnClickListener clickListener = new View.OnClickListener() {
+           public void onClick(View v) {
+
+           }
+       };
+
+       final View coordinatorLayoutView = findViewById(R.id.snackbarPosition);
+
+       Snackbar
+               .make(coordinatorLayoutView,"Coming Soon", Snackbar.LENGTH_LONG)
+               .setAction("OK", clickListener)
+               .show();
     }
 
 

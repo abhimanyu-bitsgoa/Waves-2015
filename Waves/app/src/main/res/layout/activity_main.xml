@@ -296,7 +296,7 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:onClick="fabClicked"
-        android:src="@drawable/calendar"
+        android:src="@drawable/watch"
         app:backgroundTint="@color/fabColor"
         app:layout_anchorGravity="bottom|right|end"
         app:layout_anchor="@+id/app_bar_layout"
@@ -308,4 +308,5 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/snackbarPosition">
     </android.support.design.widget.CoordinatorLayout>
+
 </android.support.design.widget.CoordinatorLayout>
