@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -49,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
         String[] eventTime = {"8:00 pm", "6:45 pm", "7:10 pm", "6:00 pm", "8:00 pm", "6:30 pm"};
         String[] eventName = {"Dhinchak", "Searock", "TimeLapse", "Rangmanch", "Waves Open Quiz", "Indian Rock"};
         String[] eventStage = {"Final", "Prelims", "Semi-Final", "Semi-final", "Final", "Prelims"};
-        int[] imageResourceId = {R.drawable.searock, R.drawable.searock, R.drawable.searock, R.drawable.searock,R.drawable.searock, R.drawable.searock};
+        int[] imageResourceId = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4, R.drawable.img5, R.drawable.img6};
         liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
         liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
 
@@ -200,19 +199,19 @@ public class MainActivity extends ActionBarActivity {
         switch (id)
         {
             case 0:
-                results.add(0, new EventDataObjectCardMainActivity("Fash P",R.drawable.fashptt));
+                results.add(0, new EventDataObjectCardMainActivity("Fash-P",R.drawable.fashptt));
                 results.add(1, new EventDataObjectCardMainActivity("Natyanjali",R.drawable.natyanjalitt));
                 results.add(2, new EventDataObjectCardMainActivity("Mr and Ms Waves",R.drawable.mrmswavestt));
                 break;
             case 1:
                 results.add(0, new EventDataObjectCardMainActivity("Sizzle",R.drawable.sizzlett));
                 results.add(1, new EventDataObjectCardMainActivity("Dhinchak",R.drawable.dhinchaktt));
-                results.add(2, new EventDataObjectCardMainActivity("Jumele",R.drawable.jumelett));
+                results.add(2, new EventDataObjectCardMainActivity("Jumelè",R.drawable.jumelett));
                 break;
             case 2:
                 results.add(0, new EventDataObjectCardMainActivity("Indian Rock",R.drawable.indinarocktt));
-                results.add(1, new EventDataObjectCardMainActivity("Silence of the Amps",R.drawable.silenceoftheampstt));
-                results.add(2, new EventDataObjectCardMainActivity("The Jukebox",R.drawable.jukeboxtt));
+                results.add(1, new EventDataObjectCardMainActivity("Silence Of The Amps",R.drawable.silenceoftheampstt));
+                results.add(2, new EventDataObjectCardMainActivity("Juke Box",R.drawable.jukeboxtt));
                 results.add(3, new EventDataObjectCardMainActivity("Solonote",R.drawable.solonotett));
                 results.add(4, new EventDataObjectCardMainActivity("Alaap",R.drawable.alaaptt));
                 break;
@@ -222,40 +221,40 @@ public class MainActivity extends ActionBarActivity {
                 results.add(2, new EventDataObjectCardMainActivity("Skime",R.drawable.skimett));
                 break;
             case 4:
-                results.add(0, new EventDataObjectCardMainActivity("Montage",R.drawable.montagett));
-                results.add(1, new EventDataObjectCardMainActivity("Mezzotint",R.drawable.mezzotinttt));
-                results.add(2, new EventDataObjectCardMainActivity("Reverse Flash",R.drawable.reverseflashtt));
-                results.add(3, new EventDataObjectCardMainActivity("Time Lapse",R.drawable.timelapsett));
+                results.add(0, new EventDataObjectCardMainActivity("Montage",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Mezzotint",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Reverse Flash",R.drawable.dance1));
+                results.add(3, new EventDataObjectCardMainActivity("Time Lapse",R.drawable.dance1));
                 break;
             case 5:
-                results.add(0, new EventDataObjectCardMainActivity("Portraiture",R.drawable.portraiturett));
-                results.add(1, new EventDataObjectCardMainActivity("Panaroma",R.drawable.panaromatt));
-                results.add(2, new EventDataObjectCardMainActivity("Artathon",R.drawable.artathontt));
-                results.add(3, new EventDataObjectCardMainActivity("Shutter Island",R.drawable.shuttertt));
+                results.add(0, new EventDataObjectCardMainActivity("Portraiture",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Panaroma",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Artathon",R.drawable.dance1));
+                results.add(3, new EventDataObjectCardMainActivity("Shutter Island",R.drawable.dance1));
 
 
                 break;
             case 6:
-                results.add(0, new EventDataObjectCardMainActivity("Just a Minute",R.drawable.justaminutett));
-                results.add(1, new EventDataObjectCardMainActivity("Waves Poetry Slam",R.drawable.poetryslamtt));
-                results.add(2, new EventDataObjectCardMainActivity("Word Games",R.drawable.wordgamestt));
+                results.add(0, new EventDataObjectCardMainActivity("JAM",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Waves Poetry Slam",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("Word Games",R.drawable.dance1));
 
                 break;
             case 7:
-                results.add(0, new EventDataObjectCardMainActivity("Waves Open Quiz",R.drawable.wavesopentt));
-                results.add(1, new EventDataObjectCardMainActivity("Entertainment Quiz",R.drawable.entertainmenttt));
-                results.add(2, new EventDataObjectCardMainActivity("The Vices Quiz",R.drawable.vicequiztt));
-                results.add(3, new EventDataObjectCardMainActivity("The Lonewolf",R.drawable.lonewolftt));
+                results.add(0, new EventDataObjectCardMainActivity("Waves Open Quiz",R.drawable.dance1));
+                results.add(1, new EventDataObjectCardMainActivity("Entertainment Quiz",R.drawable.dance1));
+                results.add(2, new EventDataObjectCardMainActivity("The Vices Quiz",R.drawable.dance1));
+                results.add(3, new EventDataObjectCardMainActivity("The Lonewolf",R.drawable.dance1));
                 break;
 
             case 8:
                 results.add(0, new EventDataObjectCardMainActivity("Searock",R.drawable.searocktt));
                 results.add(1, new EventDataObjectCardMainActivity("Lex Omnia",R.drawable.lexomniatt));
                 results.add(2, new EventDataObjectCardMainActivity("Contention",R.drawable.contentiontt));
-                results.add(3, new EventDataObjectCardMainActivity("Wallstreet Fete",R.drawable.wallstreetfetett));
-                results.add(4, new EventDataObjectCardMainActivity("Show me the Funny",R.drawable.showmethefunnytt));
-                results.add(5, new EventDataObjectCardMainActivity("Ratatouille",R.drawable.ratattouillett));
-                results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.rubikstt));
+                results.add(3, new EventDataObjectCardMainActivity("Wallstreet Fête",R.drawable.wallstreetfetett));
+                results.add(4, new EventDataObjectCardMainActivity("Show Me The Funny",R.drawable.dance1));
+                results.add(5, new EventDataObjectCardMainActivity("Ratatouille",R.drawable.dance1));
+                results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.dance1));
 
                 break;
         }
@@ -263,21 +262,9 @@ public class MainActivity extends ActionBarActivity {
         return results;
     }
    public void fabClicked(View v){
-       final View.OnClickListener clickListener = new View.OnClickListener() {
-           public void onClick(View v) {
-
-           }
-       };
-
-       final View coordinatorLayoutView = findViewById(R.id.snackbarPosition);
-
-       Snackbar
-               .make(coordinatorLayoutView,"Coming Soon", Snackbar.LENGTH_LONG)
-               .setAction("OK", clickListener)
-               .show();
-       //Intent intent=new Intent(MainActivity.this,Timeline.class);
-       //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        //this.startActivity(intent);
+       Intent intent=new Intent(MainActivity.this,Timeline.class);
+       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        this.startActivity(intent);
     }
 
 
