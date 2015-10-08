@@ -76,7 +76,7 @@ public class EventDescription extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        String timeElim,timeSemi,timeFinal,venueElim,venueSemi,venueFinal,dateElim,dateSemi,dateFinal;
+        String timeElim,timeSemi,timeFinal,venueElim,venueSemi,venueFinal,dateElim,dateSemi,dateFinal,about;
         timeElim= pObj.get("timings").toString();
         timeSemi= pObj.get("timeSemi").toString();
         timeFinal= pObj.get("timeFinals").toString();
@@ -86,23 +86,25 @@ public class EventDescription extends AppCompatActivity {
         dateElim= pObj.get("date").toString();
         dateSemi= pObj.get("dateSemi").toString();
         dateFinal= pObj.get("dateFinals").toString();
+        about=pObj.get("about").toString();
 
 
         String[] eventTimeArray={timeElim,timeSemi,timeFinal};
         String[] eventDayArray={dateElim,dateSemi,dateFinal};
         String[] eventVenueArray={venueElim,venueSemi,venueFinal};
-        Event event=new Event(eventName,eventTimeArray,eventDayArray,eventVenueArray,"You live only once!","You die only once.","You live life only once.","Therefore we are ONE! :P");
+        Event event=new Event(eventName,eventTimeArray,eventDayArray,eventVenueArray,about);
         EventDetails eventDetails=new EventDetails(event);
         descriptionRecyclerViewAdapter=new EventDescriptionRecyclerViewAdapter(eventDetails);
         eventDescRecyclerView.setAdapter(descriptionRecyclerViewAdapter);
 
         headerEventImageView=(ImageView)findViewById(R.id.eventDescImageView);
+        headerEventImageView.setImageResource(R.drawable.searock);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_desc);
         collapsingToolbarLayout.setTitle(event.getEventName());
         //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
-        headerEventImageView.setImageResource(R.drawable.img1);
+        headerEventImageView.setImageResource(R.drawable.searock);
         elimVenue=(TextView)findViewById(R.id.elimVenue);
         elimDay=(TextView)findViewById(R.id.elimDay);
         elimTime=(TextView)findViewById(R.id.elimTime);
@@ -155,9 +157,7 @@ public class EventDescription extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
         if (id== android.R.id.home) {
             onBackPressed();
         }
@@ -171,6 +171,7 @@ public class EventDescription extends AppCompatActivity {
     public  void fabClickedDescription(View v)
     {
     
+
 
     }
 

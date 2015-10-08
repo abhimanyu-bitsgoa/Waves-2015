@@ -12,16 +12,16 @@ public class EventDetails {
     {
         header.add("About");
         content.add(event.getEventDescription());
-        header.add("Rules");
+       /* header.add("Rules");
         content.add(event.getRules());
         header.add("Elimination Round Details");
         content.add(event.getEventEliminationRoundDetails());
         header.add("Final Round Details");
-        content.add(event.getEventFinalRoundDetails());
+        content.add(event.getEventFinalRoundDetails());*/
 
     }
     public int getCardViewCount()
     {
-        return 4;
+        return 1;
     }
 }

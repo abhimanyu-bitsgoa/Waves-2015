@@ -43,7 +43,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <bits.mobileappclub.waves.CustomNestedScrollView
+    <android.support.v4.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -68,11 +68,11 @@
 
                             android:textColor="@color/PrimaryHighlight"/>
                     </LinearLayout>
-                    <bits.mobileappclub.waves.CustomRecyclerView
+                    <android.support.v7.widget.RecyclerView
                         android:id="@+id/big3_scroll"
 
                         android:layout_width="match_parent"
-                        android:layout_height="150sp"/>
+                        android:layout_height="140sp"/>
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="2sp"
@@ -94,7 +94,7 @@
 
                     android:textColor="@color/PrimaryHighlight"/>
             </LinearLayout>
-            <bits.mobileappclub.waves.CustomRecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/music_scroll"
 
                 android:layout_width="match_parent"
@@ -121,7 +121,7 @@
                 android:textColor="@color/PrimaryHighlight"/>
         </LinearLayout>
 
-                <bits.mobileappclub.waves.CustomRecyclerView
+                <android.support.v7.widget.RecyclerView
                     android:id="@+id/dance_scroll"
                     android:layout_width="wrap_content"
                     android:layout_height="150sp"
@@ -148,7 +148,7 @@
                     android:textColor="@color/PrimaryHighlight"/>
             </LinearLayout>
 
-            <bits.mobileappclub.waves.CustomRecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/drama_scroll"
                 android:layout_width="wrap_content"
                 android:layout_height="150sp"
@@ -174,7 +174,7 @@
             </LinearLayout>
 
 
-                <bits.mobileappclub.waves.CustomRecyclerView
+                <android.support.v7.widget.RecyclerView
                     android:id="@+id/literary_scroll"
                     android:layout_width="match_parent"
                     android:layout_height="150sp"
@@ -199,7 +199,7 @@
             </LinearLayout>
 
 
-            <bits.mobileappclub.waves.CustomRecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/quiz_scroll"
                 android:layout_width="match_parent"
                 android:layout_height="150sp"
@@ -224,7 +224,7 @@
             </LinearLayout>
 
 
-            <bits.mobileappclub.waves.CustomRecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/finearts_scroll"
                 android:layout_width="match_parent"
                 android:layout_height="150sp"
@@ -249,7 +249,7 @@
             </LinearLayout>
 
 
-            <bits.mobileappclub.waves.CustomRecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/film_scroll"
                 android:layout_width="match_parent"
                 android:layout_height="150sp"
@@ -275,7 +275,7 @@
             </LinearLayout>
 
 
-            <bits.mobileappclub.waves.CustomRecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/specials_scroll"
                 android:layout_width="match_parent"
                 android:layout_height="150sp"
@@ -289,13 +289,23 @@
 
         </LinearLayout>
 
-    </bits.mobileappclub.waves.CustomNestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:clickable="true"
         android:onClick="fabClicked"
-        android:src="@drawable/timelineicon" />
+        android:src="@drawable/calendar"
+        app:backgroundTint="@color/fabColor"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_anchor="@+id/app_bar_layout"
+        />
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/snackbarPosition">
+    </android.support.design.widget.CoordinatorLayout>
 </android.support.design.widget.CoordinatorLayout>
