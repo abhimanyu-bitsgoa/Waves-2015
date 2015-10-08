@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,9 +17,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,10 +49,10 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        String[] eventTime = {"8:00 pm", "6:45 pm", "7:10 pm", "6:00 pm", "8:00 pm", "6:30 pm"};
-        String[] eventName = {"Dhinchak", "Searock", "TimeLapse", "Rangmanch", "Waves Open Quiz", "Indian Rock"};
-        String[] eventStage = {"Final", "Prelims", "Semi-Final", "Semi-final", "Final", "Prelims"};
-        int[] imageResourceId = {R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.img4, R.drawable.img5, R.drawable.img6};
+        String[] eventTime = {"", "", "", ""};
+        String[] eventName = {"", "", "", ""};
+        String[] eventStage = {"", "", "", ""};
+        int[] imageResourceId = { R.drawable.waveslogo,R.drawable.salim, R.drawable.tvf, R.drawable.aking};
         liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
         liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
 
@@ -141,7 +145,7 @@ public class MainActivity extends ActionBarActivity {
         Timer swipeTimer;
         Update = new Runnable() {
             public void run() {
-                if (currentPage == 6- 1) {
+                if (currentPage == 4- 1) {
                     currentPage = 0;
                 }
                 if(collapsingToolbarLayout.getHeight()!=toolbar.getHeight())
@@ -158,6 +162,19 @@ public class MainActivity extends ActionBarActivity {
             }
         }, 700, 5000);
 
+
+
+        NestedScrollView nestedScrollView= (NestedScrollView) findViewById(R.id.scroll);
+
+       nestedScrollView.setOnTouchListener(new View.OnTouchListener() {
+
+           public boolean onTouch(View v, MotionEvent event) {
+               // TODO Auto-generated method stub
+               //Log.v(TAG,"PARENT TOUCH");
+               findViewById(R.id.scroll).getParent().requestDisallowInterceptTouchEvent(false);
+               return false;
+           }
+       });
 
     }
 
@@ -221,30 +238,30 @@ public class MainActivity extends ActionBarActivity {
                 results.add(2, new EventDataObjectCardMainActivity("Skime",R.drawable.skimett));
                 break;
             case 4:
-                results.add(0, new EventDataObjectCardMainActivity("Montage",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Mezzotint",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("Reverse Flash",R.drawable.dance1));
-                results.add(3, new EventDataObjectCardMainActivity("Time Lapse",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("Montage",R.drawable.montagett));
+                results.add(1, new EventDataObjectCardMainActivity("Mezzotint",R.drawable.mezzotint));
+                results.add(2, new EventDataObjectCardMainActivity("Reverse Flash",R.drawable.reverseflashtt));
+                results.add(3, new EventDataObjectCardMainActivity("Time Lapse",R.drawable.timelapsett));
                 break;
             case 5:
-                results.add(0, new EventDataObjectCardMainActivity("Portraiture",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Panaroma",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("Artathon",R.drawable.dance1));
-                results.add(3, new EventDataObjectCardMainActivity("Shutter Island",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("Portraiture",R.drawable.portraiturett));
+                results.add(1, new EventDataObjectCardMainActivity("Panaroma",R.drawable.panaromatt));
+                results.add(2, new EventDataObjectCardMainActivity("Artathon",R.drawable.artathontt));
+                results.add(3, new EventDataObjectCardMainActivity("Shutter Island",R.drawable.shuttertt));
 
 
                 break;
             case 6:
-                results.add(0, new EventDataObjectCardMainActivity("JAM",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Waves Poetry Slam",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("Word Games",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("JAM",R.drawable.justaminutett));
+                results.add(1, new EventDataObjectCardMainActivity("Waves Poetry Slam",R.drawable.poetryslamtt));
+                results.add(2, new EventDataObjectCardMainActivity("Word Games",R.drawable.wordgamestt));
 
                 break;
             case 7:
-                results.add(0, new EventDataObjectCardMainActivity("Waves Open Quiz",R.drawable.dance1));
-                results.add(1, new EventDataObjectCardMainActivity("Entertainment Quiz",R.drawable.dance1));
-                results.add(2, new EventDataObjectCardMainActivity("The Vices Quiz",R.drawable.dance1));
-                results.add(3, new EventDataObjectCardMainActivity("The Lonewolf",R.drawable.dance1));
+                results.add(0, new EventDataObjectCardMainActivity("Waves Open Quiz",R.drawable.wavesopentt));
+                results.add(1, new EventDataObjectCardMainActivity("Entertainment Quiz",R.drawable.entertainmenttt));
+                results.add(2, new EventDataObjectCardMainActivity("The Vices Quiz",R.drawable.vicequiztt));
+                results.add(3, new EventDataObjectCardMainActivity("The Lonewolf",R.drawable.lonewolftt));
                 break;
 
             case 8:
@@ -252,9 +269,9 @@ public class MainActivity extends ActionBarActivity {
                 results.add(1, new EventDataObjectCardMainActivity("Lex Omnia",R.drawable.lexomniatt));
                 results.add(2, new EventDataObjectCardMainActivity("Contention",R.drawable.contentiontt));
                 results.add(3, new EventDataObjectCardMainActivity("Wallstreet Fête",R.drawable.wallstreetfetett));
-                results.add(4, new EventDataObjectCardMainActivity("Show Me The Funny",R.drawable.dance1));
-                results.add(5, new EventDataObjectCardMainActivity("Ratatouille",R.drawable.dance1));
-                results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.dance1));
+                results.add(4, new EventDataObjectCardMainActivity("Show Me The Funny",R.drawable.showmethefunnytt));
+                results.add(5, new EventDataObjectCardMainActivity("Ratatouille",R.drawable.ratattouillett));
+                results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.rubikstt));
 
                 break;
         }

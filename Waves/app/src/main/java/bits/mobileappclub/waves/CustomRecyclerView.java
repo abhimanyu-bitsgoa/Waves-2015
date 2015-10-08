@@ -27,6 +27,7 @@ public class CustomRecyclerView extends RecyclerView {
     class YScrollDetector extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+
             return Math.abs(distanceY)*2 <  Math.abs(distanceX);
         }
     }

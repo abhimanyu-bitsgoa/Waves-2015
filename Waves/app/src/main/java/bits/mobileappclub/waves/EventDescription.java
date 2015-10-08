@@ -98,6 +98,7 @@ public class EventDescription extends AppCompatActivity {
         eventDescRecyclerView.setAdapter(descriptionRecyclerViewAdapter);
 
         headerEventImageView=(ImageView)findViewById(R.id.eventDescImageView);
+        headerEventImageView.setImageResource(R.drawable.searock);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_desc);
         collapsingToolbarLayout.setTitle(event.getEventName());
@@ -156,9 +157,7 @@ public class EventDescription extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
         if (id== android.R.id.home) {
             onBackPressed();
         }
@@ -171,6 +170,7 @@ public class EventDescription extends AppCompatActivity {
     }
     public  void fabClickedDescription(View v)
     {
+
 
 
     }
