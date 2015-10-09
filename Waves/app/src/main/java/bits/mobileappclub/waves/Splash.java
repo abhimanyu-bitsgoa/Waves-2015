@@ -63,6 +63,7 @@ public class Splash extends Activity {
                      sharedPref = getSharedPreferences("Counter", Context.MODE_PRIVATE);
                      defaultValue = sharedPref.getString("Key", "");
                     if(defaultValue!=null&&defaultValue.equals("")){
+                        Toast.makeText(getApplicationContext(), "Welcome!", Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString("Key", "hi");
                     editor.commit();}
