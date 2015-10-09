@@ -177,12 +177,16 @@ public class EventDescription extends AppCompatActivity {
     }
     public  void fabClickedDescription(View v)
     {
-
+            //Code to change get the time!
+        String newTimeElim=timeElim.replaceAll(":","");
+        int newIntTimeElim=Integer.parseInt(newTimeElim);
+        int hour=newIntTimeElim/100;
+        int minutes=newIntTimeElim%100;
 
        Calendar beginTime = Calendar.getInstance();
-        beginTime.set(2015, 0, 19, 7, 30);
+        beginTime.set(2015, 10, 6, hour, minutes);
         Calendar endTime = Calendar.getInstance();
-        endTime.set(2012, 0, 19, 8, 30);
+        endTime.set(2015, 10, 6, hour+1, minutes);
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
@@ -342,6 +346,8 @@ public class EventDescription extends AppCompatActivity {
             default: headerEventImageView.setImageResource(R.drawable.waves );
 
         }}
+
+
 
 
 }
