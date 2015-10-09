@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -32,7 +33,8 @@ public class Splash extends Activity {
     /** Duration of wait **/
     private final int SPLASH_DISPLAY_LENGTH =4000;
     public boolean connChecker=true;
-
+    SharedPreferences sharedPref;
+    String defaultValue;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle icicle) {
@@ -41,7 +43,10 @@ public class Splash extends Activity {
 
 
         //Check for the first time start!
+        sharedPref = getSharedPreferences("Counter", Context.MODE_PRIVATE);
+        defaultValue = sharedPref.getString("Key", "");
 
+        if(defaultValue!=null&&defaultValue.equals(""))
         new splashConnection().execute("", "", "");
 
 
@@ -52,6 +57,16 @@ public class Splash extends Activity {
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
                 if(connChecker==true){
+
+                    //Code for first time usage
+
+                     sharedPref = getSharedPreferences("Counter", Context.MODE_PRIVATE);
+                     defaultValue = sharedPref.getString("Key", "");
+                    if(defaultValue!=null&&defaultValue.equals("")){
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("Key", "hi");
+                    editor.commit();}
+
                 Intent mainIntent = new Intent(Splash.this, MainActivity.class);
                 Splash.this.startActivity(mainIntent);
                 Splash.this.finish();}
