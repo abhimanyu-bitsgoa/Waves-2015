@@ -234,7 +234,7 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case 5:
                 results.add(0, new EventDataObjectCardMainActivity("Portraiture",R.drawable.portraiturett));
-                results.add(1, new EventDataObjectCardMainActivity("Panaroma",R.drawable.panaromatt));
+                results.add(1, new EventDataObjectCardMainActivity("Panorama",R.drawable.panaromatt));
                 results.add(2, new EventDataObjectCardMainActivity("Artathon",R.drawable.artathontt));
                 results.add(3, new EventDataObjectCardMainActivity("Shutter Island",R.drawable.shuttertt));
 

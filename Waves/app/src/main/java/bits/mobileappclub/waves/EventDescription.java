@@ -261,7 +261,7 @@ public class EventDescription extends AppCompatActivity {
                 break;
 
 
-            case "Panaroma" : headerEventImageView.setImageResource(R.drawable.panaroma);
+            case "Panorama" : headerEventImageView.setImageResource(R.drawable.panaroma);
                 break;
 
 
@@ -321,7 +321,7 @@ public class EventDescription extends AppCompatActivity {
                 break;
 
 
-            case "The Waves Rubik's Challenge" : headerEventImageView.setImageResource(R.drawable.rubiks);
+            case "Rubik's Challenge" : headerEventImageView.setImageResource(R.drawable.rubiks);
                 break;
 
 
