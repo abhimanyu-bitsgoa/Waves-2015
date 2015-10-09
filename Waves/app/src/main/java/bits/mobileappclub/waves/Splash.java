@@ -3,6 +3,7 @@ package bits.mobileappclub.waves;
 /**
  * Created by HP1 on 09-Oct-15.
  */
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.View;
 
@@ -44,5 +46,5 @@ public class Splash extends Activity {
         }, SPLASH_DISPLAY_LENGTH);
     }
 
-    
+
 }
