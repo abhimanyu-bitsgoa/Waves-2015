@@ -87,7 +87,7 @@ public class Splash extends Activity {
 
                 if(isOnline()==true){
                     connChecker=true;
-                    System.out.println("!!!!!!!!!!!!!!!!!!!CONNECTED!!!!!!!!!!!!!!");
+                    //System.out.println("!!!!!!!!!!!!!!!!!!!CONNECTED!!!!!!!!!!!!!!");
                     return "y";}
                 else {
                     //System.out.println("!!!!!!!!!!!!!!!!!!!NOT--CONNECTED from task!!!!!!!!!!!!!!");
@@ -108,13 +108,13 @@ public class Splash extends Activity {
 
             if(connChecker==false) {
 
-                System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
+               //System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
                 Toast.makeText(getApplicationContext(), "Please connect to Internet and restart", Toast.LENGTH_LONG).show();
 
 
             }
             if(connChecker==true) {
-                System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
+                //System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
 
             }
         }

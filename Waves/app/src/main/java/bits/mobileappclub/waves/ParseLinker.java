@@ -53,9 +53,11 @@ public class ParseLinker extends Application {
         public void run() {
 
             if(isOnline()==true)
-                System.out.println("!!!!!!!!!!!!!!!!!!!CONNECTED!!!!!!!!!!!!!!");
+                //System.out.println("!!!!!!!!!!!!!!!!!!!CONNECTED!!!!!!!!!!!!!!");
+            ;
             else
-                System.out.println("!!!!!!!!!!!!!!!!!!!NOT--CONNECTED!!!!!!!!!!!!!!");
+                //System.out.println("!!!!!!!!!!!!!!!!!!!NOT--CONNECTED!!!!!!!!!!!!!!");
+            ;
 
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Events");
                 ParseQuery<ParseObject> query0 = ParseQuery.getQuery("Day0");
@@ -75,11 +77,11 @@ public class ParseLinker extends Application {
                     ParseObject.pinAllInBackground(parObjList2);
                     ParseObject.pinAllInBackground(parObjList3);
 
-                    for(int i=0;i<36;i++) {
+                   /* for(int i=0;i<36;i++) {
 
                         System.out.println(parObjList.get(i).get("title"));
 
-                    }
+                    }*/
 
                     System.out.println("All loading done");
                 } catch (ParseException e) {
