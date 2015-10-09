@@ -2,6 +2,7 @@ package bits.mobileappclub.waves;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -42,10 +43,6 @@ public class ParseLinker extends Application {
         Parse.initialize(this, "GdQa47PfR8nI3QjzjGoUOMm275Nhjt8gnJld1ovQ", "LmmZv4nwqFK6vhf5hx7OKkBw8yMofOdFNs3KM39I");
 
         new Thread(new ParseThread()).start();
-
-
-
-
 
     }
 
@@ -95,6 +92,7 @@ public class ParseLinker extends Application {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }*/
+
 
 
 

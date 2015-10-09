@@ -18,10 +18,14 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
 
 public class Splash extends Activity {
 
@@ -35,7 +39,11 @@ public class Splash extends Activity {
         super.onCreate(icicle);
         setContentView(R.layout.splashscreen);
 
-        new splashConnection().execute("","","");
+
+        //Check for the first time start!
+
+        new splashConnection().execute("", "", "");
+
 
         /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/
@@ -85,13 +93,13 @@ public class Splash extends Activity {
             if(connChecker==false) {
 
                 System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
-                Toast.makeText(getApplicationContext(), "Please connect to Internet and Restart", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Please connect to Internet and restart", Toast.LENGTH_LONG).show();
 
 
             }
             if(connChecker==true) {
                 System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
-               
+
             }
         }
 
