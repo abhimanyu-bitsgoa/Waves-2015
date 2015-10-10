@@ -64,10 +64,10 @@ public class EventDescriptionRecyclerViewAdapter extends RecyclerView
                     cardViewContent.setVisibility(View.VISIBLE);
                     cardViewContent.setEnabled(true);
                     mIsViewExpanded = true;
-                    valueAnimator = ValueAnimator.ofInt(originalHeight, originalHeight + (int) (originalHeight * 2.0)); // These values in this method can be changed to expand however much you like
+                    valueAnimator = ValueAnimator.ofInt(originalHeight, originalHeight + (int) (originalHeight * 3.0)); // These values in this method can be changed to expand however much you like
                 } else {
                     mIsViewExpanded = false;
-                    valueAnimator = ValueAnimator.ofInt(originalHeight + (int) (originalHeight * 2.0), originalHeight);
+                    valueAnimator = ValueAnimator.ofInt(originalHeight + (int) (originalHeight * 3.0), originalHeight);
 
                     Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
 
