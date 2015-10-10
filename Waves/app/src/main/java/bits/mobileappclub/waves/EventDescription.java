@@ -25,6 +25,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.parse.ParseException;
@@ -93,8 +94,14 @@ public class EventDescription extends AppCompatActivity {
 
 
     String[] eventTimeArray = {timeElim, timeSemi, timeFinal};
+
     String[] eventDayArray = {dateElim, dateSemi, dateFinal};
     String[] eventVenueArray = {venueElim, venueSemi, venueFinal};
+        for(int i=0;i<3;i++){
+        if(eventVenueArray[i].equals("-")){
+            eventVenueArray[i]="N/A";
+
+        }}
     Event event = new Event(eventName, eventTimeArray, eventDayArray, eventVenueArray, about);
     EventDetails eventDetails = new EventDetails(event);
     descriptionRecyclerViewAdapter = new EventDescriptionRecyclerViewAdapter(eventDetails);
