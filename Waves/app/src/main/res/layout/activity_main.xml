@@ -296,7 +296,7 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:onClick="fabClicked"
-        android:src="@drawable/watch"
+        android:src="@drawable/timelineicon"
         app:backgroundTint="@color/fabColor"
         app:layout_anchorGravity="bottom|right|end"
         app:layout_anchor="@+id/app_bar_layout"
