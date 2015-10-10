@@ -311,11 +311,11 @@ public class EventDescription extends AppCompatActivity {
                 break;
 
 
-            case "The Entertainment Quiz" : headerEventImageView.setImageResource(R.drawable.entertainment);
+            case "Entertainment Quiz" : headerEventImageView.setImageResource(R.drawable.entertainment);
                 break;
 
 
-            case "The Lonewolf Quiz" : headerEventImageView.setImageResource(R.drawable.lonewolf);
+            case "The Lonewolf" : headerEventImageView.setImageResource(R.drawable.lonewolf);
                 break;
 
 

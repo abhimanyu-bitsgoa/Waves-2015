@@ -6,8 +6,10 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarActivity;
@@ -31,7 +33,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOffsetChangedListener {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -44,6 +46,7 @@ public class MainActivity extends ActionBarActivity {
     private  Toolbar toolbar;
     Runnable Update;
     CollapsingToolbarLayout collapsingToolbarLayout;
+    boolean autoChange=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,32 +144,39 @@ public class MainActivity extends ActionBarActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
-//Auto Swiping of Live Preview
-         handler = new Handler();
-        Timer swipeTimer;
-        Update = new Runnable() {
-            public void run() {
-                if (currentPage == 5- 1) {
-                    currentPage = 0;
+
+        AppBarLayout appBarLayout = (AppBarLayout)findViewById(R.id.app_bar_layout);
+        appBarLayout.addOnOffsetChangedListener(this);
+
+
+        if(autoChange==true) {
+            //Auto Swiping of Live Preview
+            handler = new Handler();
+            Timer swipeTimer;
+            Update = new Runnable() {
+                public void run() {
+                    if (currentPage == 5 - 1) {
+                        currentPage = 0;
+                    }
+
+                        liveViewPager.setCurrentItem(currentPage++, true);
+
                 }
-                if(collapsingToolbarLayout.getHeight()!=toolbar.getHeight())
-                {liveViewPager.setCurrentItem(currentPage++, true);}
-            }
-        };
+            };
 
-        swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
+            swipeTimer = new Timer();
+            swipeTimer.schedule(new TimerTask() {
 
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 700, 5000);
-
+                @Override
+                public void run() {
+                    handler.post(Update);
+                }
+            }, 700, 5000);
+            //opened
+        }
 
 
     }
-
 
 
 
@@ -283,6 +293,17 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
+        if (offset == 0)
+        {
+            autoChange=false;
+        }
+        else
+        {
+            autoChange=true;
+            // Not collapsed
+        }
 
-
+    }
 }
