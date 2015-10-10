@@ -178,15 +178,17 @@ public class EventDescription extends AppCompatActivity {
     public  void fabClickedDescription(View v)
     {
             //Code to change get the time!
+
+
         String newTimeElim=timeElim.replaceAll(":","");
         int newIntTimeElim=Integer.parseInt(newTimeElim);
         int hour=newIntTimeElim/100;
         int minutes=newIntTimeElim%100;
 
        Calendar beginTime = Calendar.getInstance();
-        beginTime.set(2015, 10, 6, hour, minutes);
+        beginTime.set(2015, 10, 5+Integer.parseInt(dateElim.charAt(dateElim.length() - 1) + ""), hour, minutes);
         Calendar endTime = Calendar.getInstance();
-        endTime.set(2015, 10, 6, hour+1, minutes);
+        endTime.set(2015, 10, 5+Integer.parseInt(dateElim.charAt(dateElim.length()-1)+""), hour+1, minutes);
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
