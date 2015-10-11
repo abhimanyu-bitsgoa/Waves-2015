@@ -56,6 +56,15 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:layout_marginTop="10sp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <LinearLayout
             android:id="@+id/eventDetailsLinearLayout"
             android:layout_width="match_parent"
@@ -209,6 +218,8 @@
 
 
         </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
         <android.support.v7.widget.RecyclerView
 
             android:clipToPadding="false"
@@ -231,13 +242,7 @@
         android:onClick="fabClickedDescription"
         android:src="@drawable/calendar"
         />
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/snackbarPosition1">
-    </android.support.design.widget.CoordinatorLayout>
+
 
 
 
