@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keepattributes *Annotation*
+-keep class com.parse.** { *; }
+-dontwarn com.parse.**
