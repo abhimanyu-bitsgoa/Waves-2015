@@ -10,6 +10,7 @@ import android.support.design.widget.Snackbar;
 
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
@@ -41,6 +42,7 @@ public class ParseLinker extends Application {
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "GdQa47PfR8nI3QjzjGoUOMm275Nhjt8gnJld1ovQ", "LmmZv4nwqFK6vhf5hx7OKkBw8yMofOdFNs3KM39I");
+        ParseInstallation.getCurrentInstallation().saveInBackground();
 
         new Thread(new ParseThread()).start();
 
