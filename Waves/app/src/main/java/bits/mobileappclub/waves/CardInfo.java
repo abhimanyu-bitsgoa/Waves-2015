@@ -5,9 +5,20 @@ package bits.mobileappclub.waves;
  */
 public class CardInfo {
     private  String mName;
-    private String mDes;
+    private String mStage;
     private int mThumbnail;
+    private String mType;
+    private String mTime;
+    private String mVenue;
 
+CardInfo(String mName,String mStage,String mType,String mTime,String mVenue,int mThumbnail){
+        this.mName=mName;
+        this.mStage=mStage;
+        this.mThumbnail=mThumbnail;
+        this.mType=mType;
+        this.mTime=mTime;
+        this.mVenue=mVenue;
+    }
 
     public String getName() {
         return mName;
@@ -17,12 +28,12 @@ public class CardInfo {
         this.mName = name;
     }
 
-    public String getDes() {
-        return mDes;
+    public String getStage() {
+        return mStage;
     }
 
-    public void setDes(String des) {
-        this.mDes = des;
+    public void setStage(String stage) {
+        this.mStage = stage;
     }
 
     public int getThumbnail() {
@@ -31,6 +42,30 @@ public class CardInfo {
 
     public void setThumbnail(int thumbnail) {
         this.mThumbnail = thumbnail;
+    }
+
+    public String getType() {
+        return mType;
+    }
+
+    public void setType(String type) {
+        this.mType = type;
+    }
+
+    public String getTime() {
+        return mTime;
+    }
+
+    public void setTime(String time) {
+        this.mTime = time;
+    }
+
+    public String getVenue() {
+        return mVenue;
+    }
+
+    public void setVenue(String venue) {
+        this.mVenue = venue;
     }
 
 }

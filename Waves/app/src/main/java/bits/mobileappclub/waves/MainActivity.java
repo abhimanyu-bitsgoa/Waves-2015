@@ -278,18 +278,21 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         return results;
     }
    public void fabClicked(View v){
-       final View.OnClickListener clickListener = new View.OnClickListener() {
+       /*final View.OnClickListener clickListener = new View.OnClickListener() {
            public void onClick(View v) {
 
            }
-       };
+       };*/
+
+       Intent intent=new Intent(this,Timeline.class);
+       startActivity(intent);
 
        final View coordinatorLayoutView = findViewById(R.id.snackbarPosition);
 
-       Snackbar
+       /*Snackbar
                .make(coordinatorLayoutView,"Coming Soon", Snackbar.LENGTH_LONG)
                .setAction("OK", clickListener)
-               .show();
+               .show();*/
     }
 
 
