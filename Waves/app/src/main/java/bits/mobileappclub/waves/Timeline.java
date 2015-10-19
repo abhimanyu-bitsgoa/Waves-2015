@@ -44,11 +44,13 @@ public class Timeline extends ActionBarActivity {
         setContentView(R.layout.timeline);
 
 
+
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         // Creating The ViewPagerAdapter_Tabs and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
         adapter = new ViewPagerAdapter_Tabs(getSupportFragmentManager(), Titles, Numboftabs);
@@ -82,7 +84,7 @@ public class Timeline extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_timeline, menu);
         return true;
     }
 
@@ -92,20 +94,27 @@ public class Timeline extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        if (id== android.R.id.home) {
+            onBackPressed();
+            return  true;
+        }
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id== R.id.action_map) {
+            Intent intent = new Intent(Timeline.this,MapActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            this.startActivity(intent);
+            return  true;
+
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void fabClickedTimeline(View v){
-        Intent intent=new Intent(Timeline.this,MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        this.startActivity(intent);
-    }
+
 
 
 }

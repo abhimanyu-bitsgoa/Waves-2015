@@ -87,10 +87,10 @@ public class Splash extends Activity {
 
                 if(isOnline()==true){
                     connChecker=true;
-                    //System.out.println("!!!!!!!!!!!!!!!!!!!CONNECTED!!!!!!!!!!!!!!");
+                    System.out.println("!!!!!!!!!!!!!!!!!!!CONNECTED!!!!!!!!!!!!!!");
                     return "y";}
                 else {
-                    //System.out.println("!!!!!!!!!!!!!!!!!!!NOT--CONNECTED from task!!!!!!!!!!!!!!");
+                    System.out.println("!!!!!!!!!!!!!!!!!!!NOT--CONNECTED from task!!!!!!!!!!!!!!");
                     connChecker=false;
                     return "n";
 
@@ -108,13 +108,13 @@ public class Splash extends Activity {
 
             if(connChecker==false) {
 
-               //System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
+               System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
                 Toast.makeText(getApplicationContext(), "Please connect to Internet and restart", Toast.LENGTH_LONG).show();
 
 
             }
-            if(connChecker==true) {
-                //System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
+            if(connChecker==true)
+            {System.out.println("!!!!!!!!!!!!!!!!!!!POST EXECUTE!!!!!!!!!!!!!!");
 
             }
         }
@@ -127,19 +127,22 @@ public class Splash extends Activity {
     public boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnected()) {
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             try {
-                URL url = new URL("http://www.google.com");
+                URL url = new URL("http://in.yahoo.com");
                 HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
-                urlc.setConnectTimeout(3000);
+                urlc.setConnectTimeout(4000);
                 urlc.connect();
-                if (urlc.getResponseCode() == 200) {
-                    return new Boolean(true);
+                if (urlc.getResponseCode() == 204||urlc.getResponseCode() == 200) {
+                    return true;
                 }
+                else{System.out.println("Not getting correct response code");}
             } catch (MalformedURLException e1) {
+                System.out.println("Error 1");
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             } catch (IOException e) {
+                System.out.println("Error 2");
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }

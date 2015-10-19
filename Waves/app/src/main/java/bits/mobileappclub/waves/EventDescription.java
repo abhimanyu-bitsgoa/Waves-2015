@@ -171,11 +171,13 @@ public class EventDescription extends AppCompatActivity {
 
         if (id== android.R.id.home) {
             onBackPressed();
+            return  true;
         }
         if (id== R.id.action_map) {
             Intent intent = new Intent(EventDescription.this,MapActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             this.startActivity(intent);
+            return  true;
 
         }
 

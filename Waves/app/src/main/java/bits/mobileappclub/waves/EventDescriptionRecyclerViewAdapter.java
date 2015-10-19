@@ -40,11 +40,7 @@ public class EventDescriptionRecyclerViewAdapter extends RecyclerView
             cardViewHeader = (TextView) itemView.findViewById(R.id.descriptionHeader);
             cardViewContent = (TextView) itemView.findViewById(R.id.descriptionContent);
             Log.i(LOG_TAG, "Adding Listener");
-            if (mIsViewExpanded == false) {
-                // Set Views to View.GONE and .setEnabled(false)
-                cardViewContent.setVisibility(View.GONE);
-                cardViewContent.setEnabled(false);
-            }
+
             itemView.setOnClickListener(this);
         }
 
@@ -52,60 +48,7 @@ public class EventDescriptionRecyclerViewAdapter extends RecyclerView
 
             @Override
             public void onClick(final View view) {
-                // If the originalHeight is 0 then find the height of the View being used
-                // This would be the height of the cardview
-                if (originalHeight == 0) {
-                    originalHeight = view.getHeight();
-                }
 
-                // Declare a ValueAnimator object
-                ValueAnimator valueAnimator;
-                if (!mIsViewExpanded) {
-                    cardViewContent.setVisibility(View.VISIBLE);
-                    cardViewContent.setEnabled(true);
-                    mIsViewExpanded = true;
-                    valueAnimator = ValueAnimator.ofInt(originalHeight, originalHeight + (int) (originalHeight * 3.0)); // These values in this method can be changed to expand however much you like
-                } else {
-                    mIsViewExpanded = false;
-                    valueAnimator = ValueAnimator.ofInt(originalHeight + (int) (originalHeight * 3.0), originalHeight);
-
-                    Animation a = new AlphaAnimation(1.00f, 0.00f); // Fade out
-
-                    a.setDuration(200);
-                    // Set a listener to the animation and configure onAnimationEnd
-                    a.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                           cardViewContent.setVisibility(View.INVISIBLE);
-                            cardViewContent.setEnabled(false);
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    });
-
-                    // Set the animation on the custom view
-                   cardViewContent.startAnimation(a);
-                }
-                valueAnimator.setDuration(200);
-                valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-                valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    public void onAnimationUpdate(ValueAnimator animation) {
-                        Integer value = (Integer) animation.getAnimatedValue();
-                        view.getLayoutParams().height = value.intValue();
-                        view.requestLayout();
-                    }
-                });
-
-
-                valueAnimator.start();
 
             }
         }

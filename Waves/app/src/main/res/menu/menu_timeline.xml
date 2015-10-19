@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".Timeline">
+
+
+    <item
+        android:title="Map"
+        android:id="@+id/action_map"
+        android:icon="@drawable/locationiconwhite"
+        android:orderInCategory="99"
+
+        app:showAsAction="ifRoom"/>
+
+</menu>

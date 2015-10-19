@@ -38,10 +38,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
     ParseQuery<ParseObject> query = ParseQuery.getQuery("Events").whereMatches("testCol", "1");
 
-    List<CardInfo> mItems;
+   // List<CardInfo> mItems;
     static String eventName;
+    private ArrayList<CardInfo> cardInfoArrayList;
     List <ParseObject> pObj0,pObj1,pObj2,pObj3;
-    public CardAdapter(int num) {
+    public CardAdapter(ArrayList<CardInfo> cInfo){
+        cardInfoArrayList=cInfo;
+    }
+    /*public CardAdapter(int num) {
         super();
         try{
             mItems = new ArrayList<CardInfo>();
@@ -79,8 +83,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
                     System.out.println(pObj0.get(i).get("title")+"is at "+pObj0.get(i).get("time"));
 
-                }
-                for(int i=0;i<pObj0.size();i++) {
                 mItems.add(new CardInfo(pObj0.get(i).getString("title").toString(),pObj0.get(i).getString("stage").toString(),pObj0.get(i).getString("category").toString(),pObj0.get(i).getString("time").toString(),pObj0.get(i).getString("venue").toString(),getThumbnail(pObj0.get(i).getString("title").toString())));
                 }
 
@@ -118,9 +120,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
                 }
 
-                /*for(int i=0;i<pObj1.size();i++) {
+                *//*for(int i=0;i<pObj1.size();i++) {
                     mItems.add(new CardInfo(pObj1.get(i).getString("title").toString(), pObj1.get(i).getString("stage").toString(), pObj1.get(i).getString("category").toString(), pObj1.get(i).getString("time").toString(), pObj1.get(i).getString("venue").toString(), getThumbnail(pObj1.get(i).getString("title").toString())));
-                }*/
+                }*//*
 
 
             }
@@ -140,16 +142,16 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
                 }
 
-                /*for(int i=0;i<pObj1.size();i++) {
+                *//*for(int i=0;i<pObj1.size();i++) {
                     mItems.add(new CardInfo(pObj1.get(i).getString("title").toString(), pObj1.get(i).getString("stage").toString(), pObj1.get(i).getString("category").toString(), pObj1.get(i).getString("time").toString(), pObj1.get(i).getString("venue").toString(), getThumbnail(pObj1.get(i).getString("title").toString())));
-                }*/
+                }*//*
 
 
             }
     } catch (Exception e) {
         e.printStackTrace();
     }
-        }
+        }*/
 
 
 
@@ -179,18 +181,18 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        CardInfo card = mItems.get(i);
-        viewHolder.tvcard.setText(card.getName());
-        viewHolder.tvDescard.setText(card.getStage());
-        viewHolder.imgThumbnail.setImageResource(card.getThumbnail());
-        viewHolder.tvCategory.setText(card.getType());
-        viewHolder.tvVenue.setText(card.getVenue());
-        viewHolder.tvTime.setText(card.getTime());
+
+        viewHolder.tvcard.setText(cardInfoArrayList.get(i).getName());
+        viewHolder.tvDescard.setText(cardInfoArrayList.get(i).getStage());
+        viewHolder.imgThumbnail.setImageResource(cardInfoArrayList.get(i).getThumbnail());
+        viewHolder.tvCategory.setText(cardInfoArrayList.get(i).getType());
+        viewHolder.tvVenue.setText(cardInfoArrayList.get(i).getVenue());
+        viewHolder.tvTime.setText(cardInfoArrayList.get(i).getTime());
     }
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return cardInfoArrayList.size();
     }
 
 
@@ -210,7 +212,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             super(itemView);
             imgThumbnail = (ImageView)itemView.findViewById(R.id.img_thumbnail);
             tvcard = (TextView)itemView.findViewById(R.id.eventNameTimeline);
-            tvDescard = (TextView)itemView.findViewById(R.id.categoryTimeline);
+            tvDescard = (TextView)itemView.findViewById(R.id.eventStageTimeline);
             tvCategory = (TextView)itemView.findViewById(R.id.categoryTimeline);
             tvVenue = (TextView)itemView.findViewById(R.id.venueTimeline);
             tvTime = (TextView)itemView.findViewById(R.id.timeTimeline);
@@ -235,7 +237,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     }
 
 
-    public int getThumbnail(String eventName){
+   /* public int getThumbnail(String eventName){
         switch (eventName){
             case "Alaap" : return (R.drawable.alaaptt);
                  
@@ -380,7 +382,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             
             default: return (R.drawable.waves);
 
-        }}
+        }}*/
 
 
 

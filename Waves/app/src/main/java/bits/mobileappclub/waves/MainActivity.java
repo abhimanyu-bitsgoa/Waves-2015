@@ -43,15 +43,17 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
     private float initialX;
     private int currentPage;
     private Handler handler;
-    private  Toolbar toolbar;
+
     Runnable Update;
     CollapsingToolbarLayout collapsingToolbarLayout;
     boolean autoChange=true;
+    Toolbar toolbar;
+    Timer swipeTimer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+       toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         String[] eventTime = {"", "", "", ""};
         String[] eventName = {"", "", "", ""};
@@ -65,9 +67,11 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Waves");
+
       //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
         //Big 3 scroll horizontal
+
         mAdapter = new EventCategoryBigRecyclerViewAdapter(getDataSet(0));
         mRecyclerView = (RecyclerView) findViewById(R.id.big3_scroll);
         mRecyclerView.setNestedScrollingEnabled(false);
@@ -149,10 +153,10 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         appBarLayout.addOnOffsetChangedListener(this);
 
 
-        if(autoChange==true) {
+
             //Auto Swiping of Live Preview
             handler = new Handler();
-            Timer swipeTimer;
+
             Update = new Runnable() {
                 public void run() {
                     if (currentPage == 5 - 1) {
@@ -160,6 +164,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                     }
 
                         liveViewPager.setCurrentItem(currentPage++, true);
+
 
                 }
             };
@@ -173,7 +178,8 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                 }
             }, 700, 5000);
             //opened
-        }
+
+
 
 
     }
@@ -300,13 +306,37 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
     public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
         if (offset == 0)
         {
-            autoChange=false;
+
         }
-        else
-        {
-            autoChange=true;
+        else{}
+
+
+           /* Update = new Runnable() {
+                public void run() {
+                    if (currentPage == 5 - 1) {
+                        currentPage = 0;
+                    }
+
+                    liveViewPager.setCurrentItem(currentPage++, true);
+
+                    collapsingToolbarLayout.setTitle("Wavepoopos");
+
+                }
+            };
+
+            swipeTimer = new Timer();
+            swipeTimer.schedule(new TimerTask() {
+
+                @Override
+                public void run() {
+                    handler.post(Update);
+                }
+            }, 700, 5000);}
+            //opened
+*/
             // Not collapsed
-        }
+
 
     }
+
 }
