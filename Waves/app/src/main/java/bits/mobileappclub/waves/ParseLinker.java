@@ -107,7 +107,7 @@ public class ParseLinker extends Application {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnected()) {
             try {
-                URL url = new URL("http://www.google.com");
+                URL url = new URL("http://in.yahoo.com");
                 HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
                 urlc.setConnectTimeout(3000);
                 urlc.connect();

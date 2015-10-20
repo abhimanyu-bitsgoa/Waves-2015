@@ -69,15 +69,16 @@ public class EventDescription extends AppCompatActivity {
         LinearLayoutManager llmDescView = new LinearLayoutManager(getApplicationContext());
         eventDescRecyclerView.setLayoutManager(llmDescView);
 
+        ParseObject pObj=null;
 
+        //Fetching data from Parse database.
 
-    //Fetching data from Parse database.
-    ParseQuery<ParseObject> query = ParseQuery.getQuery("Events").whereMatches("title", eventName);
-    query.fromLocalDatastore();
-    ParseObject pObj = null;
     try {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Events").whereMatches("title", eventName);
+        query.fromLocalDatastore();
         pObj = query.getFirst();
     } catch (ParseException e) {
+
         e.printStackTrace();
     }
 

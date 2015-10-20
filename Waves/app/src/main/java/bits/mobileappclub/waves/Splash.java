@@ -32,7 +32,7 @@ public class Splash extends Activity {
 
     /** Duration of wait **/
     private final int SPLASH_DISPLAY_LENGTH =4000;
-    public boolean connChecker=true;
+    public boolean connChecker=false;
     SharedPreferences sharedPref;
     String defaultValue;
     /** Called when the activity is first created. */
@@ -129,11 +129,11 @@ public class Splash extends Activity {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             try {
-                URL url = new URL("http://in.yahoo.com");
+                URL url = new URL("http://www.facebook.com");
                 HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
                 urlc.setConnectTimeout(4000);
                 urlc.connect();
-                if (urlc.getResponseCode() == 204||urlc.getResponseCode() == 200) {
+                if (urlc.getResponseCode() == 200) {
                     return true;
                 }
                 else{System.out.println("Not getting correct response code");}
