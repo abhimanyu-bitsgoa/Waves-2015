@@ -189,16 +189,27 @@ public class EventDescription extends AppCompatActivity {
     {
             //Code to change get the time!
 
-
+        int newIntTimeElim;
         String newTimeElim=timeElim.replaceAll(":","");
-        int newIntTimeElim=Integer.parseInt(newTimeElim);
+        try{
+          newIntTimeElim=Integer.parseInt(newTimeElim);}
+        catch(Exception e){newIntTimeElim=900;}
         int hour=newIntTimeElim/100;
         int minutes=newIntTimeElim%100;
 
        Calendar beginTime = Calendar.getInstance();
-        beginTime.set(2015, 10, 5+Integer.parseInt(dateElim.charAt(dateElim.length() - 1) + ""), hour, minutes);
+
+
         Calendar endTime = Calendar.getInstance();
-        endTime.set(2015, 10, 5+Integer.parseInt(dateElim.charAt(dateElim.length()-1)+""), hour+1, minutes);
+        try{
+            beginTime.set(2015, 10, 5+Integer.parseInt(dateElim.charAt(dateElim.length() - 1) + ""), hour, minutes);
+            endTime.set(2015, 10, 5+Integer.parseInt(dateElim.charAt(dateElim.length()-1)+""), hour+1, minutes);
+        }
+        catch(Exception e){
+            beginTime.set(2015, 10, 5, hour, minutes);
+            endTime.set(2015, 10, 5, hour+1, minutes);
+        }
+
         Intent intent = new Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
                 .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
@@ -355,6 +366,12 @@ public class EventDescription extends AppCompatActivity {
 
             case "Word Games" : headerEventImageView.setImageResource(R.drawable.wordgames);
                 break;
+
+
+            case "Mocktalk Show" : headerEventImageView.setImageResource(R.drawable.mocktalk);
+                break;
+
+
             default: headerEventImageView.setImageResource(R.drawable.waves );
 
         }}

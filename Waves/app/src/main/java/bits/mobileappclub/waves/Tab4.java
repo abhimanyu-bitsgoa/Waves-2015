@@ -217,9 +217,9 @@ public class Tab4 extends Fragment {
 
 
             case "Word Games" : return (R.drawable.wordgamestt);
+            case "Mocktalk Show" : return (R.drawable.mocktalktt);
 
-
-            default: return (R.drawable.waves);
+            default: return (R.drawable.wavestt);
 
         }}
 

@@ -55,10 +55,10 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         setContentView(R.layout.activity_main);
        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        String[] eventTime = {"", "", "", ""};
-        String[] eventName = {"", "", "", ""};
-        String[] eventStage = {"", "", "", ""};
-        int[] imageResourceId = { R.drawable.waves,R.drawable.salim, R.drawable.tvf, R.drawable.aking};
+        String[] eventTime = {"", "", "", "",""};
+        String[] eventName = {"", "", "", "",""};
+        String[] eventStage = {"", "", "", "",""};
+        int[] imageResourceId = { R.drawable.waves,R.drawable.salim, R.drawable.tvf, R.drawable.aking,R.drawable.chetas};
         liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
         liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
 
@@ -159,7 +159,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
 
             Update = new Runnable() {
                 public void run() {
-                    if (currentPage == 5 - 1) {
+                    if (currentPage == 6 - 1) {
                         currentPage = 0;
                     }
 
@@ -277,7 +277,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                 results.add(4, new EventDataObjectCardMainActivity("Show Me The Funny",R.drawable.showmethefunnytt));
                 results.add(5, new EventDataObjectCardMainActivity("Ratatouille",R.drawable.ratattouillett));
                 results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.rubikstt));
-                results.add(7, new EventDataObjectCardMainActivity("Mocktalk Show",R.drawable.waves));
+                results.add(7, new EventDataObjectCardMainActivity("Mocktalk Show",R.drawable.mocktalktt));
                 break;
         }
 
