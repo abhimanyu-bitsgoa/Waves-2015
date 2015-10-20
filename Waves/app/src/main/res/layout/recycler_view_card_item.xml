@@ -16,15 +16,15 @@
         >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="170dp">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3">
+            android:layout_weight="4">
         <RelativeLayout
             android:id="@+id/top_layout"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="170dp"
             android:padding="7dp">
 
 
@@ -47,20 +47,21 @@
                     android:textColor="@color/LightGreyText"
                     android:textSize="14dp"
                     android:text="Semi-Final"
-                    android:layout_marginTop="28dp"
+                    android:layout_below="@+id/eventNameTimeline"
                     />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:orientation="horizontal"
                 android:layout_marginTop="70dp">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
                 >
 
@@ -76,9 +77,9 @@
 
                 <TextView
                     android:id="@+id/categoryTimeline"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-
+                    android:gravity="center"
                     android:paddingTop="3dp"
 
                     android:textColor="@color/LightGreyText"
@@ -89,11 +90,12 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     >
 
                     <ImageView
@@ -108,9 +110,9 @@
 
                     <TextView
                         android:id="@+id/venueTimeline"
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
-
+                        android:gravity="center"
                         android:paddingTop="3dp"
 
                         android:textColor="@color/LightGreyText"
@@ -119,10 +121,11 @@
                         />
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
                     >
 
@@ -139,9 +142,9 @@
 
                     <TextView
                         android:id="@+id/timeTimeline"
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
-
+                        android:gravity="center"
                         android:paddingTop="3dp"
 
                         android:textColor="@color/LightGreyText"
@@ -161,13 +164,14 @@
     android:layout_width="0dp"
     android:layout_height="match_parent"
     android:layout_weight="2"
-    android:gravity="center_vertical|right">
+    android:gravity="center_vertical|right"
+    android:layout_margin="5dp">
 
             <ImageView
 
                 android:id="@+id/img_thumbnail"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:layout_alignParentRight="true"
                 />
