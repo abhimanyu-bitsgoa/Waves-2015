@@ -55,10 +55,10 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         setContentView(R.layout.activity_main);
        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        String[] eventTime = {"", "", "", "",""};
-        String[] eventName = {"", "", "", "",""};
-        String[] eventStage = {"", "", "", "",""};
-        int[] imageResourceId = { R.drawable.waves,R.drawable.salim, R.drawable.tvf, R.drawable.aking,R.drawable.chetas};
+        String[] eventTime = {"", "", "", ""};
+        String[] eventName = {"", "", "", ""};
+        String[] eventStage = {"", "", "", ""};
+        int[] imageResourceId = { R.drawable.waves,R.drawable.salim, R.drawable.tvf, R.drawable.aking};
         liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
         liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
 
@@ -159,7 +159,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
 
             Update = new Runnable() {
                 public void run() {
-                    if (currentPage == 6 - 1) {
+                    if (currentPage == 5 - 1) {
                         currentPage = 0;
                     }
 
