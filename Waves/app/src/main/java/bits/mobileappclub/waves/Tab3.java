@@ -64,11 +64,7 @@ public class Tab3 extends Fragment {
 
 
 
-                    for(int i=0;i<pObj2.size();i++) {
 
-                        System.out.println(pObj2.get(i).get("title") + "is at " + pObj2.get(i).get("time"));
-
-                    }
 
                     for(int i=0;i<pObj2.size();i++) {
                         results.add(new CardInfo(pObj2.get(i).getString("title").toString(), pObj2.get(i).getString("stage").toString(), pObj2.get(i).getString("category").toString(), pObj2.get(i).getString("time").toString(), pObj2.get(i).getString("venue").toString(), getThumbnail(pObj2.get(i).getString("title").toString())));
