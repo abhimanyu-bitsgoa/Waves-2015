@@ -25,7 +25,7 @@ public class AboutActivity extends AppCompatActivity {
         call1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "7745812845"));
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "9911447677"));
                 startActivity(intent);
             }
         });
