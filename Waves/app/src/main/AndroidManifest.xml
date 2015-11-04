@@ -69,7 +69,7 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDTDQG4Zt4_Vf8-WM94pzyTMrMHFUhmhK8" />
+            android:value="AIzaSyAWcT1pqZFjMN4lZLdQ7H0Ge_85YY3xbBk" />
 
         <service android:name="com.parse.PushService" />
 
