@@ -89,8 +89,29 @@ public class EventDescription extends AppCompatActivity {
     venueSemi = pObj.get("venueSemi").toString();
     venueFinal = pObj.get("venueFinals").toString();
     dateElim = pObj.get("date").toString();
+        switch(dateElim)
+        {
+            case "DAY 0":dateElim="5 NOV";break;
+            case "DAY 1":dateElim="6 NOV";break;
+            case "DAY 2":dateElim="7 NOV";break;
+            case "DAY 3":dateElim="8 NOV";break;
+        }
     dateSemi = pObj.get("dateSemi").toString();
+        switch(dateSemi)
+        {
+            case "DAY 0":dateSemi="5 NOV";break;
+            case "DAY 1":dateSemi="6 NOV";break;
+            case "DAY 2":dateSemi="7 NOV";break;
+            case "DAY 3":dateSemi="8 NOV";break;
+        }
     dateFinal = pObj.get("dateFinals").toString();
+        switch(dateFinal)
+        {
+            case "DAY 0":dateFinal="5 NOV";break;
+            case "DAY 1":dateFinal="6 NOV";break;
+            case "DAY 2":dateFinal="7 NOV";break;
+            case "DAY 3":dateFinal="8 NOV";break;
+        }
     about = pObj.get("about").toString();
 
 

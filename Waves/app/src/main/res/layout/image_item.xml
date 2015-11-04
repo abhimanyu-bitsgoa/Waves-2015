@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="180sp"
+        card_view:cardCornerRadius="0.3dp"
+       android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        card_view:cardElevation="2dp">
+    <ImageView
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/image"
+        android:src ="@drawable/wallstreetfete"
+        android:scaleType="centerCrop"/>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

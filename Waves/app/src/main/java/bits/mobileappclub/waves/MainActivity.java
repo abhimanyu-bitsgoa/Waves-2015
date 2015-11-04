@@ -70,6 +70,14 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
 
       //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
+        //Pro Nights Scroll horizontal
+        mAdapter = new EventCategoryBigRecyclerViewAdapter(getDataSet(9));
+        mRecyclerView = (RecyclerView) findViewById(R.id.nights_scroll);
+        mRecyclerView.setNestedScrollingEnabled(false);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
         //Big 3 scroll horizontal
 
         mAdapter = new EventCategoryBigRecyclerViewAdapter(getDataSet(0));
@@ -213,6 +221,12 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
             startActivity(intent);
             return true;
         }
+        if (id == R.id.action_gallery) {
+            Intent intent=new Intent(MainActivity.this,GalleryActivity.class);
+
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -278,6 +292,14 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                 results.add(5, new EventDataObjectCardMainActivity("Ratatouille",R.drawable.ratattouillett));
                 results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.rubikstt));
                 results.add(7, new EventDataObjectCardMainActivity("Mocktalk Show",R.drawable.mocktalktt));
+                break;
+            case 9:
+                results.add(0, new EventDataObjectCardMainActivity("DJ Paroma",R.drawable.searocktt));
+                results.add(1, new EventDataObjectCardMainActivity("Lost Stories",R.drawable.lexomniatt));
+                results.add(2, new EventDataObjectCardMainActivity("aKING",R.drawable.contentiontt));
+                results.add(3, new EventDataObjectCardMainActivity("TVF",R.drawable.wallstreetfetett));
+                results.add(4, new EventDataObjectCardMainActivity("Salim Sulaiman",R.drawable.showmethefunnytt));
+
                 break;
         }
 

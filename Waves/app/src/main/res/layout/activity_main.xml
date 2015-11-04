@@ -63,6 +63,31 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:textSize="22sp"
+                            android:text="Professional Nights"
+                            android:layout_marginLeft="15sp"
+
+                            android:textColor="@color/PrimaryHighlight"/>
+                    </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/nights_scroll"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="140sp"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="2sp"
+                        android:background="@drawable/breakline"
+                        android:layout_marginTop="5sp"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30sp"
+
+                        android:layout_marginTop="5sp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="22sp"
                             android:text="Big 3"
                             android:layout_marginLeft="15sp"
 

@@ -33,7 +33,7 @@ public class Timeline extends ActionBarActivity {
     ViewPager pager;
     ViewPagerAdapter_Tabs adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Day0","Day1","Day2","Day3"};
+    CharSequence Titles[]={"5 NOV","6 NOV","7 NOV","8 NOV"};
     int Numboftabs =4;
 
 
