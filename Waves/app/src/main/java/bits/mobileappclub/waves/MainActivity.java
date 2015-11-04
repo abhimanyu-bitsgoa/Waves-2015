@@ -215,6 +215,13 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id== R.id.action_about) {
+            Intent intent = new Intent(MainActivity.this,AboutActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            this.startActivity(intent);
+            return  true;
+
+        }
         if (id == R.id.action_map) {
             Intent intent=new Intent(MainActivity.this,MapActivity.class);
 
@@ -293,13 +300,13 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                 results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.rubikstt));
                 results.add(7, new EventDataObjectCardMainActivity("Mocktalk Show",R.drawable.mocktalktt));
                 break;
-            case 9:/*
+            case 9:
                 results.add(0, new EventDataObjectCardMainActivity("DJ Paroma",R.drawable.djparomatt));
                 results.add(1, new EventDataObjectCardMainActivity("Lost Stories",R.drawable.loststoriestt));
                 results.add(2, new EventDataObjectCardMainActivity("aKING",R.drawable.akingtt));
                 results.add(3, new EventDataObjectCardMainActivity("TVF",R.drawable.tvf1tt));
                 results.add(4, new EventDataObjectCardMainActivity("Salim Sulaiman",R.drawable.salimtt));
-*/
+
                 break;
         }
 

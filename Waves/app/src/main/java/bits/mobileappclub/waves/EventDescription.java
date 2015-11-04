@@ -318,7 +318,12 @@ elimIcon.setOnClickListener(new View.OnClickListener() {
             return  true;
 
         }
+        if (id == R.id.action_gallery) {
+            Intent intent=new Intent(EventDescription.this,GalleryActivity.class);
 
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

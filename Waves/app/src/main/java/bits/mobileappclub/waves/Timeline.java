@@ -110,6 +110,19 @@ public class Timeline extends ActionBarActivity {
             return  true;
 
         }
+        if (id== R.id.action_about) {
+            Intent intent = new Intent(Timeline.this,AboutActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            this.startActivity(intent);
+            return  true;
+
+        }
+        if (id == R.id.action_gallery) {
+            Intent intent=new Intent(Timeline.this,GalleryActivity.class);
+
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
