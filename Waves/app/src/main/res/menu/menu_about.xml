@@ -1,13 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".Timeline">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="bits.mobileappclub.waves.EventDescription">
 
-    <item
-        android:title="About"
-        android:id="@+id/action_about"
-        android:icon="@drawable/informationicon"
-        android:orderInCategory="99"
-        app:showAsAction="ifRoom"/>
+
     <item
         android:title="Map"
         android:id="@+id/action_map"
@@ -16,11 +12,10 @@
 
         app:showAsAction="ifRoom"/>
     <item
-        android:title="Map"
+        android:title="Gallery"
         android:id="@+id/action_gallery"
         android:icon="@drawable/galleryicon"
         android:orderInCategory="1"
 
         app:showAsAction="ifRoom"/>
-
 </menu>

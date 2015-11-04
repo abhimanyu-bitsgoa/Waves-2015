@@ -36,6 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -60,16 +61,24 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
     //Parse Variables
     List<ParseObject> pObj0;
     ParseQuery<ParseObject> query0;
+    Date d1;
+    //Declaring all the string arrays of live adapter
+    String [] eventTime;
+    String[] eventName;
+    String[] eventStage;
+    int[] imageResourceId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        String[] eventTime = {"", "", "", ""};
-        String[] eventName = {"", "", "", ""};
-        String[] eventStage = {"", "", "", ""};
-        int[] imageResourceId = { R.drawable.waves,R.drawable.salim, R.drawable.tvf, R.drawable.aking};
+        eventTime = new String[10];
+        eventName = new String[10];
+        eventStage = new String[10];
+       // int[] imageResourceId = { R.drawable.waves,R.drawable.salim, R.drawable.tvf};
+        imageResourceId=new int[10];
+
         liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
         liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
 
@@ -198,31 +207,94 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
             }, 700, 5000);
             //opened
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal= Calendar.getInstance();
-        cal.clear();
-        Date date1 = new Date();
-        sdf.format(date1);
-        Date date2 = null;
-        try {
-            date2 = sdf.parse("2015-05-04");
-            sdf.format(date2);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        d1=new Date();
+        //Get current system time
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            /*System.out.println( sdf.format(cal.getTime()) );*/
+        String sTime= sdf.format(cal.getTime());
+
+        //Now live pager selecting date and calling respective day
+        if(d1.getDate()==5){
+        //Queries
+            query0 = ParseQuery.getQuery("Day0");
+            query0.fromLocalDatastore();
+            query0.orderByAscending("time");
+            query0.setLimit(10);
+            query0.whereGreaterThanOrEqualTo("time", sTime);
+            //Now you have results 10 in a sorted order more having time greater than this
+
         }
 
-        if(date1.compareTo(date2)==0)
-        System.out.println("Date matched!!!!!!!!!!!!!1");
-        System.out.println("yoo!!!!!!!!!!!!!!!");
-        query0 = ParseQuery.getQuery("Day3");
-        query0.fromLocalDatastore();
-        query0.orderByAscending("time");
+       else  if(d1.getDate()==6){
+            //Queries
+            query0 = ParseQuery.getQuery("Day1");
+            query0.fromLocalDatastore();
+            query0.orderByAscending("time");
+            query0.setLimit(10);
+            query0.whereGreaterThanOrEqualTo("time", sTime);
+            //Now you have results 10 in a sorted order more having time greater than this
 
+        }
+
+       else  if(d1.getDate()==7){
+            //Queries
+            query0 = ParseQuery.getQuery("Day2");
+            query0.fromLocalDatastore();
+            query0.orderByAscending("time");
+            query0.setLimit(10);
+            query0.whereGreaterThanOrEqualTo("time", sTime);
+            //Now you have results 10 in a sorted order more having time greater than this
+
+        }
+
+       else if(d1.getDate()==8){
+            //Queries
+            query0 = ParseQuery.getQuery("Day3");
+            query0.fromLocalDatastore();
+            query0.orderByAscending("time");
+            query0.setLimit(10);
+            query0.whereGreaterThanOrEqualTo("time", sTime);
+            //Now you have results 10 in a sorted order more having time greater than this
+
+        }
+
+        else{
+            //Queries
+          for(int i=0;i<10;i++){
+              eventName[i]="";
+              eventStage[i]="";
+              eventTime[i]="";
+
+
+          }
+
+            imageResourceId[0] = R.drawable.waves;
+            imageResourceId[1] = R.drawable.salim;
+            imageResourceId[2] = R.drawable.tvf;
+            imageResourceId[3] = R.drawable.aking;
+
+
+        }
+
+        // Passing all the results to an Object List
         try {
             pObj0 = query0.find();
-
-
         }catch(Exception e){}
+        //Now lets fill the arrays with the required results
+        try{
+        Iterator<ParseObject> litr=pObj0.iterator();
+        int i=0;
+        while(litr.hasNext()) {
+
+            ParseObject p = litr.next();
+            eventName[i] = p.getString("title");
+            eventTime[i] = p.getString("time");
+            eventStage[i] = p.getString("venue");
+            imageResourceId[i] = getThumbnail(eventName[i]);
+        }
+        }catch(Exception e){}
+
     }
 
 
@@ -247,6 +319,13 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if (id== R.id.action_about) {
+            Intent intent = new Intent(MainActivity.this,AboutActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            this.startActivity(intent);
+            return  true;
+
         }
         if (id == R.id.action_map) {
             Intent intent=new Intent(MainActivity.this,MapActivity.class);
@@ -326,13 +405,13 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                 results.add(6, new EventDataObjectCardMainActivity("Rubik's Challenge",R.drawable.rubikstt));
                 results.add(7, new EventDataObjectCardMainActivity("Mocktalk Show",R.drawable.mocktalktt));
                 break;
-            case 9:/*
+            case 9:
                 results.add(0, new EventDataObjectCardMainActivity("DJ Paroma",R.drawable.djparomatt));
                 results.add(1, new EventDataObjectCardMainActivity("Lost Stories",R.drawable.loststoriestt));
                 results.add(2, new EventDataObjectCardMainActivity("aKING",R.drawable.akingtt));
                 results.add(3, new EventDataObjectCardMainActivity("TVF",R.drawable.tvf1tt));
-                results.add(4, new EventDataObjectCardMainActivity("Salim Sulaiman",R.drawable.salimtt));
-*/
+                results.add(4, new EventDataObjectCardMainActivity("Salim-Sulaiman",R.drawable.salimtt));
+
                 break;
         }
 
@@ -393,5 +472,156 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
 
 
     }
+
+    //Method to select image in liveView
+
+    public int getThumbnail(String eventName){
+        switch (eventName){
+            case "Alaap" : return (R.drawable.alaap);
+
+
+            case "Artathon" : return (R.drawable.artathon);
+
+
+            case "Contention" : return (R.drawable.contention);
+
+
+            case "Dhinchak" : return (R.drawable.dhinchak);
+
+
+
+            case "Fash-P" : return (R.drawable.fashp);
+
+
+
+
+            case "Indian Rock" : return (R.drawable.indinarock);
+
+
+
+            case "JAM" : return (R.drawable.justaminute);
+
+
+
+            case "Juke Box" : return (R.drawable.jukebox);
+
+
+
+            case "Jumelè" : return (R.drawable.jumele);
+
+
+
+            case "Lex Omnia" : return (R.drawable.lexomnia);
+
+
+
+            case "Mezzotint" : return (R.drawable.mezzotint);
+
+
+
+            case "Montage" : return (R.drawable.montagett);
+
+
+
+            case "Mr and Ms Waves" : return (R.drawable.mrmswaves);
+
+
+
+            case "Natyanjali" : return (R.drawable.natyanjali);
+
+
+
+            case "Nukkad Natak" : return (R.drawable.nukkadnatak);
+
+
+
+            case "Panorama" : return (R.drawable.panaroma);
+
+
+
+            case "Portraiture" : return (R.drawable.portraiture);
+
+
+
+            case "Rangmanch" : return (R.drawable.rangmanch);
+
+
+
+            case "Ratatouille" : return (R.drawable.ratattouille);
+
+
+
+            case "Reverse Flash" : return (R.drawable.reverseflash);
+
+
+
+            case "Searock" : return (R.drawable.searock);
+
+
+
+            case "Show Me The Funny" : return (R.drawable.showmethefunny);
+
+
+
+            case "Shutter Island" : return (R.drawable.shutter);
+
+
+
+            case "Silence Of The Amps" : return (R.drawable.silenceoftheamps);
+
+
+
+            case "Sizzle" : return (R.drawable.sizzle);
+
+
+
+            case "Skime" : return (R.drawable.skime);
+
+
+
+            case "Solonote" : return (R.drawable.solonote);
+
+
+
+            case "Entertainment Quiz" : return (R.drawable.entertainment);
+
+
+
+            case "The Lonewolf" : return (R.drawable.lonewolf);
+
+
+
+            case "The Vices Quiz" : return (R.drawable.vicequiz);
+
+
+
+            case "Rubik's Challenge" : return (R.drawable.rubiks);
+
+
+
+            case "Time Lapse" : return (R.drawable.timelapse);
+
+
+
+            case "Wallstreet Fête" : return (R.drawable.wallstreetfete);
+
+
+
+            case "Waves Open Quiz" : return (R.drawable.wavesopen);
+
+
+
+            case "Waves Poetry Slam" : return (R.drawable.poetryslam);
+
+
+
+            case "Word Games" : return (R.drawable.wordgames);
+
+            case "Mocktalk Show" : return (R.drawable.mocktalk);
+
+
+            default: return (R.drawable.waves);
+
+        }}
 
 }

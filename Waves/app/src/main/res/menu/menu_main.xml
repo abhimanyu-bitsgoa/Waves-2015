@@ -1,18 +1,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-
+    <item
+        android:title="About"
+        android:id="@+id/action_about"
+        android:icon="@drawable/informationicon"
+        android:orderInCategory="99"
+        app:showAsAction="ifRoom"/>
 
         <item
             android:title="Map"
             android:id="@+id/action_map"
             android:icon="@drawable/locationiconwhite"
-            android:orderInCategory="99"
+            android:orderInCategory="98"
             app:showAsAction="ifRoom"/>
     <item
         android:title="Map"
         android:id="@+id/action_gallery"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/galleryicon"
         android:orderInCategory="1"
 
         app:showAsAction="ifRoom"/>
