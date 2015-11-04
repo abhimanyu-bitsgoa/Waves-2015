@@ -8,12 +8,11 @@
             android:id="@+id/action_map"
             android:icon="@drawable/locationiconwhite"
             android:orderInCategory="99"
-
             app:showAsAction="ifRoom"/>
     <item
         android:title="Map"
         android:id="@+id/action_gallery"
-        android:icon="@drawable/galleryicon"
+        android:icon="@mipmap/ic_launcher"
         android:orderInCategory="1"
 
         app:showAsAction="ifRoom"/>

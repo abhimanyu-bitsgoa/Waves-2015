@@ -7,9 +7,9 @@
     <android.support.v7.widget.CardView
 
         android:layout_width="match_parent"
-        android:layout_height="180sp"
+        android:layout_height="200dp"
         card_view:cardCornerRadius="0.3dp"
-       android:layout_marginLeft="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
@@ -21,6 +21,15 @@
         android:id="@+id/image"
         android:src ="@drawable/wallstreetfete"
         android:scaleType="centerCrop"/>
+
+     <TextView
+         android:text="Waves 2015"
+         android:gravity="center_vertical"
+         android:id="@+id/gallery_tv"
+         android:layout_gravity="bottom"
+         android:paddingLeft="7dp"
+         android:layout_width="match_parent"
+         android:layout_height="20dp" />
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
