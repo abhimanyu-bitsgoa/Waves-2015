@@ -28,7 +28,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -49,6 +57,9 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
     boolean autoChange=true;
     Toolbar toolbar;
     Timer swipeTimer;
+    //Parse Variables
+    List<ParseObject> pObj0;
+    ParseQuery<ParseObject> query0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,9 +198,31 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
             }, 700, 5000);
             //opened
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal= Calendar.getInstance();
+        cal.clear();
+        Date date1 = new Date();
+        sdf.format(date1);
+        Date date2 = null;
+        try {
+            date2 = sdf.parse("2015-05-04");
+            sdf.format(date2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if(date1.compareTo(date2)==0)
+        System.out.println("Date matched!!!!!!!!!!!!!1");
+        System.out.println("yoo!!!!!!!!!!!!!!!");
+        query0 = ParseQuery.getQuery("Day3");
+        query0.fromLocalDatastore();
+        query0.orderByAscending("time");
+
+        try {
+            pObj0 = query0.find();
 
 
-
+        }catch(Exception e){}
     }
 
 
