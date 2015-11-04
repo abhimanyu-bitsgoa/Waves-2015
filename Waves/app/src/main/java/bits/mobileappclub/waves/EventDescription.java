@@ -62,6 +62,31 @@ public class EventDescription extends AppCompatActivity {
         setContentView(R.layout.activity_event_description);
         Intent intent = getIntent();
         eventName = intent.getStringExtra("eventName");
+        elimVenue = (TextView) findViewById(R.id.elimVenue);
+        elimDay = (TextView) findViewById(R.id.elimDay);
+        elimTime = (TextView) findViewById(R.id.elimTime);
+        semiVenue = (TextView) findViewById(R.id.semiVenue);
+        semiDay = (TextView) findViewById(R.id.semiDay);
+        semiTime = (TextView) findViewById(R.id.semiTime);
+        finalVenue = (TextView) findViewById(R.id.finalVenue);
+        finalDay = (TextView) findViewById(R.id.finalDay);
+        finalTime = (TextView) findViewById(R.id.finalTime);
+        elimIcon=(ImageView)findViewById(R.id.elimIcon);
+        semiIcon=(ImageView)findViewById(R.id.semiIcon);
+        finalIcon=(ImageView)findViewById(R.id.finalIcon);
+        if(eventName.equals("DJ Paroma")||eventName.equals("Salim-Sulaiman")||eventName.equals("TVF")||eventName.equals("aKING")||eventName.equals("Lost Stories"))
+        {
+            elimIcon.setVisibility(View.GONE);
+            semiIcon.setVisibility(View.GONE);
+            finalIcon.setVisibility(View.GONE);
+            semiTime.setVisibility(View.GONE);
+            finalTime.setVisibility(View.GONE);
+            semiDay.setVisibility(View.GONE);
+            finalDay.setVisibility(View.GONE);
+            semiVenue.setVisibility(View.GONE);
+            finalVenue.setVisibility(View.GONE);
+        }
+
         eventDescRecyclerView= (RecyclerView)findViewById(R.id.eventDescRecyclerView);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -139,18 +164,7 @@ public class EventDescription extends AppCompatActivity {
     //collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
     collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.ColorPrimary));
 
-    elimVenue = (TextView) findViewById(R.id.elimVenue);
-    elimDay = (TextView) findViewById(R.id.elimDay);
-    elimTime = (TextView) findViewById(R.id.elimTime);
-    semiVenue = (TextView) findViewById(R.id.semiVenue);
-    semiDay = (TextView) findViewById(R.id.semiDay);
-    semiTime = (TextView) findViewById(R.id.semiTime);
-    finalVenue = (TextView) findViewById(R.id.finalVenue);
-    finalDay = (TextView) findViewById(R.id.finalDay);
-    finalTime = (TextView) findViewById(R.id.finalTime);
-        elimIcon=(ImageView)findViewById(R.id.elimIcon);
-       semiIcon=(ImageView)findViewById(R.id.semiIcon);
-        finalIcon=(ImageView)findViewById(R.id.finalIcon);
+
     elimVenue.setText(event.getEventVenueArray()[0]);
     elimDay.setText(event.getEventDayArray()[0]);
     elimTime.setText(event.getEventTimeArray()[0]);
@@ -160,6 +174,7 @@ public class EventDescription extends AppCompatActivity {
     finalVenue.setText(event.getEventVenueArray()[2]);
     finalDay.setText(event.getEventDayArray()[2]);
     finalTime.setText(event.getEventTimeArray()[2]);
+
 
 elimIcon.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -476,6 +491,20 @@ elimIcon.setOnClickListener(new View.OnClickListener() {
             case "Mocktalk Show" : headerEventImageView.setImageResource(R.drawable.mocktalk);
                 break;
 
+            case "DJ Paroma":headerEventImageView.setImageResource(R.drawable.djparoma);
+                break;
+
+            case "Salim-Sulaiman":headerEventImageView.setImageResource(R.drawable.salim);
+                break;
+
+            case "TVF":headerEventImageView.setImageResource(R.drawable.tvf);
+                break;
+
+            case "aKING":headerEventImageView.setImageResource(R.drawable.aking);
+                break;
+
+            case "Lost Stories":headerEventImageView.setImageResource(R.drawable.loststories);
+                break;
 
             default: headerEventImageView.setImageResource(R.drawable.waves );
 

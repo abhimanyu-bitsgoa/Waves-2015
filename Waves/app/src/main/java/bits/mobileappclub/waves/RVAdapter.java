@@ -41,8 +41,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ImageViewHolder> {
         Log.d("URL",p.getString("url"));
         Picasso.with(this.context)
                 .load(p.getString("url"))
-                .placeholder(R.mipmap.ic_launcher) // optional
-                .error(R.mipmap.ic_launcher)         // optional
+                .placeholder(R.drawable.tempimage) // optional
+                .error(R.drawable.tempimage)         // optional
                 .into(holder.image);
         holder.tv.setText(p.getString("caption"));
     }

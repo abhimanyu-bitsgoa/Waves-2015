@@ -7,19 +7,18 @@
     <android.support.v7.widget.CardView
 
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="210dp"
         card_view:cardCornerRadius="0.3dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
+        android:layout_margin="5dp"
+
+        android:padding="10dp"
         card_view:cardElevation="2dp">
     <ImageView
-        android:padding="10dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="175dp"
         android:id="@+id/image"
-        android:src ="@drawable/wallstreetfete"
+
         android:scaleType="centerCrop"/>
 
      <TextView

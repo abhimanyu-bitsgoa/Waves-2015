@@ -305,7 +305,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                 results.add(1, new EventDataObjectCardMainActivity("Lost Stories",R.drawable.loststoriestt));
                 results.add(2, new EventDataObjectCardMainActivity("aKING",R.drawable.akingtt));
                 results.add(3, new EventDataObjectCardMainActivity("TVF",R.drawable.tvf1tt));
-                results.add(4, new EventDataObjectCardMainActivity("Salim Sulaiman",R.drawable.salimtt));
+                results.add(4, new EventDataObjectCardMainActivity("Salim-Sulaiman",R.drawable.salimtt));
 
                 break;
         }
