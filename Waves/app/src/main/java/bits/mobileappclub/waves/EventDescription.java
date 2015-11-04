@@ -54,6 +54,7 @@ public class EventDescription extends AppCompatActivity {
     private TextView semiVenue;
     private TextView semiDay;
     private TextView semiTime;
+    private ImageView elimIcon,semiIcon,finalIcon;
     String timeElim,timeSemi,timeFinal,venueElim,venueSemi,venueFinal,dateElim,dateSemi,dateFinal,about;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +148,9 @@ public class EventDescription extends AppCompatActivity {
     finalVenue = (TextView) findViewById(R.id.finalVenue);
     finalDay = (TextView) findViewById(R.id.finalDay);
     finalTime = (TextView) findViewById(R.id.finalTime);
-
+        elimIcon=(ImageView)findViewById(R.id.elimIcon);
+       semiIcon=(ImageView)findViewById(R.id.semiIcon);
+        finalIcon=(ImageView)findViewById(R.id.finalIcon);
     elimVenue.setText(event.getEventVenueArray()[0]);
     elimDay.setText(event.getEventDayArray()[0]);
     elimTime.setText(event.getEventTimeArray()[0]);
@@ -158,7 +161,120 @@ public class EventDescription extends AppCompatActivity {
     finalDay.setText(event.getEventDayArray()[2]);
     finalTime.setText(event.getEventTimeArray()[2]);
 
+elimIcon.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        int newIntTimeElim;
+        String newTimeElim = timeElim.replaceAll(":", "");
+        try {
+            newIntTimeElim = Integer.parseInt(newTimeElim);
+        } catch (Exception e) {
+            newIntTimeElim = 900;
+        }
+        int hour = newIntTimeElim / 100;
+        int minutes = newIntTimeElim % 100;
 
+        Calendar beginTime = Calendar.getInstance();
+
+
+        Calendar endTime = Calendar.getInstance();
+        try {
+            beginTime.set(2015, 10,Integer.parseInt(dateElim.charAt(0) + ""), hour, minutes);
+            endTime.set(2015, 10, Integer.parseInt(dateElim.charAt(0) + ""), hour + 1, minutes);
+        } catch (Exception e) {
+            beginTime.set(2015, 10, 5, hour, minutes);
+            endTime.set(2015, 10, 5, hour + 1, minutes);
+        }
+
+        Intent intent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                .putExtra(CalendarContract.Events.TITLE, eventName + "(Elims)")
+                        //.putExtra(CalendarContract.Events.DESCRIPTION, "Group class")
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, venueElim)
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+
+        startActivity(intent);
+
+    }
+
+});
+        semiIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int newIntTimeSemi;
+                String newTimeSemi=timeSemi.replaceAll(":","");
+                try{
+                    newIntTimeSemi=Integer.parseInt(newTimeSemi);}
+                catch(Exception e){newIntTimeSemi=900;}
+                int hour=newIntTimeSemi/100;
+                int minutes=newIntTimeSemi%100;
+
+                Calendar beginTime = Calendar.getInstance();
+
+
+                Calendar endTime = Calendar.getInstance();
+                try{
+                    beginTime.set(2015, 10, Integer.parseInt(dateSemi.charAt(0) + ""), hour, minutes);
+                    endTime.set(2015, 10, Integer.parseInt(dateSemi.charAt(0)+""), hour+1, minutes);
+                }
+                catch(Exception e){
+                    beginTime.set(2015, 10, 5, hour, minutes);
+                    endTime.set(2015, 10, 5, hour+1, minutes);
+                }
+
+                Intent intent = new Intent(Intent.ACTION_INSERT)
+                        .setData(CalendarContract.Events.CONTENT_URI)
+                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                        .putExtra(CalendarContract.Events.TITLE, eventName + "(Semis)")
+                                //.putExtra(CalendarContract.Events.DESCRIPTION, "Group class")
+                        .putExtra(CalendarContract.Events.EVENT_LOCATION, venueElim)
+                        .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+
+                startActivity(intent);
+
+            }
+        });
+        finalIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int newIntTimeFinal;
+                String newTimeFinal=timeFinal.replaceAll(":","");
+                try{
+                    newIntTimeFinal=Integer.parseInt(newTimeFinal);}
+                catch(Exception e){newIntTimeFinal=900;}
+                int hour=newIntTimeFinal/100;
+                int minutes=newIntTimeFinal%100;
+
+                Calendar beginTime = Calendar.getInstance();
+
+
+                Calendar endTime = Calendar.getInstance();
+                try{
+                    beginTime.set(2015, 10, Integer.parseInt(dateFinal.charAt(0) + ""), hour, minutes);
+                    endTime.set(2015, 10, Integer.parseInt(dateFinal.charAt(0)+""), hour+1, minutes);
+                }
+                catch(Exception e){
+                    beginTime.set(2015, 10, 5, hour, minutes);
+                    endTime.set(2015, 10, 5, hour+1, minutes);
+                    Log.d("s","Event time error");
+                }
+
+                Intent intent = new Intent(Intent.ACTION_INSERT)
+                        .setData(CalendarContract.Events.CONTENT_URI)
+                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
+                        .putExtra(CalendarContract.Events.TITLE, eventName+"(Finals)")
+                                //.putExtra(CalendarContract.Events.DESCRIPTION, "Group class")
+                        .putExtra(CalendarContract.Events.EVENT_LOCATION, venueElim)
+                        .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+
+                startActivity(intent);
+
+            }
+        });
 
     }
     @Override
@@ -206,44 +322,7 @@ public class EventDescription extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public  void fabClickedDescription(View v)
-    {
-            //Code to change get the time!
 
-        int newIntTimeElim;
-        String newTimeElim=timeElim.replaceAll(":","");
-        try{
-          newIntTimeElim=Integer.parseInt(newTimeElim);}
-        catch(Exception e){newIntTimeElim=900;}
-        int hour=newIntTimeElim/100;
-        int minutes=newIntTimeElim%100;
-
-       Calendar beginTime = Calendar.getInstance();
-
-
-        Calendar endTime = Calendar.getInstance();
-        try{
-            beginTime.set(2015, 10, 5+Integer.parseInt(dateElim.charAt(dateElim.length() - 1) + ""), hour, minutes);
-            endTime.set(2015, 10, 5+Integer.parseInt(dateElim.charAt(dateElim.length()-1)+""), hour+1, minutes);
-        }
-        catch(Exception e){
-            beginTime.set(2015, 10, 5, hour, minutes);
-            endTime.set(2015, 10, 5, hour+1, minutes);
-        }
-
-        Intent intent = new Intent(Intent.ACTION_INSERT)
-                .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
-                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime.getTimeInMillis())
-                .putExtra(CalendarContract.Events.TITLE, eventName+"(Elims)")
-                //.putExtra(CalendarContract.Events.DESCRIPTION, "Group class")
-                .putExtra(CalendarContract.Events.EVENT_LOCATION, venueElim)
-                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
-
-        startActivity(intent);
-
-
-    }
 
     public void setHeaderImage(String eventName){
         switch (eventName){

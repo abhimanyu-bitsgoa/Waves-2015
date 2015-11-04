@@ -176,7 +176,7 @@
                 >
 
                 <ImageView
-                    android:id="@+id/finalcon"
+                    android:id="@+id/finalIcon"
                     android:layout_width="50sp"
                     android:layout_height="50sp"
                     android:src="@drawable/finalicon"
@@ -231,17 +231,6 @@
     </LinearLayout>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:backgroundTint="@color/fabColor"
-        app:layout_anchorGravity="bottom|right|end"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        app:layout_anchor="@+id/app_bar_layout"
-        android:onClick="fabClickedDescription"
-        android:src="@drawable/calendar"
-        />
 
 
 
