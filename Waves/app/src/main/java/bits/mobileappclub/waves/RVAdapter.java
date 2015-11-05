@@ -39,12 +39,17 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ImageViewHolder> {
     public void onBindViewHolder(ImageViewHolder holder, int position) {
         ParseObject p=this.gallery.get(position);
         Log.d("URL",p.getString("url"));
+
         Picasso.with(this.context)
                 .load(p.getString("url"))
                 .placeholder(R.drawable.tempimage) // optional
                 .error(R.drawable.tempimage)         // optional
                 .into(holder.image);
-        holder.tv.setText(p.getString("caption"));
+        try{
+        holder.tv.setText(p.getString("caption"));}
+        catch (Exception e){
+            holder.tv.setText("      ");
+        }
     }
 
     @Override
