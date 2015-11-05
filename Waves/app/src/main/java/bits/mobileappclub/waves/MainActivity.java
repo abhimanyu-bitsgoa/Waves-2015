@@ -38,6 +38,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -60,7 +61,8 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
     Timer swipeTimer;
     //Parse Variables
     List<ParseObject> pObj0;
-    ParseQuery<ParseObject> query0;
+    ParseQuery<ParseObject> query0,query1;
+
     Date d1;
     //Declaring all the string arrays of live adapter
     String [] eventTime;
@@ -188,9 +190,9 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                     if (currentPage == pObj0.size() - 1) {
                         currentPage = 0;
                     }
-                    else{
 
-                        liveViewPager.setCurrentItem(currentPage++, true);}
+
+                        liveViewPager.setCurrentItem(currentPage++, true);
 
 
                 }
@@ -203,7 +205,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                 public void run() {
                     handler.post(Update);
                 }
-            }, 700, 5000);
+            }, 3000, 5000);
             //opened
 
         d1=new Date();
@@ -216,7 +218,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         //Now live pager selecting date and calling respective day
         if(d1.getDate()==5){
         //Queries
-            query0 = ParseQuery.getQuery("Day0");
+            query0 = ParseQuery.getQuery("Day1");
             query0.fromLocalDatastore();
             query0.orderByAscending("time");
             query0.setLimit(10);
@@ -279,26 +281,63 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         // Passing all the results to an Object List
         try {
             pObj0 = query0.find();
+
             int size=pObj0.size();
-            eventTime = new String[size];
-            eventName = new String[size];
-            eventStage = new String[size];
+            if(size==0)
+            {
+                query1 = ParseQuery.getQuery("Events");
+                query1.fromLocalDatastore();
+
+                query1.whereMatches("category","PRO NIGHTS");
+                pObj0=query1.find();
+                size=pObj0.size();
+                eventTime = new String[size];
+                eventName = new String[size];
+                eventStage = new String[size];
+                try{
+                    Iterator<ParseObject> litr=pObj0.iterator();
+                    int i=0;
+                    while(litr.hasNext()) {
+
+                        ParseObject p = litr.next();
+                        eventName[i] = p.getString("title");
+                        eventTime[i] = p.getString("timings");
+                        eventStage[i] = p.getString("venue");
+                        imageResourceId[i] = getThumbnail(eventName[i]);
+                        
+                     i++;
+                    }
+                }catch(Exception e){}
+
+            }
+            else {
+                eventTime = new String[size];
+                eventName = new String[size];
+                eventStage = new String[size];
+                try {
+                    Iterator<ParseObject> litr = pObj0.iterator();
+                    int i = 0;
+                    while (litr.hasNext()) {
+
+                        ParseObject p = litr.next();
+                        eventName[i] = p.getString("title");
+                        eventTime[i] = p.getString("time");
+                        eventStage[i] = p.getString("venue");
+                        imageResourceId[i] = getThumbnail(eventName[i]);
+                    }
+                } catch (Exception e) {
+                }
+
+
+            }
+                liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
+                liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
+
+
+
+
         }catch(Exception e){}
         //Now lets fill the arrays with the required results
-        try{
-        Iterator<ParseObject> litr=pObj0.iterator();
-        int i=0;
-        while(litr.hasNext()) {
-
-            ParseObject p = litr.next();
-            eventName[i] = p.getString("title");
-            eventTime[i] = p.getString("time");
-            eventStage[i] = p.getString("venue");
-            imageResourceId[i] = getThumbnail(eventName[i]);
-        }
-        }catch(Exception e){}
-        liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
-        liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
 
     }
 
@@ -624,6 +663,15 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
 
             case "Mocktalk Show" : return (R.drawable.mocktalk);
 
+            case "TVF":return (R.drawable.tvf);
+
+            case "aKING" :return (R.drawable.aking);
+
+            case "DJ Paroma": return (R.drawable.djparoma);
+
+            case "Lost Stories":return (R.drawable.loststories);
+
+            case "Salim-Sulaiman":return (R.drawable.salim);
 
             default: return (R.drawable.waves);
 
