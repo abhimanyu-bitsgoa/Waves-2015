@@ -73,14 +73,11 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         setContentView(R.layout.activity_main);
        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        eventTime = new String[10];
-        eventName = new String[10];
-        eventStage = new String[10];
+
        // int[] imageResourceId = { R.drawable.waves,R.drawable.salim, R.drawable.tvf};
         imageResourceId=new int[10];
 
-        liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
-        liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
+
 
 
         //Music Horizontal Scroll
@@ -187,11 +184,13 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
 
             Update = new Runnable() {
                 public void run() {
-                    if (currentPage == 5 - 1) {
+                    Log.d("Size",""+pObj0.size());
+                    if (currentPage == pObj0.size() - 1) {
                         currentPage = 0;
                     }
+                    else{
 
-                        liveViewPager.setCurrentItem(currentPage++, true);
+                        liveViewPager.setCurrentItem(currentPage++, true);}
 
 
                 }
@@ -280,6 +279,10 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
         // Passing all the results to an Object List
         try {
             pObj0 = query0.find();
+            int size=pObj0.size();
+            eventTime = new String[size];
+            eventName = new String[size];
+            eventStage = new String[size];
         }catch(Exception e){}
         //Now lets fill the arrays with the required results
         try{
@@ -294,6 +297,8 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
             imageResourceId[i] = getThumbnail(eventName[i]);
         }
         }catch(Exception e){}
+        liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
+        liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
 
     }
 
