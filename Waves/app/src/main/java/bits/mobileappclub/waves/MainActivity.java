@@ -205,7 +205,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                 public void run() {
                     handler.post(Update);
                 }
-            }, 3000, 5000);
+            }, 7000, 5000);
             //opened
 
         d1=new Date();
@@ -289,6 +289,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                 query1.fromLocalDatastore();
 
                 query1.whereMatches("category","PRO NIGHTS");
+                query1.orderByAscending("date");
                 pObj0=query1.find();
                 size=pObj0.size();
                 eventTime = new String[size];
@@ -324,6 +325,7 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
                         eventTime[i] = p.getString("time");
                         eventStage[i] = p.getString("venue");
                         imageResourceId[i] = getThumbnail(eventName[i]);
+                        i++;
                     }
                 } catch (Exception e) {
                 }

@@ -39,7 +39,7 @@ public class Splash extends Activity {
     /**
      * Duration of wait *
      */
-    private final int SPLASH_DISPLAY_LENGTH = 4000;
+    private final int SPLASH_DISPLAY_LENGTH = 2000;
     public boolean connChecker = false;
     SharedPreferences sharedPref;
     String defaultValue;
