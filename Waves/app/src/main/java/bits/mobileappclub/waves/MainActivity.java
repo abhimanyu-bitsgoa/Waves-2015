@@ -51,9 +51,9 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
     private static String LOG_TAG = "CardViewActivity";
     private ViewPager liveViewPager;
     private float initialX;
-    private int currentPage;
+    private int currentPage=0;
     private Handler handler;
-
+    boolean firsttime=true;
     Runnable Update;
     CollapsingToolbarLayout collapsingToolbarLayout;
     boolean autoChange=true;
@@ -78,8 +78,127 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
 
        // int[] imageResourceId = { R.drawable.waves,R.drawable.salim, R.drawable.tvf};
         imageResourceId=new int[10];
+        liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
+        String[] nameTemp={" "};
+        int[] ImageTemp={R.drawable.waves};
+
+        d1=new Date();
+        //Get current system time
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            /*System.out.println( sdf.format(cal.getTime()) );*/
+        String sTime= sdf.format(cal.getTime());
+
+        //Now live pager selecting date and calling respective day
+
+        query0 = ParseQuery.getQuery("Day"+(d1.getDate()-5));
+        query0.fromLocalDatastore();
+        query0.orderByAscending("time");
+        query0.setLimit(10);
+        query0.whereGreaterThanOrEqualTo("time", sTime);
+        //Now you have results 10 in a sorted order more having time greater than this
 
 
+
+
+
+        // Passing all the results to an Object List
+        try {
+            pObj0 = query0.find();
+
+            int size=pObj0.size();
+            if(size==0)
+            {
+                query1 = ParseQuery.getQuery("Events");
+                query1.fromLocalDatastore();
+
+                query1.whereMatches("category", "PRO NIGHTS");
+                query1.orderByAscending("date");
+                pObj0=query1.find();
+                size=pObj0.size();
+                eventTime = new String[size];
+                eventName = new String[size];
+                eventStage = new String[size];
+                try{
+                    Iterator<ParseObject> litr=pObj0.iterator();
+                    int i=0;
+                    while(litr.hasNext()) {
+
+                        ParseObject p = litr.next();
+                        eventName[i] = p.getString("title");
+                        eventTime[i] = " ";
+                        eventStage[i] = " ";
+                        imageResourceId[i] = getThumbnail(eventName[i]);
+
+                        i++;
+                    }
+                }catch(Exception e){
+                    Log.d("Error","Error is here");
+                }
+
+            }
+            else {
+                eventTime = new String[size];
+                eventName = new String[size];
+                eventStage = new String[size];
+                try {
+                    Iterator<ParseObject> litr = pObj0.iterator();
+                    int i = 0;
+                    while (litr.hasNext()) {
+
+                        ParseObject p = litr.next();
+                        eventName[i] = p.getString("title");
+                        eventTime[i] = p.getString("time");
+                        eventStage[i] = p.getString("venue");
+                        imageResourceId[i] = getThumbnail(eventName[i]);
+                        i++;
+                    }
+                } catch (Exception e) {
+                }
+
+
+            }
+            if(size==0){
+            liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(),nameTemp,nameTemp,nameTemp,ImageTemp));}
+            else {
+                liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
+            }
+
+            handler = new Handler();
+
+
+            Update = new Runnable() {
+                public void run() {
+
+
+
+                    if (currentPage == pObj0.size() - 1) {
+                        currentPage = 0;
+                    }
+
+
+                    liveViewPager.setCurrentItem(currentPage++, true);
+
+
+                }
+            };
+
+            swipeTimer = new Timer();
+            swipeTimer.schedule(new TimerTask() {
+
+                @Override
+                public void run() {
+                    handler.post(Update);
+                }
+            }, 3000, 5000);
+
+
+        }catch(Exception e){
+            Log.d("Error is here","Exception is here");
+
+
+        }
+        //Now lets fill the arrays with the required results
 
 
         //Music Horizontal Scroll
@@ -182,164 +301,9 @@ public class MainActivity extends ActionBarActivity implements AppBarLayout.OnOf
 
 
             //Auto Swiping of Live Preview
-            handler = new Handler();
 
-            Update = new Runnable() {
-                public void run() {
-                    Log.d("Size",""+pObj0.size());
-                    if (currentPage == pObj0.size() - 1) {
-                        currentPage = 0;
-                    }
-
-
-                        liveViewPager.setCurrentItem(currentPage++, true);
-
-
-                }
-            };
-
-            swipeTimer = new Timer();
-            swipeTimer.schedule(new TimerTask() {
-
-                @Override
-                public void run() {
-                    handler.post(Update);
-                }
-            }, 7000, 5000);
             //opened
 
-        d1=new Date();
-        //Get current system time
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            /*System.out.println( sdf.format(cal.getTime()) );*/
-        String sTime= sdf.format(cal.getTime());
-
-        //Now live pager selecting date and calling respective day
-        if(d1.getDate()==5){
-        //Queries
-            query0 = ParseQuery.getQuery("Day1");
-            query0.fromLocalDatastore();
-            query0.orderByAscending("time");
-            query0.setLimit(10);
-            query0.whereGreaterThanOrEqualTo("time", sTime);
-            //Now you have results 10 in a sorted order more having time greater than this
-
-        }
-
-       else  if(d1.getDate()==6){
-            //Queries
-            query0 = ParseQuery.getQuery("Day1");
-            query0.fromLocalDatastore();
-            query0.orderByAscending("time");
-            query0.setLimit(10);
-            query0.whereGreaterThanOrEqualTo("time", sTime);
-            //Now you have results 10 in a sorted order more having time greater than this
-
-        }
-
-       else  if(d1.getDate()==7){
-            //Queries
-            query0 = ParseQuery.getQuery("Day2");
-            query0.fromLocalDatastore();
-            query0.orderByAscending("time");
-            query0.setLimit(10);
-            query0.whereGreaterThanOrEqualTo("time", sTime);
-            //Now you have results 10 in a sorted order more having time greater than this
-
-        }
-
-       else if(d1.getDate()==8){
-            //Queries
-            query0 = ParseQuery.getQuery("Day3");
-            query0.fromLocalDatastore();
-            query0.orderByAscending("time");
-            query0.setLimit(10);
-            query0.whereGreaterThanOrEqualTo("time", sTime);
-            //Now you have results 10 in a sorted order more having time greater than this
-
-        }
-
-        else{
-            //Queries
-          for(int i=0;i<10;i++){
-              eventName[i]="";
-              eventStage[i]="";
-              eventTime[i]="";
-
-
-          }
-
-            imageResourceId[0] = R.drawable.waves;
-            imageResourceId[1] = R.drawable.salim;
-            imageResourceId[2] = R.drawable.tvf;
-            imageResourceId[3] = R.drawable.aking;
-
-
-        }
-
-        // Passing all the results to an Object List
-        try {
-            pObj0 = query0.find();
-
-            int size=pObj0.size();
-            if(size==0)
-            {
-                query1 = ParseQuery.getQuery("Events");
-                query1.fromLocalDatastore();
-
-                query1.whereMatches("category","PRO NIGHTS");
-                query1.orderByAscending("date");
-                pObj0=query1.find();
-                size=pObj0.size();
-                eventTime = new String[size];
-                eventName = new String[size];
-                eventStage = new String[size];
-                try{
-                    Iterator<ParseObject> litr=pObj0.iterator();
-                    int i=0;
-                    while(litr.hasNext()) {
-
-                        ParseObject p = litr.next();
-                        eventName[i] = p.getString("title");
-                        eventTime[i] = p.getString("timings");
-                        eventStage[i] = p.getString("venue");
-                        imageResourceId[i] = getThumbnail(eventName[i]);
-                        
-                     i++;
-                    }
-                }catch(Exception e){}
-
-            }
-            else {
-                eventTime = new String[size];
-                eventName = new String[size];
-                eventStage = new String[size];
-                try {
-                    Iterator<ParseObject> litr = pObj0.iterator();
-                    int i = 0;
-                    while (litr.hasNext()) {
-
-                        ParseObject p = litr.next();
-                        eventName[i] = p.getString("title");
-                        eventTime[i] = p.getString("time");
-                        eventStage[i] = p.getString("venue");
-                        imageResourceId[i] = getThumbnail(eventName[i]);
-                        i++;
-                    }
-                } catch (Exception e) {
-                }
-
-
-            }
-                liveViewPager=(ViewPager)findViewById(R.id.liveViewPager);
-                liveViewPager.setAdapter(new LiveViewPagerAdapter(getApplicationContext(), eventName, eventTime, eventStage, imageResourceId));
-
-
-
-
-        }catch(Exception e){}
-        //Now lets fill the arrays with the required results
 
     }
 
