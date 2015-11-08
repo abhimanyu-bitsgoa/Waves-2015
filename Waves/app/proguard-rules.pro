@@ -18,3 +18,4 @@
 -keepattributes *Annotation*
 -keep class com.parse.** { *; }
 -dontwarn com.parse.**
+-dontwarn com.squareup.**
